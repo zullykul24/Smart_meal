@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@+id/rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/navbar"
+        android:layout_alignParentTop="true"
+
+
+        android:background="#ff0">
+
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="com.example.myapplication.FragmentHomePage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <fragment
+            android:id="@+id/fragment2"
+            android:name="com.example.myapplication.FragmentTableOrder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:background="#fff"
+        app:labelVisibilityMode="labeled"
+
+
+        android:id="@+id/navbar"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu" />
+</RelativeLayout>
