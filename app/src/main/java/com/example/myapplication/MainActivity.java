@@ -9,16 +9,22 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.GridView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView navbar;
     EditText foodName;
+   // GridView gridViewMenu;
+   // MenuFoodItemAdapter menuFoodItemAdapter;
+  //  ArrayList<MenuFoodItem> menuItemArrayList;
 
     protected void AnhXa(){
         navbar = (BottomNavigationView) findViewById(R.id.navbar);
-       // foodName = findViewById(R.id.name);
+     //   gridViewMenu = findViewById(R.id.gridViewFoodMenu);
     }
 
     @Override
@@ -68,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        ///đổ dữ liệu vào menu
+
+
+
 
     }
 }

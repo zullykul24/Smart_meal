@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#ff0"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
+    >
+
+    <ImageView
+
+        android:id="@+id/imageViewMenuFoodItem"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="0dp"
+
+        />
+
+    <TextView
+        android:id="@+id/textViewNameMenuFoodItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine|textNoSuggestions"
+
+
+        android:singleLine="false"
+        android:gravity="left"
+        android:scrollHorizontally="false"
+        android:minLines="2"
+        android:layout_marginLeft="15dp"
+
+
+        android:layout_toRightOf="@+id/imageViewMenuFoodItem"
+        android:text="Name"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/textViewPriceMenuFoodItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+
+        android:layout_toRightOf="@+id/imageViewMenuFoodItem"
+
+        android:text="Price"
+        android:textSize="15sp"
+        />
+
+
+
+</RelativeLayout>
