@@ -18,13 +18,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView navbar;
     EditText foodName;
-   // GridView gridViewMenu;
-   // MenuFoodItemAdapter menuFoodItemAdapter;
-  //  ArrayList<MenuFoodItem> menuItemArrayList;
+
 
     protected void AnhXa(){
         navbar = (BottomNavigationView) findViewById(R.id.navbar);
-     //   gridViewMenu = findViewById(R.id.gridViewFoodMenu);
+
     }
 
     @Override
