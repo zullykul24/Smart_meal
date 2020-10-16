@@ -52,19 +52,48 @@ public class MainActivity extends AppCompatActivity {
                 //// đang bị lỗi, khi mở lên thì tất cả các fragment đều active
                 switch (menuItem.getItemId()){
                     case R.id.nav_1:
-                        fragmentManager.beginTransaction().hide(active).show(fragment1).commit();
+                        fragmentManager.beginTransaction()
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                                .hide(active)
+                                .replace(R.id.rela,fragment1)
+                                .addToBackStack(null)
+                                .show(fragment1)
+                                .commit();
                         active = fragment1;
-                        return true;
+                       // return true;
+                        break;
                     case R.id.nav_2:
-                        fragmentManager.beginTransaction().hide(active).show(fragment2).commit();
+                        fragmentManager.beginTransaction()
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                               // .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                                .hide(active)
+                                .replace(R.id.rela, fragment2)
+                                .addToBackStack(null)
+                               .show(fragment2)
+                                .commit();
                         active = fragment2;
                         return true;
                     case R.id.nav_3:
-                        fragmentManager.beginTransaction().hide(active).show(fragment3).commit();
+                        fragmentManager.beginTransaction()
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                                .hide(active)
+                                .replace(R.id.rela,fragment3)
+                                .addToBackStack(null)
+                             .show(fragment3)
+                                .commit();
                         active = fragment3;
                         return true;
                     case R.id.nav_4:
-                        fragmentManager.beginTransaction().hide(active).show(fragment4).commit();
+                        fragmentManager.beginTransaction()
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                               // .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                                .hide(active)
+                                .replace(R.id.rela,fragment4)
+                                .addToBackStack(null)
+                                .show(fragment4)
+                                .commit();
                         active = fragment4;
                         return true;
                 }
