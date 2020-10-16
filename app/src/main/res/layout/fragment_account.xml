@@ -9,65 +9,33 @@
 
     >
 
-    <ListView
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintLeft_toLeftOf="parent"
+       android:textSize="30sp"
+       android:inputType="textMultiLine|textNoSuggestions"
+       android:text="Mạnh Hùng đẹp trai"
+       android:id="@+id/displayName"
+       android:layout_marginTop="30dp"
 
-        android:id="@+id/listViewFruit"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:dividerHeight="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="200dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+       android:layout_marginLeft="20dp"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="24dp"
-            android:scaleType="fitCenter"
-            android:alpha="100"
-            android:background="@null"
-            android:src="@drawable/icon_back"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!--<EditText
-            android:id="@+id/name"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_edittext"
-
-            android:hint="Nhập món ăn"
-
-            android:padding="10dp"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/list1"
+    <Button
+        android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Danh sách món"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/listViewFruit"
+        android:background="@drawable/rounded_edittext"
+        android:text="Đăng xuất"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="400dp"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:textAllCaps="false"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@id/displayName" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

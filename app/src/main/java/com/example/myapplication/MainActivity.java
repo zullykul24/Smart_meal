@@ -40,37 +40,38 @@ public class MainActivity extends AppCompatActivity {
         final FragmentMenu fragment3 = new FragmentMenu();
         final FragmentAccount fragment4 = new FragmentAccount();
 
-        fragmentManager.beginTransaction().add(R.id.rela, fragment4, "4").hide(fragment4).commit();
-        fragmentManager.beginTransaction().add(R.id.rela, fragment3, "3").hide(fragment3).commit();
-        fragmentManager.beginTransaction().add(R.id.rela, fragment2, "2").hide(fragment2).commit();
+       // fragmentManager.beginTransaction().add(R.id.rela, fragment4, "4").hide(fragment4).commit();
+      //  fragmentManager.beginTransaction().add(R.id.rela, fragment3, "3").hide(fragment3).commit();
+      //  fragmentManager.beginTransaction().add(R.id.rela, fragment2, "2").hide(fragment2).commit();
         fragmentManager.beginTransaction().add(R.id.rela, fragment1, "1").commit();
         navbar.setOnNavigationItemSelectedListener (new BottomNavigationView.OnNavigationItemSelectedListener(){
             Fragment active = fragment1;
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                //// đang bị lỗi, khi mở lên thì tất cả các fragment đều active
+                //// đang bị lỗi item Trang chủ ko sáng khi chuyển đổi lại
                 switch (menuItem.getItemId()){
                     case R.id.nav_1:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                 //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                                .hide(active)
+                               // .hide(active)
                                 .replace(R.id.rela,fragment1)
                                 .addToBackStack(null)
-                                .show(fragment1)
+                               // .show(fragment1)
                                 .commit();
                         active = fragment1;
-                       // return true;
-                        break;
+
+                        return true;
+
                     case R.id.nav_2:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                // .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                                .hide(active)
+                              //  .hide(active)
                                 .replace(R.id.rela, fragment2)
                                 .addToBackStack(null)
-                               .show(fragment2)
+                              // .show(fragment2)
                                 .commit();
                         active = fragment2;
                         return true;
@@ -78,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                 //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                                .hide(active)
+                              //  .hide(active)
                                 .replace(R.id.rela,fragment3)
                                 .addToBackStack(null)
-                             .show(fragment3)
+                            // .show(fragment3)
                                 .commit();
                         active = fragment3;
                         return true;
@@ -89,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                // .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                                .hide(active)
+                              //  .hide(active)
                                 .replace(R.id.rela,fragment4)
                                 .addToBackStack(null)
-                                .show(fragment4)
+                              //  .show(fragment4)
                                 .commit();
                         active = fragment4;
                         return true;

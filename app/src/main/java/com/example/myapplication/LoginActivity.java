@@ -12,11 +12,12 @@ import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
-    Button loginBtn;
+
     Button signInTextBtn, signUpTextBtn;
     ConstraintLayout signInLayout, signUpLayout;
 
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void AnhXa(){
         username = (EditText) findViewById(R.id.usernameEditText);
         password = (EditText) findViewById(R.id.passwordEditText);
-        loginBtn = (Button) findViewById(R.id.loginButton);
+
         signInTextBtn = (Button) findViewById(R.id.signInButton);
         signUpTextBtn = (Button) findViewById(R.id.signUpButton);
         signInLayout = (ConstraintLayout) findViewById(R.id.signInLayout);
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         final FragmentSignIn fragmentSignIn = new FragmentSignIn();
         final FragmentSignUp fragmentSignUp= new FragmentSignUp();
 
-        fragmentManager.beginTransaction().add(R.id.frameSign,fragmentSignUp, "signup");
+        //fragmentManager.beginTransaction().add(R.id.frameSign,fragmentSignUp, "signup");
 
         fragmentManager.beginTransaction().add(R.id.frameSign, fragmentSignIn, "signin").commit();
 
@@ -58,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .replace(R.id.frameSign,fragmentSignUp).addToBackStack(null).commit();
+                        .replace(R.id.frameSign,new FragmentSignUp()).addToBackStack(null).commit();
                // fragmentManager.beginTransaction().hide(fragmentSignIn).show(fragmentSignUp).commit();
 
 
@@ -72,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .replace(R.id.frameSign,fragmentSignIn).addToBackStack(null).commit();
+                        .replace(R.id.frameSign,new FragmentSignIn()).addToBackStack(null).commit();
                 //fragmentManager.beginTransaction().hide(fragmentSignUp).show(fragmentSignIn).commit();
 
 
@@ -84,12 +85,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentToMain = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intentToMain);
-            }
-        });
+
     }
 }
