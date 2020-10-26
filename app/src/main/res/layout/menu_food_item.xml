@@ -34,7 +34,7 @@
         android:layout_marginLeft="15dp"
 
 
-        android:layout_toRightOf="@+id/imageViewMenuFoodItem"
+        android:layout_toRightOf="@id/imageViewMenuFoodItem"
         android:text="Name"
         android:textSize="15sp"
         />

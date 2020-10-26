@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,8 +25,9 @@ public class FragmentTableOrder extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tableorder, container,false);
-        gridViewTable = rootView.findViewById(R.id.gridViewTable);
+        gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
         tableItemArrayList = new ArrayList<>();
+
         tableItemArrayList.add(new TableItem("Bàn số 1"));
         tableItemArrayList.add(new TableItem("Bàn số 2"));
         tableItemArrayList.add(new TableItem("Bàn số 3"));
@@ -61,8 +66,19 @@ public class FragmentTableOrder extends Fragment {
 
             }
         }
+
+
+        gridViewTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity().getApplicationContext(), tableItemArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
         tableItemAdapter = new TableItemAdapter(getActivity(), R.layout.table_item, tableItemArrayList);
         gridViewTable.setAdapter(tableItemAdapter);
+
+
         return rootView;
     }
 }

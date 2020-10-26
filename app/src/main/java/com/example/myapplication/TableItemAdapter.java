@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.view.menu.MenuView;
 
@@ -22,7 +24,7 @@ public class TableItemAdapter extends BaseAdapter {
 
     /// tạo ra view holder để ko phải ánh xạ lại những items đã lướt qua khi mình lướt lại
     private class ViewHolder{
-        ImageButton image;
+        ImageView image;
         TextView name, status;
 
     }
@@ -59,7 +61,7 @@ public class TableItemAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.table_name);
             holder.status = (TextView) convertView.findViewById(R.id.table_status);
-            holder.image = (ImageButton) convertView.findViewById(R.id.table_img);
+            holder.image = (ImageView) convertView.findViewById(R.id.table_img);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -74,6 +76,10 @@ public class TableItemAdapter extends BaseAdapter {
         holder.status.setText(tableItem.getStatus());
         holder.image.setImageResource(tableItem.getImage());
         holder.image.setBackgroundColor(Color.parseColor(tableItem.getColor()));
+
+
+
+
 
         return convertView;
     }

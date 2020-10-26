@@ -8,6 +8,12 @@ public class TableItem implements Serializable {
     private String color;
     private int image;
 
+    public TableItem(String name, String status, int image) {
+        this.name = name;
+        this.status = status;
+        this.image = image;
+    }
+
     public TableItem(String name, String status, int image, String color) {
         this.name = name;
         this.status = status;
