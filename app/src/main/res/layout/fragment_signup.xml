@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/signUpLayout"
@@ -26,30 +27,87 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="#fff"
-        android:id="@+id/passwordEditTextSignUp"
+        android:id="@+id/phoneNumber"
         app:layout_constraintTop_toBottomOf="@id/usernameEditTextSignUp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 
-        android:hint="Mật khẩu"
+        android:hint="Số điện thoại"
         android:singleLine="true"
-        android:inputType="textPassword"
-
         >
+    </EditText>
+
+    <TextView
+        android:id="@+id/textViewAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Acccount Type: "
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phoneNumber"></TextView>
+
+    <Spinner
+        android:id="@+id/account_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"></Spinner>
+
+    <EditText
+        android:id="@+id/passwordEditTextSignUp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:singleLine="true"
+
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/account_type"></EditText>
+
+    <EditText
+        android:id="@+id/retypePass"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:hint="Nhập lại Mật khẩu"
+        android:inputType="textPassword"
+        android:singleLine="true"
+
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/passwordEditTextSignUp">
 
     </EditText>
+
     <Button
-        android:id="@+id/signUpButton"
+        android:id="@+id/signUpButtoncommit"
         android:background="@drawable/loginbutton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Đăng ký"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditTextSignUp"
+        app:layout_constraintTop_toBottomOf="@id/retypePass"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:padding="20dp"
         ></Button>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

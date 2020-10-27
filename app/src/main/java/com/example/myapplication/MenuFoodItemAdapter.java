@@ -15,36 +15,57 @@ import java.util.List;
 public class MenuFoodItemAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<MenuFoodItem> menuFoodItemList;
+    private List<MenuFoodItem> menuFoodItems;
 
-
-    /// tạo ra view holder để ko phải ánh xạ lại những items đã lướt qua khi mình lướt lại
-    private class ViewHolder{
-        ImageView image;
-        TextView name, price;
-    }
-
-    public MenuFoodItemAdapter(Context context, int layout, List<MenuFoodItem> menuFoodItemList) {
+    public MenuFoodItemAdapter(Context context, int layout, List<MenuFoodItem> menuFoodItems) {
         this.context = context;
         this.layout = layout;
-        this.menuFoodItemList = menuFoodItemList;
+        this.menuFoodItems = menuFoodItems;
     }
 
     @Override
     public int getCount() {
-        // very important
-        return menuFoodItemList.size();
+        return menuFoodItems.size();
     }
 
     @Override
     public Object getItem(int position) {
         return null;
+
     }
 
     @Override
     public long getItemId(int position) {
         return 0;
     }
+
+    /// tạo ra view holder để ko phải ánh xạ lại những items đã lướt qua khi mình lướt lại
+    private class ViewHolder{
+        ImageView image;
+        TextView name, price;
+    }
+//
+//    public MenuFoodItemAdapter(Context context, int layout, List<MenuFoodItem> menuFoodItemList) {
+//        this.context = context;
+//        this.layout = layout;
+//        this.menuFoodItemList = menuFoodItemList;
+//    }
+//
+//    @Override
+//    public int getCount() {
+//        // very important
+//        return menuFoodItemList.size();
+//    }
+//
+//    @Override
+//    public Object getItem(int position) {
+//        return null;
+//    }
+//
+//    @Override
+//    public long getItemId(int position) {
+//        return 0;
+//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -66,10 +87,10 @@ public class MenuFoodItemAdapter extends BaseAdapter {
 
         //gán giá trị
 
-        MenuFoodItem menuFoodItem = menuFoodItemList.get(position);
-        holder.name.setText(menuFoodItem.getName());
+        MenuFoodItem menuFoodItem = menuFoodItems.get(position);
+        holder.name.setText(menuFoodItem.getDish_name());
         holder.price.setText(menuFoodItem.getPrice());
-        holder.image.setImageResource(menuFoodItem.getImage());
+        //holder.image.setImageResource(menuFoodItem.getImage());
 
         return convertView;
     }

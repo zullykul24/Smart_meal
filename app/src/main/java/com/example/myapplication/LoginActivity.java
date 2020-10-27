@@ -17,7 +17,6 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
-
     Button signInTextBtn, signUpTextBtn;
     ConstraintLayout signInLayout, signUpLayout;
 
@@ -52,21 +51,15 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
-
         signUpTextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .replace(R.id.frameSign,new FragmentSignUp()).addToBackStack(null).commit();
-               // fragmentManager.beginTransaction().hide(fragmentSignIn).show(fragmentSignUp).commit();
-
-
-
-                signUpTextBtn.setTextColor(Color.parseColor("#000000"));
-                signInTextBtn.setTextColor(Color.parseColor("#786464"));
-            }
+                @Override
+                public void onClick(View v) {
+                    fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .replace(R.id.frameSign, new FragmentSignUp()).addToBackStack(null).commit();
+                    signUpTextBtn.setTextColor(Color.parseColor("#000000"));
+                    signInTextBtn.setTextColor(Color.parseColor("#786464"));
+                }
         });
 
         signInTextBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,10 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .replace(R.id.frameSign,new FragmentSignIn()).addToBackStack(null).commit();
                 //fragmentManager.beginTransaction().hide(fragmentSignUp).show(fragmentSignIn).commit();
-
-
-
-
                 signInTextBtn.setTextColor(Color.parseColor("#000000"));
                 signUpTextBtn.setTextColor(Color.parseColor("#786464"));
             }

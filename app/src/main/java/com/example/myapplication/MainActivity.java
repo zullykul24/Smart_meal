@@ -6,31 +6,37 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import static com.example.myapplication.FragmentSignIn.database;
+
 public class MainActivity extends AppCompatActivity {
+
+    // dau  tien la phai show dc danh sach cac mon
     BottomNavigationView navbar;
     EditText foodName;
 
+    //public static Database database;
 
     protected void AnhXa(){
         navbar = (BottomNavigationView) findViewById(R.id.navbar);
 
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AnhXa();
-
 
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
