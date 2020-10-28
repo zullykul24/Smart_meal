@@ -35,7 +35,7 @@ public class FragmentSignUp extends Fragment {
     EditText retypePassword;
     Button signUp;
     String account_type = "Staff";
-    // kiểm tra userName hop le
+    // kiểm tra userName
     private static final String USERNAME_PATTERN = "^[a-z0-9]{3,16}$";
 
     public static boolean verifyUsername(String username) {
@@ -55,7 +55,7 @@ public class FragmentSignUp extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_signup, container, false);
-        // add the type account
+
         acc_type = (Spinner) view.findViewById(R.id.account_type);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1 , getResources().getStringArray(R.array.account_type));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -82,7 +82,8 @@ public class FragmentSignUp extends Fragment {
 
                         database.QueryData("INSERT INTO account VALUES(null, '"+phoneNumber.getText().toString()+"','"+account_type+"', '"+userName.getText().toString()+"', '"+password.getText().toString()+"' ) ");
                         Toast.makeText(getContext(), "Đăng ký tài khoản thành công", Toast.LENGTH_SHORT).show();
-
+                        Intent intent = new Intent(getContext(), LoginActivity.class);
+                        startActivity(intent);
                     } else if (verifyUsername(userName.getText().toString()) == false) {
                         userName.setText(null);
                         userName.setHint("UserName không hợp lệ");

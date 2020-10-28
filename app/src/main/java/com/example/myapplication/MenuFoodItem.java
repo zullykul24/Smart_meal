@@ -1,15 +1,17 @@
 package com.example.myapplication;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.DuplicateFormatFlagsException;
 
 public class MenuFoodItem implements Serializable {
         private int dish_id;
         private String dish_name;
         private int group_id;
-        private  int price;
+        private Double price;
         private byte[] image;
 
-    public MenuFoodItem(int dish_id, String dish_name, int group_id, int price, byte[] image) {
+    public MenuFoodItem(int dish_id, String dish_name, int group_id, Double price, byte[] image) {
         this.dish_id = dish_id;
         this.dish_name = dish_name;
         this.group_id = group_id;
@@ -41,11 +43,11 @@ public class MenuFoodItem implements Serializable {
         this.group_id = group_id;
     }
 
-    public int getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import androidx.annotation.Nullable;
 
@@ -17,6 +18,21 @@ public class Database  extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
     }
+
+    public void insertDish(String name, Double price, byte[] image) {
+        SQLiteDatabase database = getWritableDatabase();
+        // dishId, dishname, groupID, price, image;
+        String sql = "INSERT INTO dish values (null,?,?,?,?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, name);
+        // chưa biết nên cho ntn nên tạm thời cứ để giá trị mặc định là 1.
+        statement.bindLong(2, 1);
+        statement.bindDouble(3,price);
+        statement.bindBlob(4, image);
+        statement.executeInsert();
+    }
+
 
     public Cursor getData(String sql){
         SQLiteDatabase database  =  getReadableDatabase();

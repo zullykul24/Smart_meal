@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,30 +44,9 @@ public class MenuFoodItemAdapter extends BaseAdapter {
     /// tạo ra view holder để ko phải ánh xạ lại những items đã lướt qua khi mình lướt lại
     private class ViewHolder{
         ImageView image;
-        TextView name, price;
+        TextView name;
+        TextView price;
     }
-//
-//    public MenuFoodItemAdapter(Context context, int layout, List<MenuFoodItem> menuFoodItemList) {
-//        this.context = context;
-//        this.layout = layout;
-//        this.menuFoodItemList = menuFoodItemList;
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        // very important
-//        return menuFoodItemList.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//        return null;
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//        return 0;
-//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -82,15 +63,13 @@ public class MenuFoodItemAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-
-
-        //gán giá trị
-
-        MenuFoodItem menuFoodItem = menuFoodItems.get(position);
-        holder.name.setText(menuFoodItem.getDish_name());
-        holder.price.setText(menuFoodItem.getPrice());
-        //holder.image.setImageResource(menuFoodItem.getImage());
+        MenuFoodItem menu = menuFoodItems.get(position); // lay tung cai mot ra
+        holder.name.setText(menu.getDish_name());
+        holder.price.setText(menu.getPrice().toString());
+        byte[] hinhanh = menu.getImage();
+        // muon lay hinh anh ra thi phai chuyen tu byte[] sang bitmap
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
+        holder.image.setImageBitmap(bitmap);
 
         return convertView;
     }
