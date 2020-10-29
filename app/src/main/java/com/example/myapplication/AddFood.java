@@ -70,7 +70,7 @@ public class AddFood extends AppCompatActivity {
                     Toast.makeText(AddFood.this, "Hãy điền đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    database.insertDish(name.getText().toString().trim(), Double.parseDouble(price.getText().toString()),
+                    database.insertDish(name.getText().toString(), Double.parseDouble(price.getText().toString()),
                             hinhanh );
                     // xong thi chuyen ve man hinh chinh la xong
                     startActivity(new Intent(AddFood.this,MainActivity.class));

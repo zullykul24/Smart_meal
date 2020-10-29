@@ -23,7 +23,7 @@ public class FragmentSignIn extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // create a new database sqlite
-        database = new Database(getContext(), "SM.sqlite", null,1);
+        database = new Database(getContext(), "sh.sqlite", null,1);
         // create table account
         database.QueryData("create table if not exists account (accountId integer primary key AUTOINCREMENT, phoneNumber VARCHAR(200) not null, account_type varchar(20) not null, userName varchar(50) not null unique, password varchar(20)  not null) " );
         // create table dish
@@ -36,41 +36,37 @@ public class FragmentSignIn extends Fragment {
         username = (EditText) rootView.findViewById(R.id.usernameEditText);
         password = (EditText) rootView.findViewById(R.id.passwordEditText);
 
-        Cursor data = database.getData("SELECT * from account");
-        while (data.moveToNext())
-        {
-            Log.d("fafafasf", data.getString(0)+ "  " +  data.getString(1));
-        }
+
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentToMain = new Intent(getActivity(), MainActivity.class);
                 startActivity(intentToMain);
-//                Cursor dataAccount = database.getData("SELECT * FROM account where userName = '"+username.getText().toString()+"' "); // trả về một cái dãy các account nè
-//
-//                if(dataAccount.getCount()>0)
-//                {
-//
-//                    while (dataAccount.moveToNext()){
-//                        if(dataAccount.getString(4).equals(password.getText().toString()))
-//                        {
-//                            Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-//                            Intent intentToMain = new Intent(getActivity(), MainActivity.class);
-//                            startActivity(intentToMain);
-//                        }
-//                        else
-//                        {
-//                            password.setText(null);
-//                            Toast.makeText(getContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                }else
-//                {
-//                    password.setText(null);
-//                    username.setText(null);
-//                    Toast.makeText(getContext(), "UserName không tồn tại", Toast.LENGTH_SHORT).show();
-//                }
+                Cursor dataAccount = database.getData("SELECT * FROM account where userName = '"+username.getText().toString()+"' "); // trả về một cái dãy các account nè
+
+                if(dataAccount.getCount()>0)
+                {
+
+                    while (dataAccount.moveToNext()){
+                        if(dataAccount.getString(4).equals(password.getText().toString()))
+                        {
+                            Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            password.setText(null);
+                            Toast.makeText(getContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                }else
+                {
+                    password.setText(null);
+                    username.setText(null);
+                    Toast.makeText(getContext(), "UserName không tồn tại", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

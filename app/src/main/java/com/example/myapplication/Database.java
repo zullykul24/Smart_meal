@@ -23,6 +23,7 @@ public class Database  extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         // dishId, dishname, groupID, price, image;
         String sql = "INSERT INTO dish values (null,?,?,?,?)";
+
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, name);
