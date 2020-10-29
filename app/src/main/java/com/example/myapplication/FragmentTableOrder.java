@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,46 +18,45 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
+import static com.example.myapplication.FragmentSignIn.database;
+
 public class FragmentTableOrder extends Fragment {
 
     GridView gridViewTable;
     TableItemAdapter tableItemAdapter;
+    ImageButton btnAdd;
     ArrayList<TableItem> tableItemArrayList;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tableorder, container,false);
+
+        btnAdd= (ImageButton) rootView.findViewById(R.id.buttonThemBan);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database.QueryData("insert into group_table values (null, 4, 'Empty')");
+            }
+        });
+
         gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
         tableItemArrayList = new ArrayList<>();
+        tableItemAdapter = new TableItemAdapter(getContext(), R.layout.table_item,tableItemArrayList );
 
-        tableItemArrayList.add(new TableItem("Bàn số 1"));
-        tableItemArrayList.add(new TableItem("Bàn số 2"));
-        tableItemArrayList.add(new TableItem("Bàn số 3"));
-        tableItemArrayList.add(new TableItem("Bàn số 4"));
-        tableItemArrayList.add(new TableItem("Bàn số 5"));
-        tableItemArrayList.add(new TableItem("Bàn số 6"));
-        tableItemArrayList.add(new TableItem("Bàn số 7"));
-        tableItemArrayList.add(new TableItem("Bàn số 8"));
-        tableItemArrayList.add(new TableItem("Bàn số 9"));
-        tableItemArrayList.add(new TableItem("Bàn số 10"));
-        tableItemArrayList.add(new TableItem("Bàn số 11"));
-        tableItemArrayList.add(new TableItem("Bàn số 12"));
-        tableItemArrayList.add(new TableItem("Bàn số 13"));
-        tableItemArrayList.add(new TableItem("Bàn số 14"));
-        tableItemArrayList.add(new TableItem("Bàn số 15"));
-        tableItemArrayList.add(new TableItem("Bàn số 16"));
-        tableItemArrayList.add(new TableItem("Bàn số 17"));
-        tableItemArrayList.add(new TableItem("Bàn số 18"));
-        tableItemArrayList.add(new TableItem("Bàn số 19"));
-        tableItemArrayList.add(new TableItem("Bàn số 20"));
-        tableItemArrayList.get(1).setStatus("Có khách");
-        tableItemArrayList.get(2).setStatus("Có khách");
-        tableItemArrayList.get(7).setStatus("Có khách");
-        tableItemArrayList.get(8).setStatus("Có khách");
-        tableItemArrayList.get(3).setStatus("Đã đặt");
-        tableItemArrayList.get(0).setStatus("Đã đặt");
-        tableItemArrayList.get(6).setStatus("Đã đặt");
-        tableItemArrayList.get(5).setStatus("Đã đặt");
+
+        Cursor cursor = database.getData("SELECT * FROM group_table");
+        while (cursor.moveToNext()){
+            // khởi tạo đối tượng đầu vào bao gồm thuộc tính tên, status và số lượng thui;
+            tableItemArrayList.add(new TableItem(
+                    "Bàn số "+ cursor.getInt(0),
+                    cursor.getString(2),
+                    cursor.getInt(1)
+            ));
+        }
+        tableItemAdapter.notifyDataSetChanged();
+        gridViewTable.setAdapter(tableItemAdapter);
+
+
         for(TableItem i:tableItemArrayList){
             if(i.getStatus()=="Có khách"){
                 i.setColor("#959523");
@@ -75,10 +76,6 @@ public class FragmentTableOrder extends Fragment {
 
             }
         });
-        tableItemAdapter = new TableItemAdapter(getActivity(), R.layout.table_item, tableItemArrayList);
-        gridViewTable.setAdapter(tableItemAdapter);
-
-
         return rootView;
     }
 }

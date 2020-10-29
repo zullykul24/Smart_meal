@@ -26,7 +26,6 @@ public class TableItemAdapter extends BaseAdapter {
     private class ViewHolder{
         ImageView image;
         TextView name, status;
-
     }
 
     public TableItemAdapter(Context context, int layout, List<TableItem> tableItemList) {
@@ -66,8 +65,6 @@ public class TableItemAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-
 
         //gán giá trị
 
