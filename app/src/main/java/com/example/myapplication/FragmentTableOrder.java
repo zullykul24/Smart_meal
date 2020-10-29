@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -35,7 +38,9 @@ public class FragmentTableOrder extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.QueryData("insert into group_table values (null, 4, 'Empty')");
+                DialogInsertTable();
+
+
             }
         });
 
@@ -46,10 +51,9 @@ public class FragmentTableOrder extends Fragment {
 
         Cursor cursor = database.getData("SELECT * FROM group_table");
         while (cursor.moveToNext()){
-            // khởi tạo đối tượng đầu vào bao gồm thuộc tính tên, status và số lượng thui;
+            // khởi tạo đối tượng đầu vào bao gồm thuộc tính tên,số lượng thui;
             tableItemArrayList.add(new TableItem(
                     "Bàn số "+ cursor.getInt(0),
-                    cursor.getString(2),
                     cursor.getInt(1)
             ));
         }
@@ -58,16 +62,14 @@ public class FragmentTableOrder extends Fragment {
 
 
         for(TableItem i:tableItemArrayList){
-            if(i.getStatus()=="Có khách"){
+            if(i.getStatus()=="Not Empty"){
                 i.setColor("#959523");
 
             }
-            if(i.getStatus()=="Đã đặt"){
+            if(i.getStatus()=="Booked"){
                 i.setColor("#E64875");
-
             }
         }
-
 
         gridViewTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -77,5 +79,45 @@ public class FragmentTableOrder extends Fragment {
             }
         });
         return rootView;
+    }
+    private  void DialogInsertTable(){
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.add_table);
+        // Ánh xạ xong r nè
+
+        Button add = (Button) dialog.findViewById(R.id.button_ok);
+        Button cancel = (Button) dialog.findViewById(R.id.button_cancel);
+        final EditText number_chair = (EditText) dialog.findViewById(R.id.edit_chair_number);
+
+        // sử dụng các button
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!number_chair.getText().toString().equals(""))
+                {
+                    int num = Integer.parseInt(number_chair.getText().toString()); // lay du lieu trong cai nay nay
+                    if(num<=0 || num > 100)
+                    {
+                        Toast.makeText(getContext(), "Không hợp lệ", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        database.QueryData("insert into group_table values (null, "+num+", 'Empty')");
+                        dialog.dismiss();
+                    }
+
+                }
+                else {
+                    Toast.makeText(getContext(), "Vui lòng điền số lượng ghế", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }
