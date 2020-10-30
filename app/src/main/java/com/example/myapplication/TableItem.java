@@ -16,6 +16,18 @@ public class TableItem implements Serializable {
         this.color = "#4EC33A";
         this.chair_number= chair_number;
     }
+    public TableItem(String name, String status){
+        this.name = name;
+        this.status = status;
+        this.image = R.drawable.table_icon;
+        this.color = "#4EC33A";
+    }
+    public TableItem(String name){
+        this.name = name;
+        this.status = "Empty";
+        this.image = R.drawable.table_icon;
+        this.color = "#4EC33A";
+    }
 
     public int getChair_number() {
         return chair_number;

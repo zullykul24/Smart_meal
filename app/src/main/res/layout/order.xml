@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#00BCD4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nameOfIntentedTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên bàn"
+        android:textSize="35sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm món"
+        android:id="@+id/themMonBtn"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/nameOfIntentedTable"
+        android:layout_marginTop="20dp">
+
+    </Button>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewChosenFood"
+        app:layout_constraintTop_toBottomOf="@id/themMonBtn"
+        android:minHeight="100dp"
+        android:background="#ff0">
+
+    </ListView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/note"
+        android:minHeight="100dp"
+        android:lineSpacingMultiplier="1"
+        android:hint="đây là 1 ghi chú rất ngắn gọn nhưng lại rất muốn viết dài dòng như thế này, mong chị em có thể hiểu và làm theo tấm gương sáng như là... hôm nay ngày 30 tháng 10 năm 2020 tức là ngày âm gì đó ko biết..."
+        app:layout_constraintTop_toBottomOf="@id/listViewChosenFood"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp">
+
+    </EditText>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

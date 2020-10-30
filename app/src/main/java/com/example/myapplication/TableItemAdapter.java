@@ -59,7 +59,7 @@ public class TableItemAdapter extends BaseAdapter {
             //ánh xạ view
             holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.table_name);
-            holder.chair_number = (TextView) convertView.findViewById(R.id.chair_number);
+          //  holder.chair_number = (TextView) convertView.findViewById(R.id.chair_number);
             holder.image = (ImageView) convertView.findViewById(R.id.table_img);
             convertView.setTag(holder);
         } else {
@@ -70,7 +70,7 @@ public class TableItemAdapter extends BaseAdapter {
 
         TableItem tableItem = tableItemList.get(position);
         holder.name.setText(tableItem.getName());
-        holder.chair_number.setText("Số ghế "+tableItem.getChair_number());
+       // holder.chair_number.setText("Số ghế "+tableItem.getChair_number());
         holder.image.setImageResource(tableItem.getImage());
         holder.image.setBackgroundColor(Color.parseColor(tableItem.getColor()));
 

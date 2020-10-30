@@ -10,6 +10,7 @@ public class MenuFoodItem implements Serializable {
         private int group_id;
         private Double price;
         private byte[] image;
+        private int HinhAnh;
 
     public MenuFoodItem(int dish_id, String dish_name, int group_id, Double price, byte[] image) {
         this.dish_id = dish_id;
@@ -17,6 +18,11 @@ public class MenuFoodItem implements Serializable {
         this.group_id = group_id;
         this.price = price;
         this.image = image;
+    }
+    public MenuFoodItem(String dish_name, Double price, int HinhAnh){
+        this.dish_name = dish_name;
+        this.price = price;
+        this.HinhAnh = HinhAnh;
     }
 
     public int getDish_id() {
@@ -57,5 +63,13 @@ public class MenuFoodItem implements Serializable {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public int getHinhAnh() {
+        return HinhAnh;
+    }
+
+    public void setHinhAnh(int hinhAnh) {
+        HinhAnh = hinhAnh;
     }
 }

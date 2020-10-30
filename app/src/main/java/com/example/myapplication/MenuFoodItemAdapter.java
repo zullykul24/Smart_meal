@@ -66,10 +66,12 @@ public class MenuFoodItemAdapter extends BaseAdapter {
         MenuFoodItem menu = menuFoodItems.get(position); // lay tung cai mot ra
         holder.name.setText(menu.getDish_name());
         holder.price.setText(menu.getPrice().toString());
-        byte[] hinhanh = menu.getImage();
+      /*  byte[] hinhanh = menu.getImage();
         // muon lay hinh anh ra thi phai chuyen tu byte[] sang bitmap
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
         holder.image.setImageBitmap(bitmap);
+        */
+       holder.image.setImageResource(menu.getHinhAnh());
 
         return convertView;
     }

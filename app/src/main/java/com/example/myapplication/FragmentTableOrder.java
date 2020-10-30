@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,7 @@ public class FragmentTableOrder extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tableorder, container,false);
 
-        btnAdd= (ImageButton) rootView.findViewById(R.id.buttonThemBan);
+      /*  btnAdd= (ImageButton) rootView.findViewById(R.id.buttonThemBan);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,8 +43,30 @@ public class FragmentTableOrder extends Fragment {
             }
         });
 
+       */
+
         gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
         tableItemArrayList = new ArrayList<>();
+         /////Edit
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 10", "Booked"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1", "Not Empty"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        tableItemArrayList.add(new TableItem("Bàn số 1"));
+        ////
         tableItemAdapter = new TableItemAdapter(getContext(), R.layout.table_item,tableItemArrayList );
 
 
@@ -75,6 +96,12 @@ public class FragmentTableOrder extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity().getApplicationContext(), tableItemArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                String status = tableItemArrayList.get(position).getStatus();
+                if(status.equals("Empty")){
+                    Intent intentToOrder = new Intent(getActivity(), OrderActivity.class);
+                    intentToOrder.putExtra("Tên bàn", tableItemArrayList.get(position).getName() );
+                    startActivity(intentToOrder);
+                }
 
             }
         });
@@ -90,6 +117,7 @@ public class FragmentTableOrder extends Fragment {
         final EditText number_chair = (EditText) dialog.findViewById(R.id.edit_chair_number);
 
         // sử dụng các button
+        /*
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,5 +147,7 @@ public class FragmentTableOrder extends Fragment {
             }
         });
         dialog.show();
+
+         */
     }
 }

@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/table_img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="#4EC33A"
         android:src="@drawable/table_icon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,12 +25,12 @@
         android:text="Ban so 1"
 
 
-        android:textSize="15sp"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@id/table_img"
         app:layout_constraintEnd_toEndOf="@id/table_img"
         app:layout_constraintTop_toBottomOf="@id/table_img" />
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/chair_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,4 +40,5 @@
         app:layout_constraintStart_toStartOf="@id/table_img"
         app:layout_constraintEnd_toEndOf="@id/table_img"
         app:layout_constraintTop_toBottomOf="@id/table_name" />
+        -->
 </androidx.constraintlayout.widget.ConstraintLayout>

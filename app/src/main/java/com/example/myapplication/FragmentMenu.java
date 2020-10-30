@@ -26,22 +26,25 @@ import static com.example.myapplication.FragmentSignIn.database;
 
 public class FragmentMenu extends Fragment {
 
+
     MenuFoodItemAdapter menuFoodItemAdapter;
     ArrayList<MenuFoodItem> menuItemArrayList;
     ImageButton btnAdd;
-    ListView lvFood;
+    ListView lvFood, listViewFood;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_menu, container, false);
         //khai bao
         lvFood = (ListView) rootView.findViewById(R.id.list_menu_food);
+
+
         menuItemArrayList = new ArrayList<>();
         menuFoodItemAdapter = new MenuFoodItemAdapter(getContext(), R.layout.menu_food_item, menuItemArrayList);
         lvFood.setAdapter(menuFoodItemAdapter);
 
 
-        btnAdd = (ImageButton) rootView.findViewById(R.id.buttonAdd);
+       /* btnAdd = (ImageButton) rootView.findViewById(R.id.buttonAdd);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +66,7 @@ public class FragmentMenu extends Fragment {
                     cursor.getBlob(4)
 
             ));
-        }
+        }*/
         menuFoodItemAdapter.notifyDataSetChanged();
         return rootView;
     }

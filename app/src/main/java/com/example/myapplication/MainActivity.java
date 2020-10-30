@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
         final FragmentMenu fragment3 = new FragmentMenu();
         final FragmentAccount fragment4 = new FragmentAccount();
 
-       // fragmentManager.beginTransaction().add(R.id.rela, fragment4, "4").hide(fragment4).commit();
-      //  fragmentManager.beginTransaction().add(R.id.rela, fragment3, "3").hide(fragment3).commit();
-      //  fragmentManager.beginTransaction().add(R.id.rela, fragment2, "2").hide(fragment2).commit();
+
         fragmentManager.beginTransaction().add(R.id.rela, fragment1, "1").commit();
         navbar.setOnNavigationItemSelectedListener (new BottomNavigationView.OnNavigationItemSelectedListener(){
             Fragment active = fragment1;
