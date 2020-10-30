@@ -39,22 +39,26 @@ public class OrderActivity extends AppCompatActivity {
         MenuFoodItem foodItem = (MenuFoodItem) intent.getSerializableExtra("abc");
 
         arrayListChosenFood = new ArrayList<>();
-/// lỗi ở đây, data nhận được bị null
-       /* arrayListChosenFood.add(new MenuFoodItem(foodItem.getDish_name(),foodItem.getPrice(), foodItem.getHinhAnh()));
-        adapterChosenFood = new MenuFoodItemAdapter(OrderActivity.this,R.layout.menu_food_item,arrayListChosenFood);
-        listViewChosenFood.setAdapter(adapterChosenFood);*/
 
         themMonBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentToChooseFood = new Intent(OrderActivity.this, ChooseFoodActivity.class);
-                startActivity(intentToChooseFood);
+                startActivityForResult(intentToChooseFood, 999);
             }
         });
+    }
 
-
-
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 999) {
+            if (resultCode == -1) {
+                MenuFoodItem foodItem = (MenuFoodItem) data.getSerializableExtra("abc");
+                arrayListChosenFood.add(new MenuFoodItem(foodItem.getDish_name(), foodItem.getPrice(), foodItem.getHinhAnh()));
+                adapterChosenFood = new MenuFoodItemAdapter(OrderActivity.this, R.layout.menu_food_item, arrayListChosenFood);
+                listViewChosenFood.setAdapter(adapterChosenFood);
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -47,8 +48,8 @@ public class ChooseFoodActivity extends AppCompatActivity {
                MenuFoodItem item = new MenuFoodItem("Bò sốt tiêu đen + Bánh bao",20.000, R.drawable.mango);
                 Toast.makeText(ChooseFoodActivity.this, item.getDish_name()+""+item.getPrice().toString(),Toast.LENGTH_SHORT).show();
                 intentSendFoodToOrderActivity.putExtra("abc", (Serializable) item);
-                
-                startActivity(intentSendFoodToOrderActivity);
+                setResult(Activity.RESULT_OK, intentSendFoodToOrderActivity);
+                finish();
             }
         });
 
