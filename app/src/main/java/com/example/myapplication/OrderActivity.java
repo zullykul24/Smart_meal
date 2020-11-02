@@ -23,14 +23,19 @@ public class OrderActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
 
+
+
         tableName = (TextView)findViewById(R.id.nameOfIntentedTable);
         themMonBtn = (Button)findViewById(R.id.themMonBtn);
         listViewChosenFood = (ListView)findViewById(R.id.listViewChosenFood);
+        View footer = getLayoutInflater().inflate(R.layout.footer, null);
+        listViewChosenFood.addFooterView(footer);
 
         Intent intent = getIntent();
         String nameOfTableSelected = intent.getStringExtra("Tên bàn");
