@@ -4,29 +4,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="#fff"
+    android:layout_height="match_parent"
+
+
 
     >
 
    <TextView
+
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintLeft_toLeftOf="parent"
        android:textSize="30sp"
        android:inputType="textMultiLine|textNoSuggestions"
-       android:text="Mạnh Hùng đẹp trai"
+       android:text="Tên người dùng"
        android:id="@+id/displayName"
        android:layout_marginTop="30dp"
 
        android:layout_marginLeft="20dp"/>
+    <TextView
 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chức vụ: "
+        android:textSize="20sp"
+        android:id="@+id/role"
+        app:layout_constraintTop_toBottomOf="@id/displayName"
+        app:layout_constraintStart_toStartOf="@id/displayName">
+
+    </TextView>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/role_name"
+        android:textSize="20sp"
+        android:text="Nhân viên"
+        app:layout_constraintTop_toBottomOf="@id/displayName"
+        app:layout_constraintStart_toEndOf="@id/role"
+></TextView>
     <Button
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext"
+        android:background="#ff6e2d"
         android:text="Đăng xuất"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="400dp"

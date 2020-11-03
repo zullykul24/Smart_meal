@@ -3,11 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#00BCD4"
+
+    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+
         android:id="@+id/nameOfIntentedTable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,10 +23,13 @@
         android:layout_height="wrap_content"
         android:text="Thêm món"
         android:id="@+id/themMonBtn"
+        android:background="#ff6e2d"
+
         android:textSize="20sp"
         android:layout_below="@id/nameOfIntentedTable"
         android:layout_centerHorizontal="true"
         android:textAllCaps="false"
+        android:padding="5dp"
 
         android:layout_marginTop="20dp">
 
@@ -33,9 +38,12 @@
       xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/listViewChosenFood"
       android:layout_below="@id/themMonBtn"
-      tools:listitem="@layout/menu_food_item"
+      tools:listitem="@layout/food_order_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+      android:dividerHeight="10.0sp"
+      android:layout_marginTop="20dp"
+
                 tools:listfooter="@layout/footer"
                 android:layout_alignParentBottom="true"
 >   </ListView>

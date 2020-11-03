@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="#ff0"
+
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:fitsSystemWindows="true"
@@ -28,6 +28,7 @@
 
 
         android:singleLine="false"
+        android:layout_marginTop="15dp"
         android:gravity="left"
         android:scrollHorizontally="false"
         android:minLines="2"

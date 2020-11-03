@@ -18,8 +18,10 @@ public class OrderActivity extends AppCompatActivity {
     TextView tableName;
     Button themMonBtn;
     ListView listViewChosenFood;
-    ArrayList<MenuFoodItem> arrayListChosenFood;
-    MenuFoodItemAdapter adapterChosenFood;
+    //ArrayList<MenuFoodItem> arrayListChosenFood;
+    ArrayList<FoodOrderItem> arrayListChosenFood;
+  //  MenuFoodItemAdapter adapterChosenFood;
+    FoodOrderItemAdapter adapterChosenFood;
 
 
 
@@ -60,8 +62,8 @@ public class OrderActivity extends AppCompatActivity {
         if (requestCode == 999) {
             if (resultCode == -1) {
                 MenuFoodItem foodItem = (MenuFoodItem) data.getSerializableExtra("abc");
-                arrayListChosenFood.add(new MenuFoodItem(foodItem.getDish_name(), foodItem.getPrice(), foodItem.getHinhAnh()));
-                adapterChosenFood = new MenuFoodItemAdapter(OrderActivity.this, R.layout.menu_food_item, arrayListChosenFood);
+                arrayListChosenFood.add(new FoodOrderItem(foodItem.getDish_name(), foodItem.getPrice(), foodItem.getHinhAnh()));
+                adapterChosenFood = new FoodOrderItemAdapter(OrderActivity.this, R.layout.food_order_item, arrayListChosenFood);
                 listViewChosenFood.setAdapter(adapterChosenFood);
             }
         }

@@ -22,7 +22,7 @@
         android:verticalSpacing="25dp"
 
         android:padding="10dp"
-        android:numColumns="5"
+        android:numColumns="4"
 
         android:id="@+id/gridViewTable"
         android:layout_width="match_parent"
