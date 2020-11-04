@@ -46,7 +46,7 @@ public class FoodOrderItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        final ViewHolder holder;
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
@@ -62,7 +62,7 @@ public class FoodOrderItemAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        FoodOrderItem menu = foodOrderItem.get(position); // lay tung cai mot ra
+        final FoodOrderItem menu = foodOrderItem.get(position); // lay tung cai mot ra
         holder.name.setText(menu.getDish_name());
         holder.price.setText(menu.getPrice().toString());
         holder.number.setText(Integer.toString(menu.getNumber()));
@@ -75,6 +75,31 @@ public class FoodOrderItemAdapter extends BaseAdapter {
         holder.image.setImageBitmap(bitmap);
         */
         holder.image.setImageResource(menu.getHinhAnh());
+
+
+        holder.minusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (menu.getNumber() > 1){
+                    menu.setNumber(menu.getNumber()-1);
+
+                }
+                holder.number.setText(Integer.toString(menu.getNumber()));
+
+            }
+        });
+
+        holder.plusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    menu.setNumber(menu.getNumber()+1);
+
+
+                holder.number.setText(Integer.toString(menu.getNumber()));
+
+            }
+        });
 
         return convertView;
     }
