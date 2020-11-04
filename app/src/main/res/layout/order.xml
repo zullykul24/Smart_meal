@@ -34,7 +34,7 @@
         android:layout_marginTop="20dp">
 
     </Button>
-  <ListView
+  <com.baoyz.swipemenulistview.SwipeMenuListView
       xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/listViewChosenFood"
       android:layout_below="@id/themMonBtn"
@@ -46,6 +46,6 @@
 
                 tools:listfooter="@layout/footer"
                 android:layout_alignParentBottom="true"
->   </ListView>
+>   </com.baoyz.swipemenulistview.SwipeMenuListView>
 
 </RelativeLayout>
