@@ -24,6 +24,12 @@ public class MenuFoodItem implements Serializable {
         this.price = price;
         this.HinhAnh = HinhAnh;
     }
+    public MenuFoodItem(String dish_name, Double price){
+        this.dish_name = dish_name;
+        this.price = price;
+        this.HinhAnh = R.drawable.mango;
+    }
+
 
     public int getDish_id() {
         return dish_id;

@@ -7,27 +7,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.view.menu.MenuView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MenuFoodItemAdapter extends BaseAdapter {
+public class MenuFoodItemAdapter extends BaseAdapter implements Filterable {
     private Context context;
     private int layout;
-    private List<MenuFoodItem> menuFoodItems;
+    private ArrayList<MenuFoodItem> originalList;
+    private ArrayList<MenuFoodItem> displayedList;
 
-    public MenuFoodItemAdapter(Context context, int layout, List<MenuFoodItem> menuFoodItems) {
+    public MenuFoodItemAdapter(Context context, int layout, ArrayList<MenuFoodItem> menuFoodItems) {
         this.context = context;
         this.layout = layout;
-        this.menuFoodItems = menuFoodItems;
+        this.originalList = menuFoodItems;
+        this.displayedList = menuFoodItems;
+
     }
 
     @Override
     public int getCount() {
-        return menuFoodItems.size();
+        return displayedList.size();
     }
 
     @Override
@@ -39,6 +45,56 @@ public class MenuFoodItemAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return 0;
+    }
+
+    @Override
+    public Filter getFilter() {
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint,FilterResults results) {
+
+                displayedList = (ArrayList<MenuFoodItem>) results.values; // has the filtered values
+                notifyDataSetChanged();  // notifies the data with new filtered values
+            }
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
+                ArrayList<MenuFoodItem> FilteredArrList = new ArrayList<MenuFoodItem>();
+
+                if (originalList == null) {
+                    originalList = new ArrayList<MenuFoodItem>(displayedList); // saves the original data in mOriginalValues
+                }
+
+                /********
+                 *
+                 *  If constraint(CharSequence that is received) is null returns the mOriginalValues(Original) values
+                 *  else does the Filtering and returns FilteredArrList(Filtered)
+                 *
+                 ********/
+                if (constraint == null || constraint.length() == 0) {
+
+                    // set the Original result to return
+                    results.count = originalList.size();
+                    results.values = originalList;
+                } else {
+                    constraint = constraint.toString().toLowerCase();
+                    for (int i = 0; i < originalList.size(); i++) {
+                        String data = originalList.get(i).getDish_name();
+                        if (data.toLowerCase().startsWith(constraint.toString())) {
+                            FilteredArrList.add(new MenuFoodItem(originalList.get(i).getDish_name(),originalList.get(i).getPrice()));
+                        }
+                    }
+                    // set the Filtered result to return
+                    results.count = FilteredArrList.size();
+                    results.values = FilteredArrList;
+                }
+                return results;
+            }
+        };
+        return filter;
     }
 
     /// tạo ra view holder để ko phải ánh xạ lại những items đã lướt qua khi mình lướt lại
@@ -63,7 +119,7 @@ public class MenuFoodItemAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        MenuFoodItem menu = menuFoodItems.get(position); // lay tung cai mot ra
+        MenuFoodItem menu = displayedList.get(position); // lay tung cai mot ra
         holder.name.setText(menu.getDish_name());
         holder.price.setText(menu.getPrice().toString());
       /*  byte[] hinhanh = menu.getImage();
