@@ -83,8 +83,8 @@ public class OrderActivity extends AppCompatActivity {
                         SwipeMenuItem deleteItem = new SwipeMenuItem(
                                 getApplicationContext());
                         // set item background
-                        deleteItem.setBackground(new ColorDrawable(Color.rgb(0xff, 0x6e,
-                                0x2d)));
+                        deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF8, 0xD5,
+                                0x6B)));
                         // set item width
                         deleteItem.setWidth(170);
                         // set item title

@@ -49,7 +49,7 @@
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#ff6e2d"
+        android:background="@color/colorAccent"
         android:text="Đăng xuất"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="400dp"

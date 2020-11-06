@@ -30,18 +30,18 @@ public class ChooseFoodActivity extends AppCompatActivity {
 
         listViewFood = (ListView)findViewById(R.id.listViewFoodMenu);
         menuItemArrayList = new ArrayList<>();
-        menuItemArrayList.add(new MenuFoodItem("Món 1",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 2",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 3",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 4",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 5",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 6",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 7",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 8",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 9",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 10",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 11",20.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Món 12",20.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Lẩu đầu cá",180.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Lẩu tôm",200.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Lẩu hải sản",200.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Gỏi cuốn",30.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Bún trộn",40.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Cơm chiên",50.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Rau xào",30.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Sương sa",15.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Chè trái cây",22.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Trái cây",30.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Bánh Flan",12.000, R.drawable.mango));
+        menuItemArrayList.add(new MenuFoodItem("Chè đậu xanh",14.000, R.drawable.mango));
         menuFoodItemAdapter = new MenuFoodItemAdapter(ChooseFoodActivity.this, R.layout.menu_food_item, menuItemArrayList);
 
         listViewFood.setTextFilterEnabled(true);

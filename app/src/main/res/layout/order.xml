@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Thêm món"
         android:id="@+id/themMonBtn"
-        android:background="#ff6e2d"
+        android:background="@color/colorAccent"
 
         android:textSize="20sp"
         android:layout_below="@id/nameOfIntentedTable"

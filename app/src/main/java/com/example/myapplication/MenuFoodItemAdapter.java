@@ -47,6 +47,8 @@ public class MenuFoodItemAdapter extends BaseAdapter implements Filterable {
         return 0;
     }
 
+
+    ///Lọc dữ liệu tìm kiếm
     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {
@@ -81,9 +83,12 @@ public class MenuFoodItemAdapter extends BaseAdapter implements Filterable {
                     results.values = originalList;
                 } else {
                     constraint = constraint.toString().toLowerCase();
+
                     for (int i = 0; i < originalList.size(); i++) {
                         String data = originalList.get(i).getDish_name();
-                        if (data.toLowerCase().startsWith(constraint.toString())) {
+                        data = VNCharacterUtils.removeAccent(data);
+                      //  if (data.toLowerCase().startsWith(constraint.toString())) {
+                        if (data.toLowerCase().contains(VNCharacterUtils.removeAccent(constraint.toString()))) {
                             FilteredArrList.add(new MenuFoodItem(originalList.get(i).getDish_name(),originalList.get(i).getPrice()));
                         }
                     }
