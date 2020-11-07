@@ -9,6 +9,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:padding="13dp"
         android:id="@+id/table_img"
         android:layout_width="50dp"
         android:layout_height="50dp"

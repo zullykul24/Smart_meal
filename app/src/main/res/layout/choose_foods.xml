@@ -7,9 +7,13 @@
     android:padding="10dp"
     android:layout_height="match_parent">
     <EditText
+        android:drawableLeft="@drawable/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
+        android:background="@null"
+
+
 
         android:id="@+id/searchText"
         android:hint="Tên món ăn"

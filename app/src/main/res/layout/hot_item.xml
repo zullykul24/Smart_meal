@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/img_hot"
+
+        android:src="@drawable/mango"></ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:maxWidth="150dp"
+        android:minWidth="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/name_hot"
+        android:layout_toRightOf="@id/img_hot"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:text="Tên món này cũng khá dài đấy"></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/img_hot"
+        android:layout_below="@id/name_hot"
+        android:id="@+id/price_hot"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:text="20.000">
+
+    </TextView>
+    </RelativeLayout>
+
+</RelativeLayout>

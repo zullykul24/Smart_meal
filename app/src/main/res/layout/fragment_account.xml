@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:background="#fff"
     android:layout_height="match_parent"
 
@@ -11,54 +12,144 @@
 
     >
 
-   <TextView
+    <RelativeLayout
+        android:background="@color/colorAccent"
 
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintLeft_toLeftOf="parent"
-       android:textSize="30sp"
-       android:inputType="textMultiLine|textNoSuggestions"
-       android:text="Tên người dùng"
-       android:id="@+id/displayName"
-       android:layout_marginTop="30dp"
+        android:id="@+id/top_display"
 
-       android:layout_marginLeft="20dp"/>
-    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true">
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chức vụ: "
-        android:textSize="20sp"
-        android:id="@+id/role"
-        app:layout_constraintTop_toBottomOf="@id/displayName"
-        app:layout_constraintStart_toStartOf="@id/displayName">
+        <TextView
+            android:textColor="#fff"
+            android:layout_alignParentTop="true"
 
-    </TextView>
-    <TextView
+            android:id="@+id/displayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/role_name"
-        android:textSize="20sp"
-        android:text="Nhân viên"
-        app:layout_constraintTop_toBottomOf="@id/displayName"
-        app:layout_constraintStart_toEndOf="@id/role"
-></TextView>
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:text="Tên người dùng"
+            android:textSize="30sp"
+
+
+             />
+
+        <TextView
+            android:textColor="#fff"
+            android:layout_marginLeft="20dp"
+
+            android:id="@+id/role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chức vụ: "
+            android:textSize="20sp"
+            android:layout_below="@id/displayName"
+
+           >
+
+        </TextView>
+
+        <TextView
+           android:textColor="#fff"
+android:layout_toEndOf="@id/role"
+            android:id="@+id/role_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhân viên"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+           android:layout_below="@id/displayName"
+            android:layout_toRightOf="@id/role"></TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="@color/colorAccent"
+
+       android:layout_below="@id/top_display"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Mời bạn bè"
+            android:id="@+id/invite_friends"
+            android:textAllCaps="false"
+            android:layout_marginBottom="10dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/toright"
+            android:gravity="left|center_vertical"
+            android:drawableLeft="@drawable/invite"
+            android:background="#fff"></Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Trung tâm trợ giúp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/invite_friends"
+            android:id="@+id/help_center"
+            android:textAllCaps="false"
+            android:drawableRight="@drawable/toright"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/help_center"
+            android:background="#fff"></Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:text="Chính sách quy định"
+            android:layout_below="@id/help_center"
+            android:id="@+id/policy"
+            android:textAllCaps="false"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/toright"
+            android:gravity="left|center_vertical"
+            android:drawableLeft="@drawable/help_center"
+            android:background="#fff"></Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Cài đặt"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/policy"
+            android:id="@+id/settings"
+            android:drawablePadding="10dp"
+            android:textAllCaps="false"
+            android:drawableRight="@drawable/toright"
+            android:gravity="left|center_vertical"
+            android:drawableLeft="@drawable/settings"
+            android:background="#fff"></Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Về ứng dụng"
+            android:layout_below="@id/settings"
+            android:drawablePadding="10dp"
+            android:id="@+id/about"
+            android:textAllCaps="false"
+            android:drawableRight="@drawable/toright"
+            android:gravity="left|center_vertical"
+            android:drawableLeft="@drawable/info"
+            android:background="#fff"></Button>
     <Button
+
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@drawable/loginbutton"
         android:text="Đăng xuất"
-        app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_marginTop="400dp"
         android:textSize="20sp"
         android:padding="20dp"
         android:textAllCaps="false"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/displayName" />
+        android:layout_centerHorizontal="true"
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+       />
+    </RelativeLayout>
+
+</RelativeLayout>

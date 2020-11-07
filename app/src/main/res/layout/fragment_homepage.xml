@@ -1,15 +1,18 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+
+    android:background="#fff"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
         android:id="@+id/brand_text"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="80dp"
         android:background="@color/colorAccent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sriracha"
+            android:textColor="#fff"
             android:text="@string/app_name"
             android:textSize="40sp"
 
@@ -24,30 +27,142 @@
         android:layout_alignParentBottom="true"
 
         >
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Món hot trong tuần"
-            android:id="@+id/monhot"
-            android:textSize="25sp">
-
-        </TextView>
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_below="@id/monhot"
-            android:id="@+id/imghot"
+            android:id="@+id/line1"
+            android:layout_height="100dp">
+        <Button
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:text="Siêu sale 11.11"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"
+            android:textColor="#fff"
+            android:fontFamily="@font/sriracha"
+            android:background="@drawable/home_item"></Button>
+        <Button
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:textColor="#fff"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/sriracha"
+            android:background="@drawable/home_item"
+            android:text="Hẹn giờ săn deal"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/mango"></ImageView>
-        <TextView
+           ></Button>
+
+            <Button
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:background="@drawable/home_item"
+                android:fontFamily="@font/sriracha"
+                android:text="Cơm"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_centerVertical="true"
+
+                ></Button>
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imghot"
-            android:text="Xoài"
-            android:gravity="center"
-            android:textSize="25sp"
+            android:layout_height="100dp"
+            android:id="@+id/line2"
+            android:layout_below="@id/line1">
+            <Button
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:text="Trà sữa"
+                android:layout_marginLeft="30dp"
+                android:layout_centerVertical="true"
+                android:textColor="#fff"
+                android:fontFamily="@font/sriracha"
+                android:background="@drawable/home_item"></Button>
+            <Button
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:textColor="#fff"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/sriracha"
+                android:background="@drawable/home_item"
+                android:text="Ăn vặt"
+                android:layout_centerHorizontal="true"
+                ></Button>
+
+            <Button
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:background="@drawable/home_item"
+                android:fontFamily="@font/sriracha"
+                android:text="Đặt bàn"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_centerVertical="true"
+
+                ></Button>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/manager_items"
+            android:layout_below="@id/line2">
+            <Button
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:text="Lịch sử"
+                android:layout_marginLeft="30dp"
+                android:layout_centerVertical="true"
+                android:textColor="#fff"
+                android:fontFamily="@font/sriracha"
+                android:background="@drawable/manager_items"></Button>
+            <Button
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:textColor="#fff"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/sriracha"
+                android:background="@drawable/manager_items"
+                android:text="Thêm món"
+                android:layout_centerHorizontal="true"
+                ></Button>
+
+            <Button
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:background="@drawable/manager_items"
+                android:fontFamily="@font/sriracha"
+                android:text="Thêm bàn"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_centerVertical="true"
+
+                ></Button>
+
+        </RelativeLayout>
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_below="@id/manager_items"
             android:background="@color/colorAccent"
-            ></TextView>
+            android:textColor="#fff"
+            android:id="@+id/text_hot_items"
+            android:fontFamily="@font/sriracha"
+            android:text="Món hot trong tuần"
+            android:paddingLeft="20dp"
+            android:layout_height="wrap_content"></TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recycle_view_hot_items"
+
+            android:layout_below="@id/text_hot_items"
+            android:layout_height="100dp"
+           >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
 
     </RelativeLayout>
 

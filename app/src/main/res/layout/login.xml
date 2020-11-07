@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ff1a1a"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView
+    <!--<ImageView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,13 +12,21 @@
 
 
         ></ImageView>
+        -->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+    <TextView
         android:id="@+id/logo"
-        android:src="@drawable/logo" />
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/sriracha"
+        android:gravity="center"
+        android:src="@drawable/logo"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textColor="#fff"
+        android:textSize="50sp" />
     <LinearLayout
         android:layout_marginTop="0dp"
         android:id="@+id/navSign"
@@ -54,7 +63,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
 
 <!--    <fragment-->
 <!--        android:id="@+id/fragmentSignIn"-->
