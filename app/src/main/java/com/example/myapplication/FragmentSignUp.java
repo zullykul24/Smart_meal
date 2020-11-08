@@ -98,7 +98,6 @@ public class FragmentSignUp extends Fragment {
                         retypePassword.setHintTextColor(Color.RED);
                     }
                 }
-
             }
         });
         return view;

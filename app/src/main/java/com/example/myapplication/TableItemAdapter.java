@@ -73,11 +73,6 @@ public class TableItemAdapter extends BaseAdapter {
        // holder.chair_number.setText("Số ghế "+tableItem.getChair_number());
         holder.image.setImageResource(tableItem.getImage());
         holder.image.setBackgroundColor(Color.parseColor(tableItem.getColor()));
-
-
-
-
-
         return convertView;
     }
 }

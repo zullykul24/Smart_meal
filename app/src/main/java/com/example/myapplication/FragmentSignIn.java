@@ -40,18 +40,17 @@ public class FragmentSignIn extends Fragment {
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentToMain = new Intent(getActivity(), MainActivity.class);
-                startActivity(intentToMain);
                 Cursor dataAccount = database.getData("SELECT * FROM account where userName = '"+username.getText().toString()+"' "); // trả về một cái dãy các account nè
-
+                Toast.makeText(getContext(), "" + dataAccount.getCount(), Toast.LENGTH_SHORT).show();
                 if(dataAccount.getCount()>0)
                 {
-
                     while (dataAccount.moveToNext()){
                         if(dataAccount.getString(4).equals(password.getText().toString()))
                         {
                             Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getActivity(), MainActivity.class);
+                            intent.putExtra("name", username.getText().toString());
+                            intent.putExtra("account_type", dataAccount.getString(2));
                             startActivity(intent);
                         }
                         else
@@ -60,14 +59,13 @@ public class FragmentSignIn extends Fragment {
                             Toast.makeText(getContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
                         }
                     }
-
-                }else
+                }
+                else
                 {
                     password.setText(null);
                     username.setText(null);
                     Toast.makeText(getContext(), "UserName không tồn tại", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         return  rootView;

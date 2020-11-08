@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     // dau  tien la phai show dc danh sach cac mon
     BottomNavigationView navbar;
     EditText foodName;
+    TextView displayName;
+    TextView roleName;
 
     //public static Database database;
 
@@ -35,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
         AnhXa();
-
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         final FragmentTableOrder fragment2 = new FragmentTableOrder();
         final FragmentMenu fragment3 = new FragmentMenu();
         final FragmentAccount fragment4 = new FragmentAccount();
-
+        fragment4.getInfor(intent.getStringExtra("name"), intent.getStringExtra("account_type"));
 
         fragmentManager.beginTransaction().add(R.id.rela, fragment1, "1").commit();
         navbar.setOnNavigationItemSelectedListener (new BottomNavigationView.OnNavigationItemSelectedListener(){

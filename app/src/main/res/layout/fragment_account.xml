@@ -31,7 +31,6 @@
             android:layout_marginLeft="20dp"
 
             android:inputType="textMultiLine|textNoSuggestions"
-            android:text="Tên người dùng"
             android:textSize="30sp"
 
 
@@ -54,11 +53,10 @@
 
         <TextView
            android:textColor="#fff"
-android:layout_toEndOf="@id/role"
+            android:layout_toEndOf="@id/role"
             android:id="@+id/role_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhân viên"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
            android:layout_below="@id/displayName"
