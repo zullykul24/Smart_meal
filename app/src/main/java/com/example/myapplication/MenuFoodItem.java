@@ -11,7 +11,11 @@ public class MenuFoodItem implements Serializable {
         private Double price;
         private byte[] image;
         private int HinhAnh;
-
+        public MenuFoodItem() {}
+        public MenuFoodItem(int dish_id) {
+            this.dish_id = dish_id;
+            //Lấy dữ liệu từ db với dish_id
+        }
     public MenuFoodItem(int dish_id, String dish_name, int group_id, Double price, byte[] image) {
         this.dish_id = dish_id;
         this.dish_name = dish_name;
