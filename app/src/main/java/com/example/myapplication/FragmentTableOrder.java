@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -91,6 +93,7 @@ public class FragmentTableOrder extends Fragment {
                 i.setColor("#E64875");
             }
         }
+        registerForContextMenu(gridViewTable);
 
         gridViewTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -107,6 +110,33 @@ public class FragmentTableOrder extends Fragment {
         });
         return rootView;
     }
+
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+
+        getActivity().getMenuInflater().inflate(R.menu.set_table_status, menu);
+        menu.setHeaderTitle("Đặt trạng thái");
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+    public boolean onContextItemSelected(MenuItem item) {
+        // below variable info contains clicked item info and it can be null; scroll down to see a fix for it
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch(item.getItemId()){
+            case R.id.status_booked:
+
+                tableItemAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(),"Booked",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.status_empty:
+                tableItemAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(),"empty",Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+
     private  void DialogInsertTable(){
         final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.add_table);

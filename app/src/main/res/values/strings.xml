@@ -8,7 +8,7 @@
     <string name="avatar">avatar</string>
     <string name="sign_upp">SIGN UP</string>
     <string-array name="account_type">
-        <item>Staff</item>
-        <item>Management</item>
+        <item>Nhân viên</item>
+        <item>Quản lý</item>
     </string-array>
 </resources>

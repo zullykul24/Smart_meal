@@ -25,9 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     // dau  tien la phai show dc danh sach cac mon
     BottomNavigationView navbar;
-    EditText foodName;
-    TextView displayName;
-    TextView roleName;
+
 
     //public static Database database;
 
@@ -48,70 +46,84 @@ public class MainActivity extends AppCompatActivity {
         final FragmentTableOrder fragment2 = new FragmentTableOrder();
         final FragmentMenu fragment3 = new FragmentMenu();
         final FragmentAccount fragment4 = new FragmentAccount();
+        final ManagerFragmentHomePage managerFragmentHomePage = new ManagerFragmentHomePage();
         fragment4.getInfor(intent.getStringExtra("name"), intent.getStringExtra("account_type"));
 
-        fragmentManager.beginTransaction().add(R.id.rela, fragment1, "1").commit();
+        final String accountType = intent.getStringExtra("account_type");
+        if(accountType.equals("Nhân viên")){
+        fragmentManager.beginTransaction().add(R.id.rela, fragment1, "1").commit();}
+        else {
+            /// nếu là quản lý thì...
+            fragmentManager.beginTransaction().add(R.id.rela, managerFragmentHomePage, "5").commit();
+        }
+        fragmentManager.beginTransaction().add(R.id.rela, fragment4, "4").hide(fragment4);
         navbar.setOnNavigationItemSelectedListener (new BottomNavigationView.OnNavigationItemSelectedListener(){
-            Fragment active = fragment1;
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                //// đang bị lỗi item Trang chủ ko sáng khi chuyển đổi lại
+
                 switch (menuItem.getItemId()){
                     case R.id.nav_1:
-                        fragmentManager.beginTransaction()
-                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                               // .hide(active)
-                                .replace(R.id.rela,fragment1)
-                                .addToBackStack(null)
-                               // .show(fragment1)
-                                .commit();
-                        active = fragment1;
+                        if(accountType.equals("Nhân viên")) {
+                            fragmentManager.beginTransaction()
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+
+                                    .replace(R.id.rela, fragment1)
+                                    .addToBackStack(null)
+
+                                    .commit();
+
+                        }
+                        else {
+                            /// nếu là quản lý
+                            fragmentManager.beginTransaction()
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+
+                                    .replace(R.id.rela, managerFragmentHomePage)
+                                    .addToBackStack(null)
+
+                                    .commit();
+
+                        }
 
                         return true;
 
                     case R.id.nav_2:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                               // .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                              //  .hide(active)
+
                                 .replace(R.id.rela, fragment2)
                                 .addToBackStack(null)
-                              // .show(fragment2)
+
                                 .commit();
-                        active = fragment2;
+
                         return true;
                     case R.id.nav_3:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                              //  .hide(active)
+
                                 .replace(R.id.rela,fragment3)
                                 .addToBackStack(null)
-                            // .show(fragment3)
+
                                 .commit();
-                        active = fragment3;
+
                         return true;
                     case R.id.nav_4:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                               // .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                              //  .hide(active)
+
                                 .replace(R.id.rela,fragment4)
                                 .addToBackStack(null)
-                              //  .show(fragment4)
+
                                 .commit();
-                        active = fragment4;
+
                         return true;
                 }
 
                 return false;
             }
         });
-
-        ///đổ dữ liệu vào menu
-
 
 
 

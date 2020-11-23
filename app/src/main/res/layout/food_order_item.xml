@@ -27,10 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine|textNoSuggestions"
-
+        android:textStyle="bold"
 
         android:singleLine="false"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:gravity="left"
         android:scrollHorizontally="false"
         android:minLines="2"
@@ -39,7 +39,7 @@
 
         android:layout_toRightOf="@id/imageViewFoodOrderItem"
         android:text="Name aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        android:textSize="15sp"
+        android:textSize="18sp"
         />
 
     <TextView
@@ -47,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:textStyle="bold"
         android:layout_marginLeft="15dp"
 
         android:layout_toRightOf="@+id/imageViewFoodOrderItem"

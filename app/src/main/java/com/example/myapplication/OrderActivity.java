@@ -20,6 +20,7 @@ import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +84,7 @@ public class OrderActivity extends AppCompatActivity {
                         SwipeMenuItem deleteItem = new SwipeMenuItem(
                                 getApplicationContext());
                         // set item background
+
                         deleteItem.setBackground(new ColorDrawable(Color.rgb(0xe6, 0x00,
                                 0x00)));
                         // set item width

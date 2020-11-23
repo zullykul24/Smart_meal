@@ -24,7 +24,7 @@
         <TextView
             android:textColor="#fff"
             android:layout_alignParentTop="true"
-
+            android:text="Tên người dùng"
             android:id="@+id/displayName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,6 +55,7 @@
            android:textColor="#fff"
             android:layout_toEndOf="@id/role"
             android:id="@+id/role_name"
+            android:text="Nhân viên"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -63,40 +64,46 @@
             android:layout_toRightOf="@id/role"></TextView>
     </RelativeLayout>
     <RelativeLayout
-        android:background="@color/colorAccent"
+        android:background="#fff"
 
        android:layout_below="@id/top_display"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content">
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_height="50dp"
             android:text="Mời bạn bè"
+            android:layout_marginTop="20dp"
             android:id="@+id/invite_friends"
+            android:paddingHorizontal="20dp"
             android:textAllCaps="false"
             android:layout_marginBottom="10dp"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/toright"
             android:gravity="left|center_vertical"
             android:drawableLeft="@drawable/invite"
-            android:background="#fff"></Button>
+            android:background="@drawable/account_nav"></Button>
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Trung tâm trợ giúp"
             android:layout_marginBottom="10dp"
             android:layout_below="@id/invite_friends"
             android:id="@+id/help_center"
             android:textAllCaps="false"
+            android:paddingHorizontal="20dp"
             android:drawableRight="@drawable/toright"
             android:gravity="left|center_vertical"
             android:drawablePadding="10dp"
+            android:layout_centerHorizontal="true"
             android:drawableLeft="@drawable/help_center"
-            android:background="#fff"></Button>
+            android:background="@drawable/account_nav"></Button>
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:text="Chính sách quy định"
             android:layout_below="@id/help_center"
@@ -105,39 +112,44 @@
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/toright"
             android:gravity="left|center_vertical"
+            android:paddingHorizontal="20dp"
             android:drawableLeft="@drawable/help_center"
-            android:background="#fff"></Button>
+            android:background="@drawable/account_nav"></Button>
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Cài đặt"
+            android:paddingHorizontal="20dp"
             android:layout_marginBottom="10dp"
             android:layout_below="@id/policy"
             android:id="@+id/settings"
             android:drawablePadding="10dp"
             android:textAllCaps="false"
+            android:layout_centerHorizontal="true"
             android:drawableRight="@drawable/toright"
             android:gravity="left|center_vertical"
             android:drawableLeft="@drawable/settings"
-            android:background="#fff"></Button>
+            android:background="@drawable/account_nav"></Button>
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Về ứng dụng"
             android:layout_below="@id/settings"
             android:drawablePadding="10dp"
+            android:paddingHorizontal="20dp"
+            android:layout_centerHorizontal="true"
             android:id="@+id/about"
             android:textAllCaps="false"
             android:drawableRight="@drawable/toright"
             android:gravity="left|center_vertical"
             android:drawableLeft="@drawable/info"
-            android:background="#fff"></Button>
+            android:background="@drawable/account_nav"></Button>
     <Button
 
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/loginbutton"
+        android:background="@drawable/log_out_btn"
         android:text="Đăng xuất"
 
         android:layout_marginTop="400dp"

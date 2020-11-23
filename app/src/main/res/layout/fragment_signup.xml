@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
-        android:text="Acccount Type: "
+        android:text="Loại người dùng: "
         app:layout_constraintStart_toStartOf="@id/phoneNumber"
 
         app:layout_constraintLeft_toLeftOf="parent"

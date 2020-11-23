@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:id="@+id/name_hot"
+android:textStyle="bold"
         android:layout_toRightOf="@id/img_hot"
         android:inputType="textMultiLine|textNoSuggestions"
         android:text="Tên món này cũng khá dài đấy"></TextView>
@@ -28,6 +29,7 @@
         android:layout_below="@id/name_hot"
         android:id="@+id/price_hot"
         android:layout_marginTop="20dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="20.000">
 
