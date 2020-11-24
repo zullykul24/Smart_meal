@@ -137,47 +137,5 @@ public class FragmentTableOrder extends Fragment {
     }
 
 
-    private  void DialogInsertTable(){
-        final Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.add_table);
-        // Ánh xạ xong r nè
 
-        Button add = (Button) dialog.findViewById(R.id.button_ok);
-        Button cancel = (Button) dialog.findViewById(R.id.button_cancel);
-        final EditText number_chair = (EditText) dialog.findViewById(R.id.edit_chair_number);
-
-        // sử dụng các button
-        /*
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!number_chair.getText().toString().equals(""))
-                {
-                    int num = Integer.parseInt(number_chair.getText().toString()); // lay du lieu trong cai nay nay
-                    if(num<=0 || num > 100)
-                    {
-                        Toast.makeText(getContext(), "Không hợp lệ", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
-                        database.QueryData("insert into group_table values (null, "+num+", 'Empty')");
-                        dialog.dismiss();
-                    }
-
-                }
-                else {
-                    Toast.makeText(getContext(), "Vui lòng điền số lượng ghế", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-
-         */
-    }
 }

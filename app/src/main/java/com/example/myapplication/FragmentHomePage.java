@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class FragmentHomePage extends Fragment {
     @Nullable
     @Override
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_homepage, container, false);
 

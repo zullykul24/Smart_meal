@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
                                     .replace(R.id.rela, fragment1)
                                     .addToBackStack(null)
-
                                     .commit();
 
                         }

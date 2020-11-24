@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
 import android.content.Intent;
@@ -72,8 +73,9 @@ public class AddFood extends AppCompatActivity {
                 else{
                     database.insertDish(name.getText().toString(), Double.parseDouble(price.getText().toString()),
                             hinhanh );
-                    // xong thi chuyen ve man hinh chinh la xong
-                    startActivity(new Intent(AddFood.this,MainActivity.class));
+                    // câu lệnh xóa activity đang hoạt động đi.
+                       finish();
+
                 }
 
             }
@@ -81,7 +83,7 @@ public class AddFood extends AppCompatActivity {
         btnDele.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddFood.this,MainActivity.class));
+                finish();
             }
         });
 
