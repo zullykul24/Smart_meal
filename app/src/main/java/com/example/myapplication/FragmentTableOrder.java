@@ -35,17 +35,7 @@ public class FragmentTableOrder extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tableorder, container,false);
 
-      /*  btnAdd= (ImageButton) rootView.findViewById(R.id.buttonThemBan);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogInsertTable();
 
-
-            }
-        });
-
-       */
 
         gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
         tableItemArrayList = new ArrayList<>();
@@ -72,14 +62,14 @@ public class FragmentTableOrder extends Fragment {
         tableItemAdapter = new TableItemAdapter(getContext(), R.layout.table_item,tableItemArrayList );
 
 
-        Cursor cursor = database.getData("SELECT * FROM group_table");
+       /* Cursor cursor = database.getData("SELECT * FROM group_table");
         while (cursor.moveToNext()){
             // khởi tạo đối tượng đầu vào bao gồm thuộc tính tên,số lượng thui;
             tableItemArrayList.add(new TableItem(
                     "Bàn số "+ cursor.getInt(0),
                     cursor.getInt(1)
             ));
-        }
+        }*/
         tableItemAdapter.notifyDataSetChanged();
         gridViewTable.setAdapter(tableItemAdapter);
 

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -126,5 +127,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
+        int seletedItemId = bottomNavigationView.getSelectedItemId();
+        if (R.id.nav_1 != seletedItemId) {
+            setHomeItem(MainActivity.this);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public static void setHomeItem(Activity activity) {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                activity.findViewById(R.id.navbar);
+        bottomNavigationView.setSelectedItemId(R.id.nav_1);
     }
 }
