@@ -9,9 +9,9 @@ public class TableItem implements Serializable {
     private int image;
     private  int chair_number;
 
-    public TableItem(String name,int chair_number) {
+    public TableItem(String name,int chair_number, String status) {
         this.name = name;
-        this.status = "Empty";
+        this.status = status;
         this.image = R.drawable.table_icon;
         this.color = "#4EC33A";
         this.chair_number= chair_number;

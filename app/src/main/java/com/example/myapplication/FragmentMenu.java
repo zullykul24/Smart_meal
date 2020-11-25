@@ -47,19 +47,33 @@ public class FragmentMenu extends Fragment {
 
         listViewFood = (ListView)rootView.findViewById(R.id.listViewFoodMenu);
         menuItemArrayList = new ArrayList<>();
-        menuItemArrayList.add(new MenuFoodItem("Lẩu đầu cá",180.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Lẩu tôm",200.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Lẩu hải sản",200.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Gỏi cuốn",30.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Bún trộn",40.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Cơm chiên",50.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Rau xào",30.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Sương sa",15.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Chè trái cây",22.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Trái cây",30.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Bánh Flan",12.000, R.drawable.mango));
-        menuItemArrayList.add(new MenuFoodItem("Chè đậu xanh",14.000, R.drawable.mango));
-        menuFoodItemAdapter = new MenuFoodItemAdapter(getContext(), R.layout.menu_food_item, menuItemArrayList);
+        menuFoodItemAdapter =  new MenuFoodItemAdapter(getContext(),R.layout.menu_food_item, menuItemArrayList);
+        // đổ dữ liệu trong database ra ne
+        listViewFood.setAdapter(menuFoodItemAdapter);
+        Cursor cursor = database.getData("SELECT * from dish");
+        while (cursor.moveToNext()) {
+            menuItemArrayList.add(new MenuFoodItem(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getDouble(3),
+                    cursor.getBlob(4)
+
+            ));
+        }
+//        menuItemArrayList.add(new MenuFoodItem("Lẩu đầu cá",180.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Lẩu tôm",200.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Lẩu hải sản",200.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Gỏi cuốn",30.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Bún trộn",40.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Cơm chiên",50.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Rau xào",30.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Sương sa",15.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Chè trái cây",22.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Trái cây",30.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Bánh Flan",12.000, R.drawable.mango));
+//        menuItemArrayList.add(new MenuFoodItem("Chè đậu xanh",14.000, R.drawable.mango));
+//        menuFoodItemAdapter = new MenuFoodItemAdapter(getContext(), R.layout.menu_food_item, menuItemArrayList);
 
         listViewFood.setTextFilterEnabled(true);
 
@@ -82,7 +96,7 @@ public class FragmentMenu extends Fragment {
 
             }
         });
-        listViewFood.setAdapter(menuFoodItemAdapter);
+        //listViewFood.setAdapter(menuFoodItemAdapter);
 
 
 

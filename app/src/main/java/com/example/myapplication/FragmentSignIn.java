@@ -23,13 +23,26 @@ public class FragmentSignIn extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // create a new database sqlite
-        database = new Database(getContext(), "sh.sqlite", null,1);
-        // create table account
+        database = new Database(getContext(), "smm.sqlite", null,1);
+        // create table account : Detail about Account
         database.QueryData("create table if not exists account (accountId integer primary key AUTOINCREMENT, phoneNumber VARCHAR(200) not null, account_type varchar(20) not null, userName varchar(50) not null unique, password varchar(20)  not null) " );
-        // create table dish
+        // create table dish : Detail about dish
         database.QueryData("create table if not exists dish (dishId integer primary key AUTOINCREMENT, dishName varchar(200) not null, group_id integer not null, price double, image varchar(200))");//database.QueryData("Insert into  staff_group values (0, 'Staff'), (1, 'Management')");
-        // create table group_table
+        // create table group_table : Thông tin về Group_table
         database.QueryData("create table if not exists group_table(tableId integer primary key autoincrement , chair_number integer not null, status varchar(20) not null )");
+        // create table order : Detail about order
+ //       database.QueryData("create table if not exists orders(orderId integer primary key autoincrement, tableId integer not null , foreign key (tableId) references group_table(tableId))");
+//        // create table orderdetail :
+//       database.QueryData("create table orderdetails(orderId integer not null, dishId integer not null, accountId integer not null, note text, number integer not null, primary key (orderId, dishId))");
+//        // create table discount : Detail  about discount
+  //     database.QueryData("create table discounts(id integer primary key AUTOINCREMENT, title varchar(255) not null, discount integer not null) ");
+//        // create table payment  : Detail for payment
+//        database.QueryData("create table payments(paymentId integer primary key AUTOINCREMENT, accountId integer not null, orderId integer not null, discountId integer, amount integer not null, date datetime not null, status varchar(255)," +
+//                "foreign key (accountId) references account(accountId), "+
+//                "foreign key (orderId) references orders(orderId), " +
+//                "foreign key (discountId) references discounts(discountId))");
+
+
 
         View rootView = inflater.inflate(R.layout.fragment_signin, container, false);
         logInBtn = rootView.findViewById(R.id.loginButton);

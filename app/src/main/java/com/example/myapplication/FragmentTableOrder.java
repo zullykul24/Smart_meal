@@ -28,7 +28,7 @@ public class FragmentTableOrder extends Fragment {
 
     GridView gridViewTable;
     TableItemAdapter tableItemAdapter;
-    ImageButton btnAdd;
+
     ArrayList<TableItem> tableItemArrayList;
     @Nullable
     @Override
@@ -39,37 +39,39 @@ public class FragmentTableOrder extends Fragment {
 
         gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
         tableItemArrayList = new ArrayList<>();
+
+
          /////Edit
-        tableItemArrayList.add(new TableItem("Bàn số 1"));
-        tableItemArrayList.add(new TableItem("Bàn số 2"));
-        tableItemArrayList.add(new TableItem("Bàn số 3"));
-        tableItemArrayList.add(new TableItem("Bàn số 4"));
-        tableItemArrayList.add(new TableItem("Bàn số 5", "Booked"));
-        tableItemArrayList.add(new TableItem("Bàn số 6"));
-        tableItemArrayList.add(new TableItem("Bàn số 7"));
-        tableItemArrayList.add(new TableItem("Bàn số 8", "Not Empty"));
-        tableItemArrayList.add(new TableItem("Bàn số 9"));
-        tableItemArrayList.add(new TableItem("Bàn số 10"));
-        tableItemArrayList.add(new TableItem("Bàn số 11"));
-        tableItemArrayList.add(new TableItem("Bàn số 12"));
-        tableItemArrayList.add(new TableItem("Bàn số 13"));
-        tableItemArrayList.add(new TableItem("Bàn số 14"));
-        tableItemArrayList.add(new TableItem("Bàn số 15"));
-        tableItemArrayList.add(new TableItem("Bàn số 16"));
-        tableItemArrayList.add(new TableItem("Bàn số 17"));
-        tableItemArrayList.add(new TableItem("Bàn số 18"));
+        Cursor  cursor = database.getData("SELECT * from group_table");
+        while  (cursor.moveToNext()){
+            tableItemArrayList.add( new TableItem(
+                    "Bàn số "+cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getString(2)
+                    )
+            );
+        }
+    //    tableItemArrayList.add(new TableItem("Bàn số 10", "Empty"));
+//        tableItemArrayList.add(new TableItem("Bàn số 2"));
+//        tableItemArrayList.add(new TableItem("Bàn số 3"));
+//        tableItemArrayList.add(new TableItem("Bàn số 4"));
+//        tableItemArrayList.add(new TableItem("Bàn số 5", "Booked"));
+//        tableItemArrayList.add(new TableItem("Bàn số 6"));
+//        tableItemArrayList.add(new TableItem("Bàn số 7"));
+//        tableItemArrayList.add(new TableItem("Bàn số 8", "Not Empty"));
+//        tableItemArrayList.add(new TableItem("Bàn số 9"));
+//        tableItemArrayList.add(new TableItem("Bàn số 10"));
+//        tableItemArrayList.add(new TableItem("Bàn số 11"));
+//        tableItemArrayList.add(new TableItem("Bàn số 12"));
+//        tableItemArrayList.add(new TableItem("Bàn số 13"));
+//        tableItemArrayList.add(new TableItem("Bàn số 14"));
+//        tableItemArrayList.add(new TableItem("Bàn số 15"));
+//        tableItemArrayList.add(new TableItem("Bàn số 16"));
+//        tableItemArrayList.add(new TableItem("Bàn số 17"));
+//        tableItemArrayList.add(new TableItem("Bàn số 18"));
         ////
         tableItemAdapter = new TableItemAdapter(getContext(), R.layout.table_item,tableItemArrayList );
 
-
-       /* Cursor cursor = database.getData("SELECT * FROM group_table");
-        while (cursor.moveToNext()){
-            // khởi tạo đối tượng đầu vào bao gồm thuộc tính tên,số lượng thui;
-            tableItemArrayList.add(new TableItem(
-                    "Bàn số "+ cursor.getInt(0),
-                    cursor.getInt(1)
-            ));
-        }*/
         tableItemAdapter.notifyDataSetChanged();
         gridViewTable.setAdapter(tableItemAdapter);
 
@@ -77,10 +79,13 @@ public class FragmentTableOrder extends Fragment {
         for(TableItem i:tableItemArrayList){
             if(i.getStatus()=="Not Empty"){
                 i.setColor("#959523");
-
             }
-            if(i.getStatus()=="Booked"){
+            else if(i.getStatus()=="Booked"){
                 i.setColor("#E64875");
+            }
+            else
+            {
+                i.setColor("#4EC33A");
             }
         }
         registerForContextMenu(gridViewTable);
@@ -90,21 +95,21 @@ public class FragmentTableOrder extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity().getApplicationContext(), tableItemArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
                 String status = tableItemArrayList.get(position).getStatus();
-                if(status.equals("Empty")){
+                if(status.equals("Empty")) {
                     Intent intentToOrder = new Intent(getActivity(), OrderActivity.class);
-                    intentToOrder.putExtra("Tên bàn", tableItemArrayList.get(position).getName() );
+                    intentToOrder.putExtra("Tên bàn", tableItemArrayList.get(position).getName());
                     startActivity(intentToOrder);
                 }
-
             }
         });
+
         return rootView;
     }
 
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
 
         getActivity().getMenuInflater().inflate(R.menu.set_table_status, menu);
-        menu.setHeaderTitle("Đặt trạng thái");
+        menu.setHeaderTitle("Đặt trạng thái" );
 
         super.onCreateContextMenu(menu, v, menuInfo);
     }
@@ -113,13 +118,15 @@ public class FragmentTableOrder extends Fragment {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()){
             case R.id.status_booked:
-
                 tableItemAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity().getApplicationContext(),"Booked",Toast.LENGTH_SHORT).show();
+               // database.QueryData("update group_table set status = "+"Booked"+"  where tableId = "+item.getItemId()+"");
+                Toast.makeText(getActivity().getApplicationContext(),"Booked" + this.tableItemArrayList,Toast.LENGTH_SHORT).show();
+
                 return true;
             case R.id.status_empty:
                 tableItemAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity().getApplicationContext(),"empty",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(),"Empty",Toast.LENGTH_SHORT).show();
+              //  database.QueryData("update group_table set status = "+"Empty"+"  where tableId = "+item.getItemId()+"");
                 return true;
             default:
                 return super.onContextItemSelected(item);

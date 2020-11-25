@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -79,6 +80,9 @@ public class ManagerFragmentHomePage extends Fragment {
         DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(decoration);
         ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
+        // edit list hot food
+       // Cursor  cursor = database.getData("SELECT * from dish");
+
         hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
         hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
         hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
