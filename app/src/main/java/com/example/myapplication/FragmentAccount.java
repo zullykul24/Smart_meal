@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class FragmentAccount extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_account, container,false);
+
         ((TextView)rootView.findViewById(R.id.displayName)).setText(name);
         ((TextView)rootView.findViewById(R.id.role_name)).setText(accountType);
         logOutBtn = rootView.findViewById(R.id.logoutBtn);

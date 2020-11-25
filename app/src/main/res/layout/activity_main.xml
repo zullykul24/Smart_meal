@@ -2,6 +2,7 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -11,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/navbar"
         android:layout_alignParentTop="true"
+
 
 
         android:background="#ff0">
@@ -34,6 +36,7 @@
             android:layout_height="match_parent" />
         <fragment
             android:id="@+id/fragmentAccount"
+
             android:name="com.example.myapplication.FragmentAccount"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
