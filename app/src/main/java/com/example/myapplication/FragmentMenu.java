@@ -58,7 +58,6 @@ public class FragmentMenu extends Fragment {
                     cursor.getInt(2),
                     cursor.getDouble(3),
                     cursor.getBlob(4)
-
             ));
         }
 //        menuItemArrayList.add(new MenuFoodItem("Lẩu đầu cá",180.000, R.drawable.mango));

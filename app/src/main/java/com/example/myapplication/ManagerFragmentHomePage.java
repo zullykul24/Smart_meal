@@ -83,12 +83,12 @@ public class ManagerFragmentHomePage extends Fragment {
         // edit list hot food
        // Cursor  cursor = database.getData("SELECT * from dish");
 
-        hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
         RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
         recyclerView.setAdapter(adapter);
         return rootView;

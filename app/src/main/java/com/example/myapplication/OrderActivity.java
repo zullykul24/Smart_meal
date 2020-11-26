@@ -72,7 +72,7 @@ public class OrderActivity extends AppCompatActivity {
         if (requestCode == 999) {
             if (resultCode == -1) {
                 MenuFoodItem foodItem = (MenuFoodItem) data.getSerializableExtra("abc");
-                arrayListChosenFood.add(new FoodOrderItem(foodItem.getDish_name(), foodItem.getPrice(), foodItem.getHinhAnh()));
+                arrayListChosenFood.add(new FoodOrderItem(foodItem.getDish_id(), foodItem.getDish_name(),foodItem.getGroup_id(),  foodItem.getPrice(), foodItem.getImage()));
                 adapterChosenFood = new FoodOrderItemAdapter(OrderActivity.this, R.layout.food_order_item, arrayListChosenFood);
                 listViewChosenFood.setAdapter(adapterChosenFood);
                 // Thêm trượt để xoá https://github.com/baoyongzhang/SwipeMenuListView

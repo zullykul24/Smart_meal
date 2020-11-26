@@ -35,12 +35,12 @@ public class FragmentHomePage extends Fragment {
         DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(decoration);
             ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
-            hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
-            hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//            hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
+//            hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
+//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
             RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
             recyclerView.setAdapter(adapter);
 

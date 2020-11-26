@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -44,9 +46,10 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull RecycleItemAdapter.MyViewHolder holder, int position) {
-        holder.name.setText(hotItemsArray.get(position).getDish_name());
-        holder.price.setText(hotItemsArray.get(position).getPrice().toString());
-        holder.image.setImageResource(hotItemsArray.get(position).getHinhAnh());
+//        holder.name.setText(hotItemsArray.get(position).getDish_name());
+//        holder.price.setText(hotItemsArray.get(position).getPrice().toString());
+//       // Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
+//        holder.image.setImageBitmap(hotItemsArray.get(position).getImage());
 
     }
 

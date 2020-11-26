@@ -10,7 +10,6 @@ public class MenuFoodItem implements Serializable {
         private int group_id;
         private Double price;
         private byte[] image;
-        private int HinhAnh;
         public MenuFoodItem() {}
         public MenuFoodItem(int dish_id) {
             this.dish_id = dish_id;
@@ -22,16 +21,6 @@ public class MenuFoodItem implements Serializable {
         this.group_id = group_id;
         this.price = price;
         this.image = image;
-    }
-    public MenuFoodItem(String dish_name, Double price, int HinhAnh){
-        this.dish_name = dish_name;
-        this.price = price;
-        this.HinhAnh = HinhAnh;
-    }
-    public MenuFoodItem(String dish_name, Double price){
-        this.dish_name = dish_name;
-        this.price = price;
-        this.HinhAnh = R.drawable.mango;
     }
 
 
@@ -75,11 +64,4 @@ public class MenuFoodItem implements Serializable {
         this.image = image;
     }
 
-    public int getHinhAnh() {
-        return HinhAnh;
-    }
-
-    public void setHinhAnh(int hinhAnh) {
-        HinhAnh = hinhAnh;
-    }
 }

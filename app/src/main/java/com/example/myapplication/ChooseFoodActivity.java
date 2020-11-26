@@ -86,7 +86,7 @@ public class ChooseFoodActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intentSendFoodToOrderActivity = new Intent(ChooseFoodActivity.this, OrderActivity.class);
-                MenuFoodItem item = new MenuFoodItem(menuItemArrayList.get(position).getDish_name(), menuItemArrayList.get(position).getPrice(), menuItemArrayList.get(position).getHinhAnh());
+                MenuFoodItem item = new MenuFoodItem(menuItemArrayList.get(position).getDish_id(), menuItemArrayList.get(position).getDish_name(), menuItemArrayList.get(position).getGroup_id(),menuItemArrayList.get(position).getPrice(), menuItemArrayList.get(position).getImage());
 
                 Toast.makeText(ChooseFoodActivity.this, item.getDish_name()+""+item.getPrice().toString(),Toast.LENGTH_SHORT).show();
                 intentSendFoodToOrderActivity.putExtra("abc", (Serializable) item);

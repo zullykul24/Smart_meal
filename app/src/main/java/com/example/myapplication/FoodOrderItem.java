@@ -15,10 +15,10 @@ public class FoodOrderItem implements Serializable {
         item = new MenuFoodItem(dish_id, dish_name, group_id, price, image);
         this.number = 1;
     }
-    public FoodOrderItem(String dish_name, Double price, int HinhAnh) {
-        item = new MenuFoodItem(dish_name, price, HinhAnh);
-        this.number = 1;
-    }
+//    public FoodOrderItem(int dish_id, String dish_name,  Double price, int HinhAnh) {
+//        item = new MenuFoodItem(dish_name, price, HinhAnh);
+//        this.number = 1;
+//    }
 
     public FoodOrderItem(int dish_id) {
         item = new MenuFoodItem(dish_id);
@@ -71,13 +71,13 @@ public class FoodOrderItem implements Serializable {
         item.setImage(image);
     }
 
-    public int getHinhAnh() {
-        return item.getHinhAnh();
-    }
-
-    public void setHinhAnh(int hinhAnh) {
-        item.setHinhAnh(hinhAnh);
-    }
+//    public int getHinhAnh() {
+//        return item.getHinhAnh();
+//    }
+//
+//    public void setHinhAnh(int hinhAnh) {
+//        item.setHinhAnh(hinhAnh);
+//    }
 
     public String getNote() {return this.note;}
     public void setNote(String note) {this.note = note;}
