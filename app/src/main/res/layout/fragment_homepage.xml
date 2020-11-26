@@ -33,38 +33,34 @@
             android:layout_width="match_parent"
             android:id="@+id/line1"
             android:layout_height="100dp">
-        <Button
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:text="Thanh toán"
-            android:layout_marginLeft="30dp"
-            android:layout_centerVertical="true"
-            android:textColor="#fff"
-
-            android:background="@drawable/manager_items"></Button>
-        <Button
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:textColor="#fff"
-            android:layout_centerVertical="true"
-
-            android:background="@drawable/home_item"
-            android:text="Hẹn giờ săn deal"
-            android:layout_centerHorizontal="true"
-           ></Button>
 
             <Button
-                android:layout_width="70sp"
+                android:id="@+id/thanh_toan"
+                android:layout_width="120sp"
                 android:layout_height="70sp"
+                android:layout_marginLeft="50dp"
                 android:background="@drawable/home_item"
-
-                android:text="Khuyến mãi"
+                android:text="Thanh toán"
                 android:textColor="#fff"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"
-                android:layout_centerVertical="true"
-
+                android:layout_marginTop="20dp"
                 ></Button>
+
+
+
+
+            <Button
+                android:id="@+id/thong_bao"
+                android:layout_width="120sp"
+                android:layout_height="70sp"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/home_item"
+                android:text="Thông báo"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"></Button>
+
+
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -72,37 +68,50 @@
             android:id="@+id/line2"
             android:layout_below="@id/line1">
             <Button
-                android:layout_width="70sp"
+                android:layout_width="120sp"
                 android:layout_height="70sp"
-                android:text="Trà sữa"
-                android:layout_marginLeft="30dp"
+                android:text="Món mới"
+                android:layout_marginLeft="50dp"
                 android:layout_centerVertical="true"
                 android:textColor="#fff"
-
+                android:id="@+id/new_food"
                 android:background="@drawable/home_item"></Button>
             <Button
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:textColor="#fff"
-                android:layout_centerVertical="true"
-                android:text="Ăn vặt"
-                android:background="@drawable/home_item"
-
-                android:layout_centerHorizontal="true"
-                ></Button>
-
-            <Button
-                android:layout_width="70sp"
+                android:layout_width="120sp"
                 android:layout_height="70sp"
                 android:background="@drawable/home_item"
-
-                android:text="Cơm"
+                android:id="@+id/khuyen_mai"
+                android:text="Khuyến mãi"
                 android:textColor="#fff"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"
+
+                android:layout_marginRight="50sp"
                 android:layout_centerVertical="true"
 
                 ></Button>
+<!--            <Button-->
+<!--                android:layout_width="70sp"-->
+<!--                android:layout_height="70sp"-->
+<!--                android:textColor="#fff"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:text="Ăn vặt"-->
+<!--                android:background="@drawable/home_item"-->
+
+<!--                android:layout_centerHorizontal="true"-->
+<!--                ></Button>-->
+
+<!--            <Button-->
+<!--                android:layout_width="70sp"-->
+<!--                android:layout_height="70sp"-->
+<!--                android:background="@drawable/home_item"-->
+
+<!--                android:text="Cơm"-->
+<!--                android:textColor="#fff"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:layout_centerVertical="true"-->
+
+<!--                ></Button>-->
         </RelativeLayout>
 
         <TextView

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
@@ -30,26 +32,62 @@ public class FragmentTableOrder extends Fragment {
     TableItemAdapter tableItemAdapter;
 
     ArrayList<TableItem> tableItemArrayList;
+
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+        getActivity().getMenuInflater().inflate(R.menu.set_table_status, menu);
+        menu.setHeaderTitle("Đặt trạng thái");
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+    public boolean onContextItemSelected(MenuItem item) {
+        // below variable info contains clicked item info and it can be null; scroll down to see a fix for it
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        switch(item.getItemId()){
+            case R.id.status_booked:
+                database.QueryData("update group_table set status = 'Booked'  where tableId = " + tableItemArrayList.get(info.position).getId() + ";");
+                Toast.makeText(getActivity().getApplicationContext(),"Booked",Toast.LENGTH_SHORT).show();
+                tableItemAdapter.notifyDataSetChanged();
+                return true;
+            case R.id.status_empty:
+                database.QueryData("update group_table set status = 'Empty'  where tableId = " + tableItemArrayList.get(info.position).getId() + ";");
+                tableItemAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(),"Empty",Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tableorder, container,false);
 
-
-
         gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
         tableItemArrayList = new ArrayList<>();
-
-
          /////Edit
         Cursor  cursor = database.getData("SELECT * from group_table");
         while  (cursor.moveToNext()){
             tableItemArrayList.add( new TableItem(
+                    cursor.getInt(0),
                     "Bàn số "+cursor.getInt(0),
                     cursor.getInt(1),
                     cursor.getString(2)
                     )
             );
+        }
+
+        for(TableItem i:tableItemArrayList){
+            if(i.getStatus().equals("Not Empty")){
+                i.setColor("#959523");
+            }
+            else if(i.getStatus().equals("Booked")){
+                i.setColor("#E64875");
+            }
+            else
+            {
+                i.setColor("#4EC33A");
+            }
         }
     //    tableItemArrayList.add(new TableItem("Bàn số 10", "Empty"));
 //        tableItemArrayList.add(new TableItem("Bàn số 2"));
@@ -76,19 +114,8 @@ public class FragmentTableOrder extends Fragment {
         gridViewTable.setAdapter(tableItemAdapter);
 
 
-        for(TableItem i:tableItemArrayList){
-            if(i.getStatus()=="Not Empty"){
-                i.setColor("#959523");
-            }
-            else if(i.getStatus()=="Booked"){
-                i.setColor("#E64875");
-            }
-            else
-            {
-                i.setColor("#4EC33A");
-            }
-        }
-        registerForContextMenu(gridViewTable);
+
+
 
         gridViewTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -102,36 +129,12 @@ public class FragmentTableOrder extends Fragment {
                 }
             }
         });
+        registerForContextMenu(gridViewTable);
+
 
         return rootView;
     }
 
-    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
-
-        getActivity().getMenuInflater().inflate(R.menu.set_table_status, menu);
-        menu.setHeaderTitle("Đặt trạng thái" );
-
-        super.onCreateContextMenu(menu, v, menuInfo);
-    }
-    public boolean onContextItemSelected(MenuItem item) {
-        // below variable info contains clicked item info and it can be null; scroll down to see a fix for it
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        switch(item.getItemId()){
-            case R.id.status_booked:
-                tableItemAdapter.notifyDataSetChanged();
-               // database.QueryData("update group_table set status = "+"Booked"+"  where tableId = "+item.getItemId()+"");
-                Toast.makeText(getActivity().getApplicationContext(),"Booked" + this.tableItemArrayList,Toast.LENGTH_SHORT).show();
-
-                return true;
-            case R.id.status_empty:
-                tableItemAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity().getApplicationContext(),"Empty",Toast.LENGTH_SHORT).show();
-              //  database.QueryData("update group_table set status = "+"Empty"+"  where tableId = "+item.getItemId()+"");
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }
-    }
 
 
 

@@ -8,14 +8,25 @@ public class TableItem implements Serializable {
     private String color;
     private int image;
     private  int chair_number;
+    private  int id;
 
-    public TableItem(String name,int chair_number, String status) {
+    public TableItem(int id, String name,int chair_number, String status) {
+        this.id= id;
         this.name = name;
         this.status = status;
         this.image = R.drawable.table_icon;
         this.color = "#4EC33A";
         this.chair_number= chair_number;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public TableItem(String name, String status){
         this.name = name;
         this.status = status;

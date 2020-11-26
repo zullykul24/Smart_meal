@@ -40,24 +40,24 @@ public class ManagerFragmentHomePage extends Fragment {
             }
         });
         final FragmentManager fragmentManager = getFragmentManager();
-        payment = (Button) rootView.findViewById(R.id.manager_payment);
-        history = (Button) rootView.findViewById(R.id.manager_history_btn);
-        addFood = (Button) rootView.findViewById(R.id.manager_add_food_btn);
+//        payment = (Button) rootView.findViewById(R.id.manager_payment);
+//        history = (Button) rootView.findViewById(R.id.manager_history_btn);
+       addFood = (Button) rootView.findViewById(R.id.manager_add_food_btn);
         addTable = (Button) rootView.findViewById(R.id.manager_add_table_btn);
-         payment.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intentToPayment = new Intent(getActivity(), PaymentActivity.class);
-                 startActivity(intentToPayment);
-             }
-         });
-         history.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intentHistory = new Intent(getActivity(), HistoryActivity.class);
-                 startActivity(intentHistory);
-             }
-         });
+//         payment.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View v) {
+//                 Intent intentToPayment = new Intent(getActivity(), PaymentActivity.class);
+//                 startActivity(intentToPayment);
+//             }
+//         });
+//         history.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View v) {
+//                 Intent intentHistory = new Intent(getActivity(), HistoryActivity.class);
+//                 startActivity(intentHistory);
+//             }
+//         });
          addFood.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
