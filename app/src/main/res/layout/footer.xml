@@ -8,7 +8,7 @@
 
     <EditText
 
-        android:id="@+id/note"
+        android:id="@+id/noteFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.256"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/note">
+        app:layout_constraintTop_toBottomOf="@id/noteFooter">
     </Button>
 
     <Button
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/note">
+        app:layout_constraintTop_toBottomOf="@id/noteFooter">
 
     </Button>
 

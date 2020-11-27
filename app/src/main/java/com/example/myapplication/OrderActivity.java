@@ -46,15 +46,17 @@ public class OrderActivity extends AppCompatActivity {
 
         tableName = (TextView)findViewById(R.id.nameOfIntentedTable);
         themMonBtn = (Button)findViewById(R.id.themMonBtn);
-        note = (EditText) findViewById(R.id.note);
+
 
         // là cái thanh cuộn các món ở dưới.
         listViewChosenFood = (SwipeMenuListView) findViewById(R.id.listViewChosenFood);
         View footer = getLayoutInflater().inflate(R.layout.footer, null);
         // add thêm cái footer ghi chú và button OK
         listViewChosenFood.addFooterView(footer);
-        btn_ok = (Button) findViewById(R.id.btn_ok_order);
+
+        btn_ok = (Button)findViewById(R.id.btn_ok_order);
         btn_cancel = (Button) findViewById(R.id.btn_cancel_order);
+        note = (EditText) findViewById(R.id.noteFooter);
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +105,7 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                Toast.makeText(OrderActivity.this, note.getText().toString(),Toast.LENGTH_SHORT).show();
             }
         });
         Intent intent = getIntent();

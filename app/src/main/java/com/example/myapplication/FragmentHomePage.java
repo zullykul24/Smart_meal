@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,10 +23,19 @@ public class FragmentHomePage extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_homepage, container, false);
-        rootView.setOnTouchListener(new View.OnTouchListener() {
+      /*  rootView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
+            }
+        });*/
+
+        Button thanhToan = (Button)rootView.findViewById(R.id.thanh_toan);
+        thanhToan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToPayment = new Intent(getActivity().getApplicationContext(),PaymentActivity.class);
+                startActivityForResult(intentToPayment,65);
             }
         });
 

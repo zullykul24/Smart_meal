@@ -40,7 +40,7 @@ public class ManagerFragmentHomePage extends Fragment {
             }
         });
         final FragmentManager fragmentManager = getFragmentManager();
-//        payment = (Button) rootView.findViewById(R.id.manager_payment);
+        payment = (Button) rootView.findViewById(R.id.manager_payment);
 //        history = (Button) rootView.findViewById(R.id.manager_history_btn);
        addFood = (Button) rootView.findViewById(R.id.manager_add_food_btn);
         addTable = (Button) rootView.findViewById(R.id.manager_add_table_btn);
@@ -58,6 +58,13 @@ public class ManagerFragmentHomePage extends Fragment {
 //                 startActivity(intentHistory);
 //             }
 //         });
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToPayment = new Intent(getActivity().getApplicationContext(),PaymentActivity.class);
+                startActivityForResult(intentToPayment,65);
+            }
+        });
          addFood.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
