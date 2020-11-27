@@ -30,9 +30,14 @@ public class FragmentTableOrder extends Fragment {
 
     GridView gridViewTable;
     TableItemAdapter tableItemAdapter;
-
+    int accoutID ;
+    public void getInfor(int accoutID){
+        this.accoutID = accoutID;
+    }
+    public Integer getAccountID (){
+        return this.accoutID;
+    }
     ArrayList<TableItem> tableItemArrayList;
-
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
         getActivity().getMenuInflater().inflate(R.menu.set_table_status, menu);
         menu.setHeaderTitle("Đặt trạng thái");
@@ -48,6 +53,7 @@ public class FragmentTableOrder extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(),"Booked",Toast.LENGTH_SHORT).show();
                 tableItemAdapter.notifyDataSetChanged();
                 return true;
+                // ??? : sau nay se phai sua cai nayf
             case R.id.status_empty:
                 database.QueryData("update group_table set status = 'Empty'  where tableId = " + tableItemArrayList.get(info.position).getId() + ";");
                 tableItemAdapter.notifyDataSetChanged();
@@ -122,11 +128,15 @@ public class FragmentTableOrder extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity().getApplicationContext(), tableItemArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
                 String status = tableItemArrayList.get(position).getStatus();
-                if(status.equals("Empty")) {
+                // chỉnh sửa chỗ này để trạng thái nào cũng có thể vào chỉnh sửa món ăn
+                //if(status.equals("Empty")) {
                     Intent intentToOrder = new Intent(getActivity(), OrderActivity.class);
                     intentToOrder.putExtra("Tên bàn", tableItemArrayList.get(position).getName());
+                    intentToOrder.putExtra("Bàn id", tableItemArrayList.get(position).getId());
+                    intentToOrder.putExtra("Bàn Status", tableItemArrayList.get(position).getStatus());
+                    intentToOrder.putExtra("AccountID",  getAccountID());
                     startActivity(intentToOrder);
-                }
+               // }
             }
         });
         registerForContextMenu(gridViewTable);

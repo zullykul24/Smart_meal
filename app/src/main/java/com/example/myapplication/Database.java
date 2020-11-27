@@ -39,7 +39,6 @@ public class Database  extends SQLiteOpenHelper {
     public Cursor getData(String sql){
         SQLiteDatabase database  =  getReadableDatabase();
         return database.rawQuery(sql, null);
-
     }
     @Override
     public void onCreate(SQLiteDatabase db) {

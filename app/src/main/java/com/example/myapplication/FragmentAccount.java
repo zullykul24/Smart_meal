@@ -39,8 +39,6 @@ public class FragmentAccount extends Fragment {
                 startActivity(intentLogOut);
             }
         });
-
-
         return  rootView;
     }
 }

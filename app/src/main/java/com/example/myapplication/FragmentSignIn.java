@@ -23,7 +23,7 @@ public class FragmentSignIn extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // create a new database sqlite
-        database = new Database(getContext(), "sm123.sqlite", null,1);
+        database = new Database(getContext(), "sm1234567.sqlite", null,1);
         // create table account : Detail about Account
         database.QueryData("create table if not exists account (accountId integer primary key AUTOINCREMENT, phoneNumber VARCHAR(200) not null, account_type varchar(20) not null, userName varchar(50) not null unique, password varchar(20)  not null) " );
         // create table dish : Detail about dish
@@ -31,9 +31,9 @@ public class FragmentSignIn extends Fragment {
         // create table group_table : Thông tin về Group_table
         database.QueryData("create table if not exists group_table(tableId integer primary key autoincrement , chair_number integer not null, status varchar(255) not null )");
         // create table order : Detail about order
-        database.QueryData("create table if not exists orders(orderId integer primary key autoincrement, tableId integer not null , foreign key (tableId) references group_table(tableId))");
+        database.QueryData("create table if not exists orders(orderId integer primary key autoincrement, tableId integer not null, note text , foreign key (tableId) references group_table(tableId))");
 //        // create table orderdetail :
-       database.QueryData("create table if not exists orderdetails(orderId integer not null, dishId integer not null, accountId integer not null, note text, quantityOrder integer not null, primary key (orderId, dishId))");
+       database.QueryData("create table if not exists orderdetails(orderId integer not null, dishId integer not null, accountId integer not null,  quantityOrder integer not null, primary key (orderId, dishId))");
 //        // create table discount : Detail  about discount
        database.QueryData("create table if not exists  voucher(voucherId integer primary key AUTOINCREMENT, title varchar(255) not null, discount integer not null) ");
 //        // create table payment  : Detail for payment
@@ -64,6 +64,7 @@ public class FragmentSignIn extends Fragment {
                             Intent intent = new Intent(getActivity(), MainActivity.class);
                             intent.putExtra("name", username.getText().toString());
                             intent.putExtra("account_type", dataAccount.getString(2));
+                            intent.putExtra("accountId", dataAccount.getInt(0));
                             startActivity(intent);
                         }
                         else
