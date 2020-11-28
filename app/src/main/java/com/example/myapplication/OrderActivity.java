@@ -55,14 +55,16 @@ public class OrderActivity extends AppCompatActivity {
         View footer = getLayoutInflater().inflate(R.layout.footer, null);
         // add thêm cái footer ghi chú và button OK
         listViewChosenFood.addFooterView(footer);
-
         btn_ok = (Button) findViewById(R.id.btn_ok_order);
         btn_cancel = (Button) findViewById(R.id.btn_cancel_order);
-        note = (EditText) findViewById(R.id.note);
+        note = (EditText) findViewById(R.id.noteFooter);
        Cursor cursor =  database.getData("Select * from orders where tableId = " + banId);
         while (cursor.moveToNext()){
             note.setText(cursor.getString(2));
         }
+        btn_ok = (Button)findViewById(R.id.btn_ok_order);
+        btn_cancel = (Button) findViewById(R.id.btn_cancel_order);
+        note = (EditText) findViewById(R.id.noteFooter);
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,6 +116,7 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                Toast.makeText(OrderActivity.this, note.getText().toString(),Toast.LENGTH_SHORT).show();
             }
         });
         Intent intent = getIntent();

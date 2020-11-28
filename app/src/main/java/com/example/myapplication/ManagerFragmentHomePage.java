@@ -32,9 +32,10 @@ public class ManagerFragmentHomePage extends Fragment {
     Button monmoi;
     Button addFood;
     Button addTable;
+    Button payment;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView =  inflater.inflate(R.layout.manager_fragment_homepage, container, false);
+        final View rootView =  inflater.inflate(R.layout.manager_fragment_homepage, container, false);
         rootView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -42,101 +43,104 @@ public class ManagerFragmentHomePage extends Fragment {
             }
         });
         final FragmentManager fragmentManager = getFragmentManager();
-       addFood = (Button) rootView.findViewById(R.id.manager_add_food_btn);
+        addFood = (Button) rootView.findViewById(R.id.manager_add_food_btn);
         addTable = (Button) rootView.findViewById(R.id.manager_add_table_btn);
         monmoi = (Button) rootView.findViewById(R.id.manage_new_food);
-
+        payment = (Button) rootView.findViewById(R.id.manager_payment);
         monmoi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ActivityNewFood.class);
-                startActivity(intent);
-            }
-        });
-         addFood.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intentFood = new Intent(getActivity(), AddFood.class );
-                 startActivity(intentFood);
-             }
-         });
-        addTable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogInsertTable();
-            }
-        });
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent intent = new Intent(getActivity(), ActivityNewFood.class);
+                                          startActivity(intent);
+                                      }
+                                  });
 
-        RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.manager_recycle_view_hot_items);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
-        recyclerView.addItemDecoration(decoration);
-        ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
-        // edit list hot food
-        // món hot sẽ là món được đặt với số lượng nhiều nhất trong nhà hàng
-        //         database.QueryData("create table if not exists dish (dishId integer primary key AUTOINCREMENT, dishName varchar(200) not null, group_id integer not null, price double, image varchar(200))");//database.QueryData("Insert into  staff_group values (0, 'Staff'), (1, 'Management')");
-        Cursor  cursor = database.getData("SELECT * from dish where dishId in (Select dishId from orderdetails group by dishId order by sum(orderdetails.quantityOrder) desc) limit  5 ");
-        while(cursor.moveToNext()){
-            hotArrayList.add(new MenuFoodItem(
-                    cursor.getInt(0),
-                    cursor.getString(1),
-                    cursor.getInt(2),
-                    cursor.getDouble(3),
-                    cursor.getBlob(4)));
-        }
+                payment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intentToPayment = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
+                        startActivityForResult(intentToPayment, 65);
+                    }
+                });
+                addFood.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intentFood = new Intent(getActivity(), AddFood.class);
+                        startActivity(intentFood);
+                    }
+                });
+                addTable.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogInsertTable();
+                    }
+                });
+
+                RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.manager_recycle_view_hot_items);
+                recyclerView.setHasFixedSize(true);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(linearLayoutManager);
+                DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
+                recyclerView.addItemDecoration(decoration);
+                ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
+                // edit list hot food
+                // món hot sẽ là món được đặt với số lượng nhiều nhất trong nhà hàng
+                //         database.QueryData("create table if not exists dish (dishId integer primary key AUTOINCREMENT, dishName varchar(200) not null, group_id integer not null, price double, image varchar(200))");//database.QueryData("Insert into  staff_group values (0, 'Staff'), (1, 'Management')");
+                Cursor cursor = database.getData("SELECT * from dish where dishId in (Select dishId from orderdetails group by dishId order by sum(orderdetails.quantityOrder) desc) limit  5 ");
+                while (cursor.moveToNext()) {
+                    hotArrayList.add(new MenuFoodItem(
+                            cursor.getInt(0),
+                            cursor.getString(1),
+                            cursor.getInt(2),
+                            cursor.getDouble(3),
+                            cursor.getBlob(4)));
+                }
 //        hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-        RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
-        recyclerView.setAdapter(adapter);
-        return rootView;
-    }
-    private  void DialogInsertTable(){
-        final Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.add_table);
-        // Ánh xạ xong r nè
+                RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
+                recyclerView.setAdapter(adapter);
+                return rootView;
+            }
 
-        Button add = (Button) dialog.findViewById(R.id.button_ok);
-        Button cancel = (Button) dialog.findViewById(R.id.button_cancel);
-        final EditText number_chair = (EditText) dialog.findViewById(R.id.edit_chair_number);
+            private void DialogInsertTable() {
+                final Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.add_table);
+                // Ánh xạ xong r nè
 
-        // sử dụng các button
+                Button add = (Button) dialog.findViewById(R.id.button_ok);
+                Button cancel = (Button) dialog.findViewById(R.id.button_cancel);
+                final EditText number_chair = (EditText) dialog.findViewById(R.id.edit_chair_number);
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!number_chair.getText().toString().equals(""))
-                {
-                    int num = Integer.parseInt(number_chair.getText().toString()); // lay du lieu trong cai nay nay
-                    if(num<=0 || num > 100)
-                    {
-                        Toast.makeText(getContext(), "Không hợp lệ", Toast.LENGTH_SHORT).show();
+                // sử dụng các button
+
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!number_chair.getText().toString().equals("")) {
+                            int num = Integer.parseInt(number_chair.getText().toString()); // lay du lieu trong cai nay nay
+                            if (num <= 0 || num > 100) {
+                                Toast.makeText(getContext(), "Không hợp lệ", Toast.LENGTH_SHORT).show();
+                            } else {
+                                database.QueryData("insert into group_table values (null, " + num + ", 'Empty')");
+                                dialog.dismiss();
+                            }
+
+                        } else {
+                            Toast.makeText(getContext(), "Vui lòng điền số lượng ghế", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else
-                    {
-                        database.QueryData("insert into group_table values (null, "+num+", 'Empty')");
+                });
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
                         dialog.dismiss();
                     }
+                });
+                dialog.show();
 
-                }
-                else {
-                    Toast.makeText(getContext(), "Vui lòng điền số lượng ghế", Toast.LENGTH_SHORT).show();
-                }
             }
-        });
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-
-    }
-
-}
+        }

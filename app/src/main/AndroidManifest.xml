@@ -17,6 +17,10 @@
             android:name=".OrderActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".AddFood" />
+        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".PaymentActivity"></activity>
+        <activity android:name=".PayBillActivity"></activity>
+
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
