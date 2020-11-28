@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteStatement;
 import androidx.annotation.Nullable;
 
 public class Database  extends SQLiteOpenHelper {
+    long millis=System.currentTimeMillis();
+    java.sql.Date date=new java.sql.Date(millis);
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -23,7 +25,7 @@ public class Database  extends SQLiteOpenHelper {
     public void insertDish(String name, Double price, byte[] image) {
         SQLiteDatabase database = getWritableDatabase();
         // dishId, dishname, groupID, price, image;
-        String sql = "INSERT INTO dish values (null,?,?,?,?)";
+        String sql = "INSERT INTO dish values (null,?,?,?,?,"+date+")";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();

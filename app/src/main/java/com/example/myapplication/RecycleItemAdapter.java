@@ -35,7 +35,6 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
             image = itemView.findViewById(R.id.img_hot);
         }
     }
-
     @NonNull
     @Override
     public RecycleItemAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,14 +42,14 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
         View itemView = layoutInflater.inflate(R.layout.hot_item, parent, false);
         return new MyViewHolder(itemView);
     }
-
+    // cái này dùng add dữ liệu vào nè
     @Override
     public void onBindViewHolder(@NonNull RecycleItemAdapter.MyViewHolder holder, int position) {
-//        holder.name.setText(hotItemsArray.get(position).getDish_name());
-//        holder.price.setText(hotItemsArray.get(position).getPrice().toString());
-//       // Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
-//        holder.image.setImageBitmap(hotItemsArray.get(position).getImage());
-
+        holder.name.setText(hotItemsArray.get(position).getDish_name());
+        holder.price.setText(hotItemsArray.get(position).getPrice().toString());
+        byte [] hinhanh = hotItemsArray.get(position).getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
+        holder.image.setImageBitmap(bitmap);
     }
 
     @Override

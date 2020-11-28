@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ListView
+        android:id="@+id/new_food"
+        android:layout_width="414dp"
+        android:layout_height="615dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="118dp"
+        android:layout_marginBottom="-2dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="110dp"
+        tools:listitem="@layout/menu_food_item"></ListView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="419dp"
+        android:layout_height="110dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Món mới"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/new_food"
+        tools:ignore="MissingConstraints"></TextView>
+</RelativeLayout>

@@ -22,6 +22,11 @@ public class MenuFoodItem implements Serializable {
         this.price = price;
         this.image = image;
     }
+    public MenuFoodItem(String dish_name, Double price, byte[] image){
+            this.dish_name = dish_name;
+            this.price = price;
+            this.image = image;
+    }
 
 
     public int getDish_id() {

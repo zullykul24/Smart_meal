@@ -70,7 +70,7 @@ public class FragmentSignUp extends Fragment {
             @Override
             public void onClick(View v) {
                 account_type = acc_type.getSelectedItem().toString();
-                Log.d("hoaa=maymna", userName.getText().toString() +" " + account_type);
+
                 Cursor dataAccount = database.getData("SELECT * FROM account where userName = '"+userName.getText().toString()+"' "); // trả về một cái dãy các account nè
                 if(dataAccount.getCount()>0)
                 {

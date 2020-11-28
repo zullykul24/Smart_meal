@@ -9,11 +9,14 @@
         android:roundIcon="@drawable/logosmred"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChooseFoodActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".OrderActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".AddFood"></activity>
+        <activity android:name=".ActivityNewFood"></activity>
+        <activity
+            android:name=".ChooseFoodActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".OrderActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".AddFood" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

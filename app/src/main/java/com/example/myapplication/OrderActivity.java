@@ -23,6 +23,7 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,33 +38,44 @@ public class OrderActivity extends AppCompatActivity {
     ArrayList<FoodOrderItem> arrayListChosenFood;
     EditText note ;
     FoodOrderItemAdapter adapterChosenFood;
-
-
+    long millis=System.currentTimeMillis();
+    java.sql.Date date=new java.sql.Date(millis);
+    int banId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
-
+        banId = getIntent().getIntExtra("Bàn id", 0);
         tableName = (TextView)findViewById(R.id.nameOfIntentedTable);
         themMonBtn = (Button)findViewById(R.id.themMonBtn);
-        note = (EditText) findViewById(R.id.note);
+
 
         // là cái thanh cuộn các món ở dưới.
         listViewChosenFood = (SwipeMenuListView) findViewById(R.id.listViewChosenFood);
         View footer = getLayoutInflater().inflate(R.layout.footer, null);
         // add thêm cái footer ghi chú và button OK
         listViewChosenFood.addFooterView(footer);
+
         btn_ok = (Button) findViewById(R.id.btn_ok_order);
         btn_cancel = (Button) findViewById(R.id.btn_cancel_order);
+        note = (EditText) findViewById(R.id.note);
+       Cursor cursor =  database.getData("Select * from orders where tableId = " + banId);
+        while (cursor.moveToNext()){
+            note.setText(cursor.getString(2));
+        }
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 int banId = getIntent().getIntExtra("Bàn id", 0);
                  String banStatus = getIntent().getStringExtra("Bàn Status");
                  // Nếu chưa order bao giờ thì thêm orders vào trong cơ sở dữ liệu
                  if(banStatus.equals("Empty") || banStatus.equals("Booked")){
                      if(!arrayListChosenFood.isEmpty()){
-                         database.QueryData("insert into orders values(null,"+banId+","+note+" )");
+                         if(note.getText().toString().trim().length()>0)
+                         {
+                             database.QueryData("insert into orders values(null,"+banId+","+note.getText().toString()+" )");
+                         }else {
+                             database.QueryData("insert into orders values(null,"+banId+",null )");
+                         }
                          // set trạng thái của bàn là not empty
                          database.QueryData("update group_table set status = 'Not Empty'  where tableId = " + banId + ";");
                      }
@@ -81,7 +93,7 @@ public class OrderActivity extends AppCompatActivity {
                         Cursor cursor1 = database.getData("SELECT * from orderdetails where orderId = " + orderId + " and dishId = " + food.getDish_id());
                        // Nếu chưa từng đặt món này
                         if (cursor1.getCount() == 0){
-                            database.QueryData("insert into orderdetails values ("+orderId+", "+food.getDish_id()+", "+getIntent().getIntExtra("AccountID", 0)+", "+food.getNumber()+" )");
+                            database.QueryData("insert into orderdetails values ("+orderId+", "+food.getDish_id()+", "+getIntent().getIntExtra("AccountID", 0)+", "+food.getNumber()+" , "+date+ ")");
                         }
                         else
                         {
@@ -93,9 +105,8 @@ public class OrderActivity extends AppCompatActivity {
                             database.QueryData("update orderdetails set quantityOrder = " + quantityOrdered + " where dishId = " + food.getDish_id());
                         }
               }
-                // please help me on this
-               // String notes = note.getText().toString();
-               //Log.d("123", notes);
+
+                database.QueryData("update orders set note = '"+note.getText().toString()+"' where orderId = "+orderId+"");
                 finish();
             }
         });

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import static com.example.myapplication.FragmentSignIn.database;
 
 public class FragmentHomePage extends Fragment {
     @Nullable
@@ -35,6 +38,14 @@ public class FragmentHomePage extends Fragment {
         DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(decoration);
             ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
+        Cursor cursor = database.getData("SELECT * from dish where dishId in (Select dishId from orderdetails group by dishId order by sum(orderdetails.quantityOrder) desc) limit  5 ");
+        while(cursor.moveToNext()){
+            hotArrayList.add(new MenuFoodItem(cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getDouble(3),
+                    cursor.getBlob(4)));
+        }
 //            hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
 //            hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));

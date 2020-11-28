@@ -33,6 +33,7 @@ public class AddFood extends AppCompatActivity {
     ImageButton camera, folder;
     int RE_CAMERA = 123;
     int RE_FOLDER = 456;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,9 +74,7 @@ public class AddFood extends AppCompatActivity {
                 else{
                     database.insertDish(name.getText().toString(), Double.parseDouble(price.getText().toString()),
                             hinhanh );
-                    // câu lệnh xóa activity đang hoạt động đi.
                        finish();
-
                 }
 
             }

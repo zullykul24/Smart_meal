@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,8 +29,7 @@ import static com.example.myapplication.FragmentSignIn.database;
 public class ManagerFragmentHomePage extends Fragment {
     @Nullable
 
-    Button payment;
-    Button history;
+    Button monmoi;
     Button addFood;
     Button addTable;
     @Override
@@ -40,28 +42,20 @@ public class ManagerFragmentHomePage extends Fragment {
             }
         });
         final FragmentManager fragmentManager = getFragmentManager();
-//        payment = (Button) rootView.findViewById(R.id.manager_payment);
-//        history = (Button) rootView.findViewById(R.id.manager_history_btn);
        addFood = (Button) rootView.findViewById(R.id.manager_add_food_btn);
         addTable = (Button) rootView.findViewById(R.id.manager_add_table_btn);
-//         payment.setOnClickListener(new View.OnClickListener() {
-//             @Override
-//             public void onClick(View v) {
-//                 Intent intentToPayment = new Intent(getActivity(), PaymentActivity.class);
-//                 startActivity(intentToPayment);
-//             }
-//         });
-//         history.setOnClickListener(new View.OnClickListener() {
-//             @Override
-//             public void onClick(View v) {
-//                 Intent intentHistory = new Intent(getActivity(), HistoryActivity.class);
-//                 startActivity(intentHistory);
-//             }
-//         });
+        monmoi = (Button) rootView.findViewById(R.id.manage_new_food);
+
+        monmoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ActivityNewFood.class);
+                startActivity(intent);
+            }
+        });
          addFood.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                // fragmentManager.beginTransaction().add(R.id.fragmentHomePage, new AddFood(), null);
                  Intent intentFood = new Intent(getActivity(), AddFood.class );
                  startActivity(intentFood);
              }
@@ -81,8 +75,17 @@ public class ManagerFragmentHomePage extends Fragment {
         recyclerView.addItemDecoration(decoration);
         ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
         // edit list hot food
-       // Cursor  cursor = database.getData("SELECT * from dish");
-
+        // món hot sẽ là món được đặt với số lượng nhiều nhất trong nhà hàng
+        //         database.QueryData("create table if not exists dish (dishId integer primary key AUTOINCREMENT, dishName varchar(200) not null, group_id integer not null, price double, image varchar(200))");//database.QueryData("Insert into  staff_group values (0, 'Staff'), (1, 'Management')");
+        Cursor  cursor = database.getData("SELECT * from dish where dishId in (Select dishId from orderdetails group by dishId order by sum(orderdetails.quantityOrder) desc) limit  5 ");
+        while(cursor.moveToNext()){
+            hotArrayList.add(new MenuFoodItem(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getDouble(3),
+                    cursor.getBlob(4)));
+        }
 //        hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
 //        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
