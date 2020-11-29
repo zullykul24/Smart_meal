@@ -9,7 +9,11 @@
         android:roundIcon="@drawable/logosmred"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityNewFood"></activity>
+        <activity android:name=".DatePickerActivity"></activity>
+        <activity android:name=".DatePickerActivvity" />
+        <activity android:name=".DatePicker" />
+        <activity android:name=".AddVoucherActivity" />
+        <activity android:name=".ActivityNewFood" />
         <activity
             android:name=".ChooseFoodActivity"
             android:windowSoftInputMode="stateHidden" />
@@ -17,10 +21,9 @@
             android:name=".OrderActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".AddFood" />
-        <activity android:name=".HistoryActivity"></activity>
-        <activity android:name=".PaymentActivity"></activity>
-        <activity android:name=".PayBillActivity"></activity>
-
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".PaymentActivity" />
+        <activity android:name=".PayBillActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

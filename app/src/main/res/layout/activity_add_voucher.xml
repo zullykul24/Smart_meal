@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".AddVoucherActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="411dp"
+        android:layout_height="91dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Thêm khuyến mãi"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
+    <EditText
+        android:id="@+id/title_voucher"
+        android:layout_width="227dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25sp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="76dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/discount"
+        android:layout_width="227sp"
+        android:layout_height="50sp"
+        android:layout_below="@+id/title_voucher"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="55sp"
+        android:layout_marginRight="55dp"
+        android:ems="10"
+        android:hint="Discount"
+        android:inputType="number" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/text1"-->
+<!--        android:layout_width="100sp"-->
+<!--        android:layout_height="50sp"-->
+<!--        android:layout_below="@+id/textView3"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="20sp"-->
+<!--        android:text="Code Voucher"-->
+<!--        android:textSize="20sp" />-->
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="Title"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_below="@+id/text2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:text="Discount"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_below="@+id/text3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Conditions"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/btn_add_conditions"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_below="@+id/text3"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="35sp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginRight="222dp"
+        android:scaleType="fitXY"
+        android:background="@null"
+        app:srcCompat="@drawable/add_red" />
+
+
+    <LinearLayout
+        android:id="@+id/conditions"
+        android:layout_width="match_parent"
+        android:layout_height="237dp"
+        android:layout_below="@+id/text4"
+        android:layout_marginTop="7dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_ok_create_voucher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conditions"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="71sp"
+        android:layout_marginTop="20sp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Create"
+        android:textAlignment="center"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/btn_cancel_create_voucher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conditions"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginRight="71dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Cancel"
+        android:textAlignment="center"
+        android:textColor="#fff" />
+</RelativeLayout>

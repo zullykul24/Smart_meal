@@ -10,7 +10,7 @@
         android:id="@+id/nameFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="120dp"
         android:ems="10"
         android:hint="Tên món ăn"
         android:inputType="textPersonName"
@@ -50,7 +50,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.646"
         app:srcCompat="@drawable/camera" />
 
     <ImageButton
@@ -58,14 +58,14 @@
         android:layout_width="70dp"
         android:layout_height="60dp"
         android:layout_marginTop="216dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
         android:background="@null"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageFood"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.34"
         app:srcCompat="@drawable/folder" />
 
     <Button
@@ -94,17 +94,16 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="27dp"
+        android:layout_width="411dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorAccent"
         android:gravity="center"
+        android:paddingTop="0dp"
         android:text="Thêm món ăn"
+        android:textColor="#fff"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints"></TextView>
 
     <EditText
         android:id="@+id/priceFood"

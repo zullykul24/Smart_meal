@@ -33,6 +33,7 @@ public class ManagerFragmentHomePage extends Fragment {
     Button addFood;
     Button addTable;
     Button payment;
+    Button addVoucher;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView =  inflater.inflate(R.layout.manager_fragment_homepage, container, false);
@@ -47,6 +48,13 @@ public class ManagerFragmentHomePage extends Fragment {
         addTable = (Button) rootView.findViewById(R.id.manager_add_table_btn);
         monmoi = (Button) rootView.findViewById(R.id.manage_new_food);
         payment = (Button) rootView.findViewById(R.id.manager_payment);
+        addVoucher = (Button) rootView.findViewById(R.id.add_voucher);
+        addVoucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), AddVoucherActivity.class));
+            }
+        });
         monmoi.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
