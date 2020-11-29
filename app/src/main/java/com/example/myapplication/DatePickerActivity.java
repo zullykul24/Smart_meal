@@ -27,7 +27,7 @@ public class DatePickerActivity extends AppCompatActivity {
     int lastSelectedYear;
     int lastSelectedDayOfMonth;
     int lastSelectedMonth;
-
+    int voucherID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,13 +89,9 @@ public class DatePickerActivity extends AppCompatActivity {
                     Toast.makeText(DatePickerActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    int voucherId = getIntent().getIntExtra("voucherID", 0);
-                    Log.d("test", ""+voucherId);
-                    Log.d("test", codeVoucher.getText().toString());
-                    Log.d("test", startDate.getText().toString());
-                    Log.d("test", endDate.getText().toString());
+                    voucherID = getIntent().getIntExtra("voucherID", 0);
                     // insert nốt dữ liệu vào db
-                   // database.QueryData("update vouchers set vouchercode = "+codeVoucher.getText().toString()+",  startdate ="+startDate.getText().toString()+" , enddate = "+endDate.getText().toString()+" WHERE voucherid = "+voucherId+";");
+                   database.QueryData("update vouchers set vouchercode = "+codeVoucher.getText().toString()+",  startdate ="+startDate.getText().toString()+" , enddate = "+endDate.getText().toString()+" WHERE voucherid = "+voucherID+";");
                     // chuyển về trạng thái ban đầu
                     setResult(RESULT_OK, null);
                     finish();

@@ -35,9 +35,9 @@ public class AddVoucherActivity extends AppCompatActivity {
     Button onCancel;
     LinearLayout linearLayout;
     int hint =0;
-    int voucherID = 0;
+    int voucherID;
     int REQUEST_EXIT = 1234;
-    ArrayList conditions =  new ArrayList();
+    ArrayList<String> conditions =  new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +73,8 @@ public class AddVoucherActivity extends AppCompatActivity {
                         }
                         else{
                             addVoucher();
+
                         }
-                           // insert mà không có điều kiện
 
                     }
             }
@@ -92,14 +92,19 @@ public class AddVoucherActivity extends AppCompatActivity {
 
     }
     private void addVoucher(){
-        database.QueryData("insert into vouchers (voucherid, title, discount) values (null, '"+title.getText().toString()+"', "+discount.getText().toString()+");");
-        Intent intent = new Intent(AddVoucherActivity.this, DatePickerActivity.class);
-        startActivityForResult(intent, REQUEST_EXIT);
-        Cursor cursor  = database.getData("select * from vouchers where voucherid in (SELECT max(voucherid) from vouchers)");
+        database.QueryData("insert into vouchers (voucherId, title, discount) values (null, '"+title.getText().toString()+"', '"+discount.getText().toString()+"');");
+        Cursor cursor  = database.getData("select max(voucherid) from vouchers;");
         while(cursor.moveToNext()){
             voucherID = cursor.getInt(0);
         }
+        if(conditions.size()>0){
+            for( String item : conditions){
+                database.QueryData("insert into conditions values ("+voucherID+", '"+item+"')");
+            }
+        }
+        Intent intent = new Intent(AddVoucherActivity.this, DatePickerActivity.class);
         intent.putExtra("voucherID", voucherID);
+        startActivityForResult(intent, REQUEST_EXIT);
     }
     private void DialogMakeSure(){
         final Dialog dialog = new Dialog(AddVoucherActivity.this);
