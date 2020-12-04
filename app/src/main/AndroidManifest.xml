@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logosmred"
@@ -9,7 +11,8 @@
         android:roundIcon="@drawable/logosmred"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DatePickerActivity"></activity>
+        <activity android:name=".ViewVoucherActivity"></activity>
+        <activity android:name=".DatePickerActivity" />
         <activity android:name=".DatePickerActivvity" />
         <activity android:name=".DatePicker" />
         <activity android:name=".AddVoucherActivity" />

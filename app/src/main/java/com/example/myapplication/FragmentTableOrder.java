@@ -95,34 +95,10 @@ public class FragmentTableOrder extends Fragment {
                 i.setColor("#4EC33A");
             }
         }
-    //    tableItemArrayList.add(new TableItem("Bàn số 10", "Empty"));
-//        tableItemArrayList.add(new TableItem("Bàn số 2"));
-//        tableItemArrayList.add(new TableItem("Bàn số 3"));
-//        tableItemArrayList.add(new TableItem("Bàn số 4"));
-//        tableItemArrayList.add(new TableItem("Bàn số 5", "Booked"));
-//        tableItemArrayList.add(new TableItem("Bàn số 6"));
-//        tableItemArrayList.add(new TableItem("Bàn số 7"));
-//        tableItemArrayList.add(new TableItem("Bàn số 8", "Not Empty"));
-//        tableItemArrayList.add(new TableItem("Bàn số 9"));
-//        tableItemArrayList.add(new TableItem("Bàn số 10"));
-//        tableItemArrayList.add(new TableItem("Bàn số 11"));
-//        tableItemArrayList.add(new TableItem("Bàn số 12"));
-//        tableItemArrayList.add(new TableItem("Bàn số 13"));
-//        tableItemArrayList.add(new TableItem("Bàn số 14"));
-//        tableItemArrayList.add(new TableItem("Bàn số 15"));
-//        tableItemArrayList.add(new TableItem("Bàn số 16"));
-//        tableItemArrayList.add(new TableItem("Bàn số 17"));
-//        tableItemArrayList.add(new TableItem("Bàn số 18"));
-        ////
         tableItemAdapter = new TableItemAdapter(getContext(), R.layout.table_item,tableItemArrayList );
 
         tableItemAdapter.notifyDataSetChanged();
         gridViewTable.setAdapter(tableItemAdapter);
-
-
-
-
-
         gridViewTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

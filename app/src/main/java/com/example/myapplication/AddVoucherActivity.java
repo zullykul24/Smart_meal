@@ -62,19 +62,27 @@ public class AddVoucherActivity extends AppCompatActivity {
                     if(isEmpty(title)==true || isEmpty(discount) == true){
                         Toast.makeText(AddVoucherActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                     }else {
-                        for (int i = 0; i< linearLayout.getChildCount(); i++){
-                            EditText editText = (EditText) linearLayout.getChildAt(i);
-                            if(!isEmpty(editText)) {
-                                conditions.add(editText.getText().toString());
+                        if(Integer.parseInt(discount.getText().toString()) > 100)
+                        {
+                            Toast.makeText(AddVoucherActivity.this, "Discount không hợp lệ", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            for (int i = 0; i< linearLayout.getChildCount(); i++){
+                                EditText editText = (EditText) linearLayout.getChildAt(i);
+                                if(!isEmpty(editText)) {
+                                    conditions.add(editText.getText().toString());
+                                }
+                            }
+                            if (conditions.size() == 0){
+                                DialogMakeSure();
+                            }
+                            else{
+                                addVoucher();
+
                             }
                         }
-                        if (conditions.size() == 0){
-                           DialogMakeSure();
-                        }
-                        else{
-                            addVoucher();
 
-                        }
 
                     }
             }

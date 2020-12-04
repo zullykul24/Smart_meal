@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import static com.example.myapplication.FragmentSignIn.database;
 
@@ -24,14 +29,22 @@ public class DatePickerActivity extends AppCompatActivity {
     EditText codeVoucher;
     Button btn_ok;
     Button btn_cancel;
-    int lastSelectedYear;
+    int lastSelectedYear  ;
     int lastSelectedDayOfMonth;
     int lastSelectedMonth;
     int voucherID;
+    long startDateTime;
+    long endDateTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_picker);
+        Calendar cal = Calendar.getInstance();
+        lastSelectedYear = cal.get(Calendar.YEAR);
+        lastSelectedDayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        // vì là trong Java thì tháng nó sẽ lấy từ ) tới 11 nên là  phải cộng thêm 1 để lấy đúng với giá trị hiện tại
+        lastSelectedMonth = cal.get(Calendar.MONTH);
+
         startDate = (EditText) findViewById(R.id.startDate);
         endDate = (EditText) findViewById(R.id.endDate);
         codeVoucher = (EditText) findViewById(R.id.add_code_voucher);
@@ -47,10 +60,11 @@ public class DatePickerActivity extends AppCompatActivity {
                         lastSelectedYear = year;
                         lastSelectedMonth = month;
                         lastSelectedDayOfMonth = dayOfMonth;
+
                     }
                 };
                 DatePickerDialog datePickerDialog;
-                datePickerDialog = new DatePickerDialog(DatePickerActivity.this,
+                datePickerDialog = new DatePickerDialog(DatePickerActivity.this, android.R.style.Theme_Holo_Light_Dialog,
                         dateSetListener, lastSelectedYear, lastSelectedMonth, lastSelectedDayOfMonth);
                 datePickerDialog.show();
             }
@@ -65,10 +79,11 @@ public class DatePickerActivity extends AppCompatActivity {
                         lastSelectedYear = year;
                         lastSelectedMonth = month;
                         lastSelectedDayOfMonth = dayOfMonth;
+
                     }
                 };
                 DatePickerDialog datePickerDialog;
-                datePickerDialog = new DatePickerDialog(DatePickerActivity.this,
+                datePickerDialog = new DatePickerDialog(DatePickerActivity.this, android.R.style.Theme_Holo_Light_Dialog,
                         dateSetListener, lastSelectedYear, lastSelectedMonth, lastSelectedDayOfMonth);
                 datePickerDialog.show();
             }
@@ -89,12 +104,24 @@ public class DatePickerActivity extends AppCompatActivity {
                     Toast.makeText(DatePickerActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    voucherID = getIntent().getIntExtra("voucherID", 0);
+                    voucherID = getIntent().getIntExtra("voucherID", 1);
                     // insert nốt dữ liệu vào db
-                   database.QueryData("update vouchers set vouchercode = "+codeVoucher.getText().toString()+",  startdate ="+startDate.getText().toString()+" , enddate = "+endDate.getText().toString()+" WHERE voucherid = "+voucherID+";");
-                    // chuyển về trạng thái ban đầu
-                    setResult(RESULT_OK, null);
-                    finish();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    try {
+                        startDateTime = simpleDateFormat.parse(startDate.getText().toString()).getTime();
+                        endDateTime = simpleDateFormat.parse(endDate.getText().toString()).getTime();
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    if (startDateTime> endDateTime){
+                        Toast.makeText(DatePickerActivity.this, "Không hợp lệ", Toast.LENGTH_SHORT).show();
+                    }else{
+                        database.QueryData("update vouchers set vouchercode = '"+codeVoucher.getText().toString()+"',  startdate ="+startDateTime+" , enddate = "+endDateTime+" WHERE voucherid = "+voucherID+";");
+                        setResult(RESULT_OK, null);
+                        finish();
+                    }
+
                 }
 
             }

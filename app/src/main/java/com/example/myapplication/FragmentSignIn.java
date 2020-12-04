@@ -23,7 +23,7 @@ public class FragmentSignIn extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // create a new database sqlite
-        database = new Database(getContext(), "vd12.sqlite", null,1);
+        database = new Database(getContext(), "ex1.sqlite", null,1);
         // create table account : Detail about Account
         database.QueryData("create table if not exists account (accountId integer primary key AUTOINCREMENT, phoneNumber VARCHAR(200) not null, account_type varchar(20) not null, userName varchar(50) not null unique, password varchar(20)  not null) " );
         // create table dish : Detail about dish
@@ -35,7 +35,7 @@ public class FragmentSignIn extends Fragment {
 //        // create table orderdetail :
        database.QueryData("create table if not exists orderdetails(orderId integer not null, dishId integer not null, accountId integer not null,  quantityOrder integer not null,date datetime not null,  primary key (orderId, dishId))");
 //        // create table discount : Detail  about discount
-       database.QueryData("create table if not exists  vouchers(voucherId integer primary key AUTOINCREMENT,voucherCode varchar(255),  title varchar(255) not null, discount integer not null, startdate datetime, enddate datetime) ");
+       database.QueryData("create table if not exists  vouchers(voucherId integer primary key AUTOINCREMENT,voucherCode varchar(255),  title varchar(255) not null, discount integer not null, startdate long, enddate long) ");
 // create conditions : một voucher có thể có nhiều điều kiện mà
        database.QueryData("create table if NOT EXISTS conditions (voucherId integer, condition text, FOREIGN KEY (voucherId) REFERENCES vouchers(voucherId));");
 //        // create table payment  : Detail for payment

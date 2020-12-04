@@ -33,6 +33,7 @@ public class ManagerFragmentHomePage extends Fragment {
     Button addFood;
     Button addTable;
     Button payment;
+    Button voucher;
     Button addVoucher;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,6 +50,13 @@ public class ManagerFragmentHomePage extends Fragment {
         monmoi = (Button) rootView.findViewById(R.id.manage_new_food);
         payment = (Button) rootView.findViewById(R.id.manager_payment);
         addVoucher = (Button) rootView.findViewById(R.id.add_voucher);
+        voucher = (Button) rootView.findViewById(R.id.voucher);
+        voucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ViewVoucherActivity.class));
+            }
+        });
         addVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,9 +99,6 @@ public class ManagerFragmentHomePage extends Fragment {
                 DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
                 recyclerView.addItemDecoration(decoration);
                 ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
-                // edit list hot food
-                // món hot sẽ là món được đặt với số lượng nhiều nhất trong nhà hàng
-                //         database.QueryData("create table if not exists dish (dishId integer primary key AUTOINCREMENT, dishName varchar(200) not null, group_id integer not null, price double, image varchar(200))");//database.QueryData("Insert into  staff_group values (0, 'Staff'), (1, 'Management')");
                 Cursor cursor = database.getData("SELECT * from dish where dishId in (Select dishId from orderdetails group by dishId order by sum(orderdetails.quantityOrder) desc) limit  5 ");
                 while (cursor.moveToNext()) {
                     hotArrayList.add(new MenuFoodItem(
@@ -103,12 +108,6 @@ public class ManagerFragmentHomePage extends Fragment {
                             cursor.getDouble(3),
                             cursor.getBlob(4)));
                 }
-//        hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
                 RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
                 recyclerView.setAdapter(adapter);
                 return rootView;
