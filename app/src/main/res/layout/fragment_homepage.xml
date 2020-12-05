@@ -34,84 +34,57 @@
             android:id="@+id/line1"
             android:layout_height="100dp">
 
+
+            <Button
+                android:id="@+id/new_food"
+                android:layout_width="120sp"
+                android:layout_height="70sp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/home_item"
+                android:text="Món mới"
+                android:textColor="#fff"></Button>
+
+            <Button
+                android:id="@+id/khuyen_mai"
+                android:layout_width="120sp"
+                android:layout_height="70sp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="55dp"
+                android:background="@drawable/home_item"
+                android:text="Khuyến mãi"
+                android:textColor="#fff"></Button>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/line1"
+            android:layout_marginTop="11dp">
+
             <Button
                 android:id="@+id/thanh_toan"
                 android:layout_width="120sp"
                 android:layout_height="70sp"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/home_item"
-                android:text="Thanh toán"
-                android:textColor="#fff"
-                android:layout_marginTop="20dp"
-                ></Button>
-
-
-
-
-            <Button
-                android:id="@+id/thong_bao"
-                android:layout_width="120sp"
-                android:layout_height="70sp"
-                android:layout_centerInParent="true"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/home_item"
-                android:text="Thông báo"
-                android:textColor="#fff"
-                android:layout_alignParentRight="true"></Button>
-
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/line2"
-            android:layout_below="@id/line1">
-            <Button
-                android:layout_width="120sp"
-                android:layout_height="70sp"
-                android:text="Món mới"
-                android:layout_marginLeft="50dp"
-                android:layout_centerVertical="true"
-                android:textColor="#fff"
-                android:id="@+id/new_food"
-                android:background="@drawable/home_item"></Button>
-            <Button
-                android:layout_width="120sp"
-                android:layout_height="70sp"
-                android:background="@drawable/home_item"
-                android:id="@+id/khuyen_mai"
-                android:text="Khuyến mãi"
-                android:textColor="#fff"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginStart="146dp"
+                android:layout_marginLeft="146dp"
+                android:layout_marginEnd="145dp"
+                android:layout_marginRight="145dp"
+                android:background="@drawable/home_item"
+                android:text="Thanh toán: "
+                android:textColor="#fff"></Button>
 
-                android:layout_marginRight="50sp"
-                android:layout_centerVertical="true"
 
-                ></Button>
-<!--            <Button-->
-<!--                android:layout_width="70sp"-->
-<!--                android:layout_height="70sp"-->
-<!--                android:textColor="#fff"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:text="Ăn vặt"-->
-<!--                android:background="@drawable/home_item"-->
-
-<!--                android:layout_centerHorizontal="true"-->
-<!--                ></Button>-->
-
-<!--            <Button-->
-<!--                android:layout_width="70sp"-->
-<!--                android:layout_height="70sp"-->
-<!--                android:background="@drawable/home_item"-->
-
-<!--                android:text="Cơm"-->
-<!--                android:textColor="#fff"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:layout_marginRight="30dp"-->
-<!--                android:layout_centerVertical="true"-->
-
-<!--                ></Button>-->
         </RelativeLayout>
 
         <TextView
@@ -135,7 +108,6 @@
            >
 
         </androidx.recyclerview.widget.RecyclerView>
-
 
 
     </RelativeLayout>

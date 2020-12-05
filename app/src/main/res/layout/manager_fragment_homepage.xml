@@ -29,63 +29,6 @@
         android:layout_below="@id/manager_brand_text"
         android:layout_marginTop="19dp"
         android:background="#fff">
-        <!--            <Button-->
-        <!--                android:layout_width="70sp"-->
-        <!--                android:layout_height="70sp"-->
-        <!--                android:background="@drawable/manager_items"-->
-
-        <!--                android:text="Thông kê"-->
-        <!--                android:textColor="#fff"-->
-        <!--                android:layout_alignParentLeft="true"-->
-        <!--                android:layout_marginLeft="40dp"-->
-
-        <!--                android:id="@+id/thong_ke"-->
-        <!--                android:layout_marginTop="70dp"-->
-        <!--                ></Button>-->
-        <!--            <Button-->
-        <!--                android:layout_width="70sp"-->
-        <!--                android:layout_height="70sp"-->
-        <!--                android:text="Thêm thông báo"-->
-        <!--                android:layout_alignParentRight="true"-->
-        <!--                android:layout_marginRight="40dp"-->
-        <!--               android:layout_centerHorizontal="true"-->
-        <!--                android:textColor="#fff"-->
-
-        <!--                android:id="@+id/add_announce"-->
-
-        <!--                android:layout_marginTop="70dp"-->
-        <!--                android:layout_marginBottom="30dp"-->
-        <!--                android:background="@drawable/manager_items"></Button>-->
-        <!--            <Button-->
-        <!--                android:layout_width="120sp"-->
-        <!--                android:layout_height="70sp"-->
-        <!--                android:textColor="#fff"-->
-        <!--                android:id="@+id/manager_add_food_btn"-->
-        <!--                android:layout_below="@id/add_announce"-->
-        <!--                android:layout_alignParentLeft="true"-->
-        <!--                android:layout_marginLeft="40dp"-->
-
-        <!--                android:background="@drawable/manager_items"-->
-        <!--                android:text="Thêm món"-->
-        <!--                android:layout_marginTop="40dp"-->
-        <!--                ></Button>-->
-
-        <!--            <Button-->
-        <!--                android:layout_width="120sp"-->
-        <!--                android:layout_height="70sp"-->
-        <!--                android:background="@drawable/manager_items"-->
-
-        <!--                android:text="Thêm bàn"-->
-        <!--                android:layout_alignParentRight="true"-->
-        <!--                android:textColor="#fff"-->
-
-        <!--                android:layout_below="@id/thong_ke"-->
-        <!--                android:id="@+id/manager_add_table_btn"-->
-        <!--                android:layout_marginTop="40dp"-->
-        <!--                android:layout_marginRight="40dp"-->
-
-
-        <!--                ></Button>-->
         <Button
             android:id="@+id/manager_add_food_btn"
             android:layout_width="70sp"
@@ -98,24 +41,13 @@
             android:text="Thêm món"></Button>
 
         <Button
-            android:id="@+id/add_announce"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="210dp"
-            android:layout_marginRight="210dp"
-            android:background="@drawable/manager_items"
-            android:text="Thêm thông báo"></Button>
-
-        <Button
             android:id="@+id/add_voucher"
             android:layout_width="70sp"
             android:layout_height="70sp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="107dp"
-            android:layout_marginRight="107dp"
+            android:layout_marginEnd="166dp"
+            android:layout_marginRight="166dp"
             android:background="@drawable/manager_items"
             android:text="Thêm Khuyến mãi"></Button>
 
@@ -125,23 +57,10 @@
             android:layout_height="70sp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
             android:background="@drawable/manager_items"
             android:text="Thêm bàn"></Button>
-
-        <Button
-            android:id="@+id/manage_announce"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="105dp"
-            android:layout_marginEnd="210dp"
-            android:layout_marginRight="210dp"
-            android:background="@drawable/home_item"
-            android:text="Thông báo"></Button>
 
         <Button
             android:id="@+id/manage_new_food"
@@ -164,8 +83,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="105dp"
-            android:layout_marginEnd="110dp"
-            android:layout_marginRight="107dp"
+            android:layout_marginEnd="166dp"
+            android:layout_marginRight="166dp"
             android:background="@drawable/home_item"
             android:text="Khuyến mãi"></Button>
 
@@ -176,9 +95,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="105dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginTop="106dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginRight="26dp"
             android:background="@drawable/home_item"
             android:text="Thanh toán"></Button>
     </RelativeLayout>

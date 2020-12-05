@@ -22,6 +22,9 @@ import static com.example.myapplication.FragmentSignIn.database;
 
 public class FragmentHomePage extends Fragment {
     int accountId;
+    Button thanhToan;
+    Button monmoi;
+    Button voucher;
     public void getInfor(int accountId) {
         this.accountId = accountId;
     }
@@ -33,7 +36,9 @@ public class FragmentHomePage extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_homepage, container, false);
 
-        Button thanhToan = (Button)rootView.findViewById(R.id.thanh_toan);
+        thanhToan = (Button)rootView.findViewById(R.id.thanh_toan);
+        monmoi = (Button) rootView.findViewById(R.id.new_food);
+        voucher = (Button) rootView.findViewById(R.id.khuyen_mai);
         thanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +47,19 @@ public class FragmentHomePage extends Fragment {
                 startActivityForResult(intentToPayment,65);
             }
         });
-
+        voucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ViewVoucherActivity.class));
+            }
+        });
+        monmoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ActivityNewFood.class);
+                startActivity(intent);
+            }
+        });
             RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recycle_view_hot_items);
             recyclerView.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);

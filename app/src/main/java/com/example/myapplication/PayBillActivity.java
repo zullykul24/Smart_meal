@@ -85,10 +85,9 @@ public class PayBillActivity extends AppCompatActivity {
         payBillItemArrayList = new ArrayList<>();
 
         tablename.setText("Bàn số "+ tableId);
-
-        Cursor cursor = database.getData("select dishname, quantityOrder, price, orderdetails.orderId from orderdetails join orders  on orderdetails.orderId = orders.orderid " +
+        Cursor cursor = database.getData("select dishname, quantityOrder, price, orderdetails.orderId as oId  from orderdetails join orders  on orderdetails.orderId = orders.orderid " +
                 " join dish on orderdetails.dishid = dish.dishid " +
-                " where tableid  =  " +  tableId);
+                "where oId = (select max(orderId) from orders where tableId = "+tableId+")");
         while(cursor.moveToNext()){
             payBillItemArrayList.add(new PayBillItem(  cursor.getString(0), cursor.getInt(1), cursor.getDouble(2) ));
             orderId = cursor.getInt(3);

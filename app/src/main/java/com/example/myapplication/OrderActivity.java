@@ -45,11 +45,9 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
-        banId = getIntent().getIntExtra("Bàn id", 0);
+        banId = getIntent().getIntExtra("Bàn id", 1);
         tableName = (TextView)findViewById(R.id.nameOfIntentedTable);
         themMonBtn = (Button)findViewById(R.id.themMonBtn);
-
-
         // là cái thanh cuộn các món ở dưới.
         listViewChosenFood = (SwipeMenuListView) findViewById(R.id.listViewChosenFood);
         View footer = getLayoutInflater().inflate(R.layout.footer, null);
@@ -69,16 +67,14 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                  String banStatus = getIntent().getStringExtra("Bàn Status");
-                 // Nếu chưa order bao giờ thì thêm orders vào trong cơ sở dữ liệu
                  if(banStatus.equals("Empty") || banStatus.equals("Booked")){
                      if(!arrayListChosenFood.isEmpty()){
                          if(note.getText().toString().trim().length()>0)
                          {
-                             database.QueryData("insert into orders values(null,"+banId+","+note.getText().toString()+" )");
+                             database.QueryData("insert into orders values(null,"+banId+",'"+note.getText().toString()+"' )");
                          }else {
                              database.QueryData("insert into orders values(null,"+banId+",null )");
                          }
-                         // set trạng thái của bàn là not empty
                          database.QueryData("update group_table set status = 'Not Empty'  where tableId = " + banId + ";");
                      }
                 }
@@ -115,7 +111,6 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Toast.makeText(OrderActivity.this, note.getText().toString(),Toast.LENGTH_SHORT).show();
             }
         });
         Intent intent = getIntent();
@@ -167,11 +162,6 @@ public class OrderActivity extends AppCompatActivity {
                         deleteItem.setTitleColor(Color.WHITE);
                         // add to menu
                         menu.addMenuItem(deleteItem);
-
-
-                        //có thể setIcon
-
-
                     }
                 };
                 listViewChosenFood.setMenuCreator(creator);

@@ -145,7 +145,6 @@ public class ManagerFragmentHomePage extends Fragment {
                                 database.QueryData("insert into group_table values (null, " + num + ", 'Empty')");
                                 dialog.dismiss();
                             }
-
                         } else {
                             Toast.makeText(getContext(), "Vui lòng điền số lượng ghế", Toast.LENGTH_SHORT).show();
                         }
