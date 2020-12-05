@@ -2,6 +2,7 @@ package com.example.myapplication;
 import android.database.Cursor;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,23 +21,24 @@ import java.util.ArrayList;
 import static com.example.myapplication.FragmentSignIn.database;
 
 public class FragmentHomePage extends Fragment {
+    int accountId;
+    public void getInfor(int accountId) {
+        this.accountId = accountId;
+    }
+    public  int getAccountId(){
+        return this.accountId;
+    }
     @Nullable
     @Override
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_homepage, container, false);
-      /*  rootView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });*/
 
         Button thanhToan = (Button)rootView.findViewById(R.id.thanh_toan);
         thanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentToPayment = new Intent(getActivity().getApplicationContext(),PaymentActivity.class);
+                intentToPayment.putExtra("accountId", getAccountId());
                 startActivityForResult(intentToPayment,65);
             }
         });
@@ -56,12 +58,6 @@ public class FragmentHomePage extends Fragment {
                     cursor.getDouble(3),
                     cursor.getBlob(4)));
         }
-//            hotArrayList.add(new MenuFoodItem("Món 1", 20.000));
-//            hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
-//        hotArrayList.add(new MenuFoodItem("Món 2", 25.000));
             RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
             recyclerView.setAdapter(adapter);
 

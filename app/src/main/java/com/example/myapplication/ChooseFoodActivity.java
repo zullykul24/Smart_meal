@@ -33,18 +33,6 @@ public class ChooseFoodActivity extends AppCompatActivity {
 
         listViewFood = (ListView)findViewById(R.id.listViewFoodMenu);
         menuItemArrayList = new ArrayList<>();
-//        menuItemArrayList.add(new MenuFoodItem("Lẩu đầu cá",180.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Lẩu tôm",200.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Lẩu hải sản",200.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Gỏi cuốn",30.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Bún trộn",40.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Cơm chiên",50.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Rau xào",30.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Sương sa",15.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Chè trái cây",22.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Trái cây",30.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Bánh Flan",12.000, R.drawable.mango));
-//        menuItemArrayList.add(new MenuFoodItem("Chè đậu xanh",14.000, R.drawable.mango));
         Cursor cursor = database.getData("SELECT * from dish");
         while (cursor.moveToNext()){
             menuItemArrayList.add(new MenuFoodItem(
@@ -87,8 +75,6 @@ public class ChooseFoodActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intentSendFoodToOrderActivity = new Intent(ChooseFoodActivity.this, OrderActivity.class);
                 MenuFoodItem item = new MenuFoodItem(menuItemArrayList.get(position).getDish_id(), menuItemArrayList.get(position).getDish_name(), menuItemArrayList.get(position).getGroup_id(),menuItemArrayList.get(position).getPrice(), menuItemArrayList.get(position).getImage());
-
-                Toast.makeText(ChooseFoodActivity.this, item.getDish_name()+""+item.getPrice().toString(),Toast.LENGTH_SHORT).show();
                 intentSendFoodToOrderActivity.putExtra("abc", (Serializable) item);
                 setResult(Activity.RESULT_OK, intentSendFoodToOrderActivity);
                 finish();

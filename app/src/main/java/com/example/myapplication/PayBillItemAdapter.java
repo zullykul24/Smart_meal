@@ -57,19 +57,13 @@ public class PayBillItemAdapter extends BaseAdapter {
         } else {
             holder = (PayBillItemAdapter.ViewHolder) convertView.getTag();
         }
-
-
-
-        //gán giá trị
-
         PayBillItem payBillItem = payBillItemList.get(position);
 
         holder.STT.setText(String.valueOf(payBillItem.getSTT()));
         holder.dishName.setText(payBillItem.getDishName());
         holder.SL.setText(String.valueOf(payBillItem.getSL()));
-        holder.priceEach.setText(payBillItem.getPriceEach());
-        holder.priceTotal.setText(payBillItem.getPriceTotal());
-
+        holder.priceEach.setText(""+ payBillItem.getPriceEach());
+        holder.priceTotal.setText(""+payBillItem.getPriceTota());
         return convertView;
     }
 }

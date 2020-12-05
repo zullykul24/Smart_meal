@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         final ManagerFragmentHomePage managerFragmentHomePage = new ManagerFragmentHomePage();
         fragment4.getInfor(intent.getStringExtra("name"), intent.getStringExtra("account_type"));
         fragment2.getInfor(intent.getIntExtra("accountId", 0));
+        fragment1.getInfor(intent.getIntExtra("accountId", 0));
+        managerFragmentHomePage.getInfor(intent.getIntExtra("accountId", 0));
         final String accountType = intent.getStringExtra("account_type");
         if(accountType.equals("Nhân viên")){
         fragmentManager.beginTransaction().add(R.id.rela, fragment1, "1").commit();}

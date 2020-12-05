@@ -89,7 +89,6 @@ public class OrderActivity extends AppCompatActivity {
                     orderId = cursor.getInt(0);
                     no = cursor.getString(2);
                 }
-                Log.d("note", "" + no + banId);
 
                 for( FoodOrderItem food : arrayListChosenFood){
                         Cursor cursor1 = database.getData("SELECT * from orderdetails where orderId = " + orderId + " and dishId = " + food.getDish_id());
@@ -123,7 +122,7 @@ public class OrderActivity extends AppCompatActivity {
         String nameOfTableSelected = intent.getStringExtra("Tên bàn");
         tableName.setText(nameOfTableSelected);
 
-        MenuFoodItem foodItem = (MenuFoodItem) intent.getSerializableExtra("abc");
+        MenuFoodItem v = (MenuFoodItem) intent.getSerializableExtra("abc");
 
         arrayListChosenFood = new ArrayList<>();
 

@@ -1,17 +1,17 @@
 package com.example.myapplication;
 
 public class PaymentTableItem {
-    private String tableName;
+    private int tableName;
 
-    public PaymentTableItem(String tableName) {
+    public PaymentTableItem(int tableName) {
         this.tableName = tableName;
     }
 
-    public String getTableName() {
+    public int getTableName() {
         return tableName;
     }
 
-    public void setTableName(String tableName) {
+    public void setTableName(int tableName) {
         this.tableName = tableName;
     }
 }

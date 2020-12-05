@@ -4,16 +4,8 @@ public class PayBillItem {
     private int STT;
     private String dishName;
     private int SL;
-    private String priceEach;
-    private String priceTotal;
-
-    public PayBillItem(int STT, String dishName, int SL, String priceEach) {
-        this.STT = STT;
-        this.dishName = dishName;
-        this.SL = SL;
-        this.priceEach = priceEach;
-        this.priceTotal = String.valueOf(SL * Integer.parseInt(priceEach));
-    }
+    private double priceEach;
+    private double priceTota;
 
     public int getSTT() {
         return STT;
@@ -39,19 +31,28 @@ public class PayBillItem {
         this.SL = SL;
     }
 
-    public String getPriceEach() {
+    public double getPriceEach() {
         return priceEach;
     }
 
-    public void setPriceEach(String priceEach) {
+    public void setPriceEach(double priceEach) {
         this.priceEach = priceEach;
     }
 
-    public String getPriceTotal() {
-        return priceTotal;
+    public double getPriceTota() {
+        return priceTota;
     }
 
-    public void setPriceTotal(String priceTotal) {
-        this.priceTotal = priceTotal;
+    public void setPriceTota(double priceTota) {
+        this.priceTota = priceTota;
     }
+
+    public PayBillItem(String dishName, int SL, double priceEach) {
+        this.dishName = dishName;
+        this.SL = SL;
+        this.priceEach = priceEach;
+        this.priceTota = this.SL * priceEach;
+    }
+
+
 }

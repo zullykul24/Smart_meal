@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -35,6 +36,13 @@ public class ManagerFragmentHomePage extends Fragment {
     Button payment;
     Button voucher;
     Button addVoucher;
+    int accountId;
+    public void getInfor(int accountId) {
+        this.accountId = accountId;
+    }
+    public  Integer getAccountId(){
+        return this.accountId;
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView =  inflater.inflate(R.layout.manager_fragment_homepage, container, false);
@@ -75,6 +83,8 @@ public class ManagerFragmentHomePage extends Fragment {
                     @Override
                     public void onClick(View v) {
                         Intent intentToPayment = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
+                        intentToPayment.putExtra("accountId", getAccountId());
+                        Log.d("check", getAccountId()+" ");
                         startActivityForResult(intentToPayment, 65);
                     }
                 });

@@ -1,10 +1,11 @@
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class VoucherItem {
+public class VoucherItem  implements Serializable {
     private int voucherId;
     private String voucherCode;
     private int discount;

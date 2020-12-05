@@ -58,7 +58,7 @@ public class PaymentTableItemAdapter extends BaseAdapter {
         //gán giá trị
 
         PaymentTableItem paymentTableItem = paymentTableItemList.get(position);
-        holder.name.setText(paymentTableItem.getTableName());
+        holder.name.setText("Bàn " + paymentTableItem.getTableName());
 
         return convertView;
     }
