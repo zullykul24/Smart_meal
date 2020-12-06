@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
 
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="15dp">
@@ -18,15 +19,15 @@
             android:gravity="center"
             android:textSize="35sp"></TextView>
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:scaleType="fitXY"
+            android:scaleType="centerInside"
             android:id="@+id/payment_backtohome_btn"
+    android:layout_marginLeft="20dp"
 
-            android:adjustViewBounds="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/icon_back"></ImageButton>
+           android:background="#fff"
+            android:src="@drawable/left_arrow"></ImageButton>
     </RelativeLayout>
     <ListView
         android:id="@+id/list_payment_item"

@@ -46,7 +46,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentToHome = new Intent(PaymentActivity.this, MainActivity.class);
-                setResult(RESULT_OK, intentToHome);
+                setResult(65, intentToHome);
                 finish();
             }
         });

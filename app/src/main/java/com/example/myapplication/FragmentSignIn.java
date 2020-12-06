@@ -3,11 +3,15 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,6 +22,7 @@ import androidx.fragment.app.Fragment;
 public class FragmentSignIn extends Fragment {
     public static Database database;
     Button logInBtn;
+    CheckBox togglePassword;
     EditText  username, password;
     @Nullable
     @Override
@@ -47,13 +52,27 @@ public class FragmentSignIn extends Fragment {
         logInBtn = rootView.findViewById(R.id.loginButton);
         username = (EditText) rootView.findViewById(R.id.usernameEditText);
         password = (EditText) rootView.findViewById(R.id.passwordEditText);
+        togglePassword = (CheckBox) rootView.findViewById(R.id.show_hide_password_signin);
+        togglePassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                }
+                else {
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+                }
+            }
+        });
 
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Cursor dataAccount = database.getData("SELECT * FROM account where userName = '"+username.getText().toString()+"' "); // trả về một cái dãy các account nè
-                Toast.makeText(getContext(), "" + dataAccount.getCount(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), "" + dataAccount.getCount(), Toast.LENGTH_SHORT).show();
                 if(dataAccount.getCount()>0)
                 {
                     while (dataAccount.moveToNext()){
@@ -78,6 +97,7 @@ public class FragmentSignIn extends Fragment {
                     password.setText(null);
                     username.setText(null);
                     Toast.makeText(getContext(), "UserName không tồn tại", Toast.LENGTH_SHORT).show();
+                    username.requestFocus();
                 }
             }
         });

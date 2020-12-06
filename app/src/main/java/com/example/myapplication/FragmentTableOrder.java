@@ -111,11 +111,12 @@ public class FragmentTableOrder extends Fragment {
                     intentToOrder.putExtra("Bàn id", tableItemArrayList.get(position).getId());
                     intentToOrder.putExtra("Bàn Status", tableItemArrayList.get(position).getStatus());
                     intentToOrder.putExtra("AccountID",  getAccountID());
-                    startActivity(intentToOrder);
+                    startActivityForResult(intentToOrder, 114);
                // }
             }
         });
         registerForContextMenu(gridViewTable);
+
 
 
         return rootView;

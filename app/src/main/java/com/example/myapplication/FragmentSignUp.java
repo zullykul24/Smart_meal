@@ -7,6 +7,9 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.text.method.TransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,6 +37,7 @@ public class FragmentSignUp extends Fragment {
     EditText phoneNumber;
     EditText password;
     Spinner acc_type;
+    CheckBox togglePassword;
     EditText retypePassword;
     Button signUp;
     String account_type = "Staff";
@@ -63,7 +69,21 @@ public class FragmentSignUp extends Fragment {
         password =  (EditText) view.findViewById(R.id.passwordEditTextSignUp);
         phoneNumber =  (EditText) view.findViewById(R.id.phoneNumber);
         retypePassword = (EditText) view.findViewById(R.id.retypePass);
+        togglePassword = (CheckBox) view.findViewById(R.id.show_hide_password_signup);
         acc_type.setAdapter(adapter);
+        togglePassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    retypePassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                else {
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    retypePassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
         signUp = (Button)  view.findViewById(R.id.signUpButtoncommit);
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +114,9 @@ public class FragmentSignUp extends Fragment {
                         password.setHintTextColor(Color.RED);
                     } else {
                         retypePassword.setText(null);
-                        retypePassword.setHint("Bạn chắc chứ ??");
-                        retypePassword.setHintTextColor(Color.RED);
+                       // retypePassword.setHint("Bạn chắc chứ ??");
+                        //retypePassword.setHintTextColor(Color.RED);
+                        Toast.makeText(getContext(), "Mật khẩu nhập lại không đúng\nVui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -76,4 +76,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+/// prevent back to app after sign out
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

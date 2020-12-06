@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:focusable="true"
+    android:clickable="true"
 
     android:background="#fff"
     android:layout_height="match_parent"
@@ -65,6 +67,8 @@
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
 
        android:layout_below="@id/top_display"
         android:layout_width="match_parent"

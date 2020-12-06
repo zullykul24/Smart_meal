@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,12 +32,12 @@ import static com.example.myapplication.FragmentSignIn.database;
 public class ManagerFragmentHomePage extends Fragment {
     @Nullable
 
-    Button monmoi;
-    Button addFood;
-    Button addTable;
-    Button payment;
-    Button voucher;
-    Button addVoucher;
+    ImageButton monmoi;
+    ImageButton addFood;
+    ImageButton addTable;
+    ImageButton payment;
+    ImageButton voucher;
+    ImageButton addVoucher;
     int accountId;
     public void getInfor(int accountId) {
         this.accountId = accountId;
@@ -53,12 +55,12 @@ public class ManagerFragmentHomePage extends Fragment {
             }
         });
         final FragmentManager fragmentManager = getFragmentManager();
-        addFood = (Button) rootView.findViewById(R.id.manager_add_food_btn);
-        addTable = (Button) rootView.findViewById(R.id.manager_add_table_btn);
-        monmoi = (Button) rootView.findViewById(R.id.manage_new_food);
-        payment = (Button) rootView.findViewById(R.id.manager_payment);
-        addVoucher = (Button) rootView.findViewById(R.id.add_voucher);
-        voucher = (Button) rootView.findViewById(R.id.voucher);
+        addFood = (ImageButton) rootView.findViewById(R.id.manager_add_food_btn);
+        addTable = (ImageButton) rootView.findViewById(R.id.manager_add_table_btn);
+        monmoi = (ImageButton) rootView.findViewById(R.id.manage_new_food);
+        payment = (ImageButton) rootView.findViewById(R.id.manager_payment);
+        addVoucher = (ImageButton) rootView.findViewById(R.id.add_voucher);
+        voucher = (ImageButton) rootView.findViewById(R.id.voucher);
         voucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -54,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
         managerFragmentHomePage.getInfor(intent.getIntExtra("accountId", 0));
         final String accountType = intent.getStringExtra("account_type");
         if(accountType.equals("Nhân viên")){
-        fragmentManager.beginTransaction().add(R.id.rela, fragment1, "1").commit();}
+        fragmentManager.beginTransaction().add(R.id.fragment_container, fragment1, "1").addToBackStack("1").commit();}
         else {
             /// nếu là quản lý thì...
-            fragmentManager.beginTransaction().add(R.id.rela, managerFragmentHomePage, "5").commit();
+            fragmentManager.beginTransaction().add(R.id.fragment_container, managerFragmentHomePage, "5").addToBackStack("5").commit();
         }
-        fragmentManager.beginTransaction().add(R.id.rela, fragment4, "4").hide(fragment4);
+
         navbar.setOnNavigationItemSelectedListener (new BottomNavigationView.OnNavigationItemSelectedListener(){
 
             @Override
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             fragmentManager.beginTransaction()
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
-                                    .replace(R.id.rela, fragment1)
+                                    .replace(R.id.fragment_container, fragment1,"1")
                                     .addToBackStack(null)
                                     .commit();
 
@@ -82,48 +82,48 @@ public class MainActivity extends AppCompatActivity {
                             fragmentManager.beginTransaction()
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
-                                    .replace(R.id.rela, managerFragmentHomePage)
+                                    .replace(R.id.fragment_container, managerFragmentHomePage, "5")
                                     .addToBackStack(null)
 
                                     .commit();
 
                         }
 
-                        return true;
+                        break;
 
                     case R.id.nav_2:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
-                                .replace(R.id.rela, fragment2)
+                                .replace(R.id.fragment_container, fragment2, "2")
                                 .addToBackStack(null)
 
                                 .commit();
 
-                        return true;
+                        break;
                     case R.id.nav_3:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
-                                .replace(R.id.rela,fragment3)
+                                .replace(R.id.fragment_container,fragment3, "3")
                                 .addToBackStack(null)
 
                                 .commit();
 
-                        return true;
+                        break;
                     case R.id.nav_4:
                         fragmentManager.beginTransaction()
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
-                                .replace(R.id.rela,fragment4)
+                                .replace(R.id.fragment_container,fragment4, "4")
                                 .addToBackStack(null)
 
                                 .commit();
 
-                        return true;
+                        break;
                 }
 
-                return false;
+                return true;
             }
         });
 

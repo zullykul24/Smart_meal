@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class OrderActivity extends AppCompatActivity {
     SwipeMenuListView listViewChosenFood;
     Button btn_ok ;
     Button btn_cancel ;
+    ImageButton backToFragmentTableOrder;
     ArrayList<FoodOrderItem> arrayListChosenFood;
     EditText note ;
     FoodOrderItemAdapter adapterChosenFood;
@@ -48,6 +50,7 @@ public class OrderActivity extends AppCompatActivity {
         banId = getIntent().getIntExtra("Bàn id", 1);
         tableName = (TextView)findViewById(R.id.nameOfIntentedTable);
         themMonBtn = (Button)findViewById(R.id.themMonBtn);
+        backToFragmentTableOrder = (ImageButton)findViewById(R.id.back_to_fragment_table_order);
         // là cái thanh cuộn các món ở dưới.
         listViewChosenFood = (SwipeMenuListView) findViewById(R.id.listViewChosenFood);
         View footer = getLayoutInflater().inflate(R.layout.footer, null);
@@ -128,7 +131,16 @@ public class OrderActivity extends AppCompatActivity {
                 startActivityForResult(intentToChooseFood, 999);
             }
         });
+        backToFragmentTableOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToFragmentTableOrder = new Intent(OrderActivity.this, MainActivity.class);
+                setResult(114, intentToFragmentTableOrder);
+                finish();
+            }
+        });
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -176,6 +188,7 @@ public class OrderActivity extends AppCompatActivity {
                         return false;
                     }
                 });
+
 
             }
         }

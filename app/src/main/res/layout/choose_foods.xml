@@ -4,25 +4,49 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#fff"
-    android:padding="10dp"
-    android:layout_height="match_parent">
-    <EditText
-        android:drawableLeft="@drawable/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:background="@null"
 
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/choose_food_top_panel"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:id="@+id/back_to_order_activity"
+            android:scaleType="centerInside"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+
+            android:background="#fff"
+            android:src="@drawable/left_arrow"></ImageButton>
+    <EditText
+
+        android:layout_width="300dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
 
 
         android:id="@+id/searchText"
         android:hint="Tên món ăn"
 
-       android:layout_alignParentTop="true"
 
         android:gravity="center"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorAccent"
+        android:id="@+id/divider"
+        android:layout_below="@id/choose_food_top_panel"></RelativeLayout>
     <ListView
-        android:layout_below="@id/searchText"
+        android:padding="5dp"
+        android:layout_below="@id/divider"
         android:id="@+id/listViewFoodMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

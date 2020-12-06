@@ -25,81 +25,164 @@
     <RelativeLayout
         android:id="@+id/manager_items"
         android:layout_width="match_parent"
-        android:layout_height="179dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/manager_brand_text"
         android:layout_marginTop="19dp"
         android:background="#fff">
-        <Button
+        <ImageButton
             android:id="@+id/manager_add_food_btn"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="309dp"
-            android:layout_marginRight="309dp"
-            android:background="@drawable/manager_items"
-            android:text="Thêm món"></Button>
 
-        <Button
+            android:src="@drawable/add_food"
+            android:scaleType="fitCenter"
+            android:padding="5dp"
+
+            android:layout_marginRight="309dp"
+            android:background="@drawable/home_item"
+           ></ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Thêm món"
+
+            android:layout_below="@id/manager_add_food_btn"
+            android:layout_alignLeft="@id/manager_add_food_btn"
+            android:layout_alignRight="@id/manager_add_food_btn"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:layout_height="wrap_content"></TextView>
+
+        <ImageButton
             android:id="@+id/add_voucher"
             android:layout_width="70sp"
             android:layout_height="70sp"
             android:layout_alignParentEnd="true"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:paddingHorizontal="5dp"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="166dp"
+            android:src="@drawable/new_discount"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
             android:layout_marginRight="166dp"
-            android:background="@drawable/manager_items"
-            android:text="Thêm Khuyến mãi"></Button>
+            android:background="@drawable/home_item"
+            android:text="Thêm Khuyến mãi"></ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Thêm khuyến mãi"
 
-        <Button
+            android:layout_below="@id/add_voucher"
+            android:layout_alignLeft="@id/add_voucher"
+            android:layout_alignRight="@id/add_voucher"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:layout_height="wrap_content"></TextView>
+
+        <ImageButton
             android:id="@+id/manager_add_table_btn"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="23dp"
+
+            android:src="@drawable/new_table"
+            android:scaleType="fitCenter"
+
             android:layout_marginRight="23dp"
-            android:background="@drawable/manager_items"
-            android:text="Thêm bàn"></Button>
-
-        <Button
-            android:id="@+id/manage_new_food"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="105dp"
-            android:layout_marginEnd="309dp"
-            android:layout_marginRight="316dp"
             android:background="@drawable/home_item"
-            android:text="Món mới"></Button>
+           ></ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Thêm bàn"
 
-        <Button
+            android:layout_below="@id/manager_add_table_btn"
+            android:layout_alignLeft="@id/manager_add_table_btn"
+            android:layout_alignRight="@id/manager_add_table_btn"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:layout_height="wrap_content"></TextView>
+
+        <ImageButton
+            android:id="@+id/manage_new_food"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@id/manager_add_food_btn"
+            android:layout_alignRight="@id/manager_add_food_btn"
+            android:background="@drawable/home_item"
+            android:src="@drawable/new_food"
+
+            android:scaleType="fitCenter"
+            android:textSize="12sp"
+
+            android:layout_marginTop="105dp"
+
+
+
+            ></ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Món mới"
+            android:layout_below="@id/manage_new_food"
+            android:layout_alignLeft="@id/manage_new_food"
+            android:layout_alignRight="@id/manage_new_food"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:layout_height="wrap_content"></TextView>
+
+        <ImageButton
             android:id="@+id/voucher"
             android:layout_width="70sp"
             android:layout_height="70sp"
+            android:src="@drawable/discount"
+            android:scaleType="fitCenter"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="105dp"
             android:layout_marginEnd="166dp"
+
             android:layout_marginRight="166dp"
             android:background="@drawable/home_item"
-            android:text="Khuyến mãi"></Button>
+            android:text="Khuyến mãi"></ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Khuyến mãi"
+            android:layout_below="@id/voucher"
+            android:layout_alignLeft="@id/voucher"
+            android:layout_alignRight="@id/voucher"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:layout_height="wrap_content"></TextView>
 
-        <Button
+        <ImageButton
             android:id="@+id/manager_payment"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+
             android:layout_marginTop="106dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginRight="26dp"
+            android:scaleType="fitCenter"
+
+            android:layout_alignRight="@id/manager_add_table_btn"
+            android:layout_alignLeft="@id/manager_add_table_btn"
+            android:src="@drawable/payment"
             android:background="@drawable/home_item"
-            android:text="Thanh toán"></Button>
+           ></ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Thanh toán"
+            android:layout_below="@id/manager_payment"
+            android:layout_alignLeft="@id/manager_payment"
+            android:layout_alignRight="@id/manager_payment"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:layout_height="wrap_content"></TextView>
     </RelativeLayout>
 
     <TextView

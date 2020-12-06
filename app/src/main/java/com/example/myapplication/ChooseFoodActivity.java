@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import static com.example.myapplication.FragmentSignIn.database;
 
 public class ChooseFoodActivity extends AppCompatActivity {
     ListView listViewFood;
+    ImageButton backToOrderActivity;
     MenuFoodItemAdapter menuFoodItemAdapter;
     ArrayList<MenuFoodItem> menuItemArrayList;
     EditText searchText;
@@ -30,6 +32,7 @@ public class ChooseFoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_foods);
         searchText = (EditText)findViewById(R.id.searchText);
+        backToOrderActivity = (ImageButton)findViewById(R.id.back_to_order_activity);
 
         listViewFood = (ListView)findViewById(R.id.listViewFoodMenu);
         menuItemArrayList = new ArrayList<>();
@@ -77,6 +80,14 @@ public class ChooseFoodActivity extends AppCompatActivity {
                 MenuFoodItem item = new MenuFoodItem(menuItemArrayList.get(position).getDish_id(), menuItemArrayList.get(position).getDish_name(), menuItemArrayList.get(position).getGroup_id(),menuItemArrayList.get(position).getPrice(), menuItemArrayList.get(position).getImage());
                 intentSendFoodToOrderActivity.putExtra("abc", (Serializable) item);
                 setResult(Activity.RESULT_OK, intentSendFoodToOrderActivity);
+                finish();
+            }
+        });
+        backToOrderActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentBackToOrderActivity = new Intent(ChooseFoodActivity.this, OrderActivity.class);
+                setResult(999, intentBackToOrderActivity);
                 finish();
             }
         });

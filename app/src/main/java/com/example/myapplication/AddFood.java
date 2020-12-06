@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -27,7 +28,8 @@ import java.io.InputStream;
 import static com.example.myapplication.FragmentSignIn.database;
 
 public class AddFood extends AppCompatActivity {
-    Button btnAdd, btnDele;
+    Button btnAdd;
+    ImageButton btnDele;
     ImageView image;
     EditText name, price;
     ImageButton camera, folder;
@@ -116,7 +118,7 @@ public class AddFood extends AppCompatActivity {
     }
     public  void AnhXa(){
         btnAdd = (Button) findViewById(R.id.buttonThem);
-        btnDele = (Button) findViewById(R.id.buttonhuy);
+        btnDele = (ImageButton) findViewById(R.id.image_btn_huy);
         image = (ImageView) findViewById(R.id.imageFood);
         name = (EditText) findViewById(R.id.nameFood);
         price = (EditText) findViewById(R.id.priceFood);

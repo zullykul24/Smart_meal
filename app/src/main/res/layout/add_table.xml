@@ -28,6 +28,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
+        android:text="6"
         android:hint="Số lượng"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
