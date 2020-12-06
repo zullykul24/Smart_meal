@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -96,7 +97,6 @@ public class FragmentTableOrder extends Fragment {
             }
         }
         tableItemAdapter = new TableItemAdapter(getContext(), R.layout.table_item,tableItemArrayList );
-
         tableItemAdapter.notifyDataSetChanged();
         gridViewTable.setAdapter(tableItemAdapter);
         gridViewTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,13 +116,17 @@ public class FragmentTableOrder extends Fragment {
             }
         });
         registerForContextMenu(gridViewTable);
-
-
-
         return rootView;
     }
-
-
-
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==114&& resultCode == 291){
+            for(TableItem i:tableItemArrayList){
+                if(i.getId() == data.getIntExtra("banId", 1)){
+                    i.setColor("#959523");
+                }
+            }
+        }
+            }
 }

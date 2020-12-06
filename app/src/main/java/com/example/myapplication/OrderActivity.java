@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -43,6 +44,7 @@ public class OrderActivity extends AppCompatActivity {
     long millis=System.currentTimeMillis();
     java.sql.Date date=new java.sql.Date(millis);
     int banId;
+    String banStatus;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,7 @@ public class OrderActivity extends AppCompatActivity {
         tableName = (TextView)findViewById(R.id.nameOfIntentedTable);
         themMonBtn = (Button)findViewById(R.id.themMonBtn);
         backToFragmentTableOrder = (ImageButton)findViewById(R.id.back_to_fragment_table_order);
+        banStatus = getIntent().getStringExtra("Bàn Status");
         // là cái thanh cuộn các món ở dưới.
         listViewChosenFood = (SwipeMenuListView) findViewById(R.id.listViewChosenFood);
         View footer = getLayoutInflater().inflate(R.layout.footer, null);
@@ -59,9 +62,11 @@ public class OrderActivity extends AppCompatActivity {
         btn_ok = (Button) findViewById(R.id.btn_ok_order);
         btn_cancel = (Button) findViewById(R.id.btn_cancel_order);
         note = (EditText) findViewById(R.id.noteFooter);
-       Cursor cursor =  database.getData("Select * from orders where tableId = " + banId);
-        while (cursor.moveToNext()){
-            note.setText(cursor.getString(2));
+        if(!banStatus.equals("Empty") && !banStatus.equals("Booked")) {
+            Cursor cursor = database.getData("Select * from orders where orderId  = (select max(orderId) from orders where tableId = " + banId + ")");
+            while (cursor.moveToNext()) {
+                note.setText(cursor.getString(2));
+            }
         }
         btn_ok = (Button)findViewById(R.id.btn_ok_order);
         btn_cancel = (Button) findViewById(R.id.btn_cancel_order);
@@ -69,7 +74,7 @@ public class OrderActivity extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 String banStatus = getIntent().getStringExtra("Bàn Status");
+
                  if(banStatus.equals("Empty") || banStatus.equals("Booked")){
                      if(!arrayListChosenFood.isEmpty()){
                          if(note.getText().toString().trim().length()>0)
@@ -107,6 +112,9 @@ public class OrderActivity extends AppCompatActivity {
               }
 
                 database.QueryData("update orders set note = '"+note.getText().toString()+"' where orderId = "+orderId+"");
+                Intent intent = new Intent(OrderActivity.this, FragmentTableOrder.class);
+                intent.putExtra("banId", banId);
+                setResult(291,intent );
                 finish();
             }
         });
