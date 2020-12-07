@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class FoodOrderItemAdapter extends BaseAdapter {
@@ -66,7 +67,9 @@ public class FoodOrderItemAdapter extends BaseAdapter {
         }
         final FoodOrderItem menu = foodOrderItem.get(position); // lay tung cai mot ra
         holder.name.setText(menu.getDish_name());
-        holder.price.setText(menu.getPrice().toString());
+        DecimalFormat df= new DecimalFormat("###,###,###");
+        String priceString = df.format(menu.getPrice());
+        holder.price.setText(priceString+"đ");
         holder.number.setText(Integer.toString(menu.getNumber()));
         holder.plusBtn.setImageResource(R.drawable.plus);
         holder.minusBtn.setImageResource(R.drawable.minus);
@@ -95,7 +98,7 @@ public class FoodOrderItemAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                    menu.setNumber(menu.getNumber()+1);
+                menu.setNumber(menu.getNumber()+1);
 
 
                 holder.number.setText(Integer.toString(menu.getNumber()));

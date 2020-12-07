@@ -7,6 +7,7 @@
     <string name="password">password</string>
     <string name="avatar">avatar</string>
     <string name="sign_upp">SIGN UP</string>
+
     <string-array name="account_type">
         <item>Nhân viên</item>
         <item>Quản lý</item>

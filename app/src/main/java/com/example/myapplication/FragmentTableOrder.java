@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import static com.example.myapplication.FragmentSignIn.database;
 
 public class FragmentTableOrder extends Fragment {
-
+    TextView tableTitle;
     GridView gridViewTable;
     TableItemAdapter tableItemAdapter;
     int accoutID ;
@@ -50,16 +52,27 @@ public class FragmentTableOrder extends Fragment {
 
         switch(item.getItemId()){
             case R.id.status_booked:
-                database.QueryData("update group_table set status = 'Booked'  where tableId = " + tableItemArrayList.get(info.position).getId() + ";");
-                Toast.makeText(getActivity().getApplicationContext(),"Booked",Toast.LENGTH_SHORT).show();
-                tableItemAdapter.notifyDataSetChanged();
-                return true;
+                if (tableItemArrayList.get(info.position).getStatus().equals("Empty")) {
+                    database.QueryData("update group_table set status = 'Booked'  where tableId = " + tableItemArrayList.get(info.position).getId() + ";");
+                    Toast.makeText(getActivity().getApplicationContext(), "Đã đặt", Toast.LENGTH_SHORT).show();
+                    tableItemAdapter.notifyDataSetChanged();
+                    ///reload fragment
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.fragment_container,new FragmentTableOrder()).addToBackStack(null).commit();
+                    return true;
+                }
+                else return false;
                 // ??? : sau nay se phai sua cai nayf
             case R.id.status_empty:
-                database.QueryData("update group_table set status = 'Empty'  where tableId = " + tableItemArrayList.get(info.position).getId() + ";");
-                tableItemAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity().getApplicationContext(),"Empty",Toast.LENGTH_SHORT).show();
-                return true;
+                if (tableItemArrayList.get(info.position).getStatus().equals("Booked")) {
+                    database.QueryData("update group_table set status = 'Empty'  where tableId = " + tableItemArrayList.get(info.position).getId() + ";");
+                    tableItemAdapter.notifyDataSetChanged();
+                    ///reload fragment
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.fragment_container,new FragmentTableOrder()).addToBackStack(null).commit();
+                    return true;
+                }
+                else return false;
             default:
                 return super.onContextItemSelected(item);
         }
@@ -69,6 +82,8 @@ public class FragmentTableOrder extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tableorder, container,false);
+        tableTitle = rootView.findViewById(R.id.textViewTableTitle);
+
 
         gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
         tableItemArrayList = new ArrayList<>();
@@ -86,10 +101,10 @@ public class FragmentTableOrder extends Fragment {
 
         for(TableItem i:tableItemArrayList){
             if(i.getStatus().equals("Not Empty")){
-                i.setColor("#959523");
+                i.setColor("#c92c1e");
             }
             else if(i.getStatus().equals("Booked")){
-                i.setColor("#E64875");
+                i.setColor("#e6e61c");
             }
             else
             {
@@ -124,9 +139,12 @@ public class FragmentTableOrder extends Fragment {
         if(requestCode==114&& resultCode == 291){
             for(TableItem i:tableItemArrayList){
                 if(i.getId() == data.getIntExtra("banId", 1)){
-                    i.setColor("#959523");
+                    i.setColor(R.color.colorFilledTable + "");
                 }
             }
+            ///reload fragment
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_container,new FragmentTableOrder()).addToBackStack(null).commit();
         }
             }
 }
