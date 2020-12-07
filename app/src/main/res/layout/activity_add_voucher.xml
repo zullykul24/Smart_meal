@@ -5,27 +5,39 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".AddVoucherActivity">
-
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/top_panel_add_voucher"
+    android:layout_height="80dp">
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="411dp"
-        android:layout_height="91dp"
+        android:layout_width="match_parent"
+        android:fontFamily="@font/sriracha"
+        android:layout_height="match_parent"
         android:background="@color/colorAccent"
         android:gravity="center"
         android:text="Thêm khuyến mãi"
         android:textAlignment="center"
         android:textColor="#fff"
-        android:textSize="30sp"
+        android:textSize="35sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="-2dp" />
+         />
+    <ImageButton
+        android:layout_width="50dp"
+        android:id="@+id/back_to_main_from_voucher"
+        android:background="@color/colorAccent"
+        android:layout_centerVertical="true"
+        android:src="@drawable/white_arr2"
+        android:layout_marginLeft="8dp"
+        android:layout_height="30dp"></ImageButton>
+</RelativeLayout>
 
     <EditText
         android:id="@+id/title_voucher"
         android:layout_width="227dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/top_panel_add_voucher"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="25sp"
@@ -33,7 +45,7 @@
         android:layout_marginRight="76dp"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="Title"
+
         android:inputType="textPersonName" />
 
     <EditText
@@ -47,33 +59,21 @@
         android:layout_marginEnd="55sp"
         android:layout_marginRight="55dp"
         android:ems="10"
-        android:hint="Discount"
         android:inputType="number" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/text1"-->
-<!--        android:layout_width="100sp"-->
-<!--        android:layout_height="50sp"-->
-<!--        android:layout_below="@+id/textView3"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentLeft="true"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_marginTop="20sp"-->
-<!--        android:text="Code Voucher"-->
-<!--        android:textSize="20sp" />-->
 
     <TextView
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="50sp"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/top_panel_add_voucher"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
 
         android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:text="Title"
+        android:text="Tiêu đề"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -87,7 +87,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20sp"
         android:gravity="center"
-        android:text="Discount"
+        android:text="Khuyến mãi"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -101,7 +101,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Conditions"
+        android:text="Điều kiện"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -123,7 +123,7 @@
     <LinearLayout
         android:id="@+id/conditions"
         android:layout_width="match_parent"
-        android:layout_height="237dp"
+        android:layout_height="200dp"
         android:layout_below="@+id/text4"
         android:layout_marginTop="7dp"
         android:orientation="vertical">
@@ -139,9 +139,13 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="71sp"
         android:layout_marginTop="20sp"
-        android:background="@color/colorAccent"
+        android:textSize="20dp"
+        android:background="@drawable/them_mon_btn"
         android:gravity="center"
-        android:text="Create"
+        android:paddingHorizontal="10dp"
+
+        android:text="Tiếp theo"
+        android:textAllCaps="false"
         android:textAlignment="center"
         android:textColor="#fff" />
 
@@ -155,9 +159,11 @@
         android:layout_marginTop="20sp"
         android:layout_marginEnd="71dp"
         android:layout_marginRight="71dp"
-        android:background="@color/colorAccent"
+        android:textSize="20sp"
+        android:background="@drawable/them_mon_btn"
         android:gravity="center"
-        android:text="Cancel"
+        android:text="Huỷ"
+        android:textAllCaps="false"
         android:textAlignment="center"
         android:textColor="#fff" />
 </RelativeLayout>

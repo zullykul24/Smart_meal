@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/signInLayout"
+    android:background="@color/colorAccent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <EditText
         android:id="@+id/usernameEditText"
@@ -44,6 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/show_hide_password_signin"
+        android:textColor="#fff"
+        android:buttonTint="#fff"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText"
         app:layout_constraintLeft_toLeftOf="@id/passwordEditText"
         android:layout_marginTop="20dp"
@@ -59,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@id/show_hide_password_signin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="150dp"
         android:padding="20dp"
         ></Button>
 

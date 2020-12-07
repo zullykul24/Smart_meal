@@ -26,6 +26,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import static com.example.myapplication.FragmentSignIn.database;
 
@@ -61,6 +63,10 @@ public class ManagerFragmentHomePage extends Fragment {
         payment = (ImageButton) rootView.findViewById(R.id.manager_payment);
         addVoucher = (ImageButton) rootView.findViewById(R.id.add_voucher);
         voucher = (ImageButton) rootView.findViewById(R.id.voucher);
+        //center crop image btns
+        Glide.with(this).load(R.drawable.new_food).circleCrop().into(monmoi);
+        Glide.with(this).load(R.drawable.new_table2).circleCrop().into(addTable);
+        Glide.with(this).load(R.drawable.new_offer).circleCrop().into(addVoucher);
         voucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,6 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/manager_homepage"
     android:clickable="true"
     android:focusable="true"
@@ -65,9 +66,9 @@
             android:paddingHorizontal="5dp"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="166dp"
-            android:src="@drawable/new_discount"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
+            android:src="@drawable/new_offer"
+
+            android:scaleType="centerCrop"
             android:layout_marginRight="166dp"
             android:background="@drawable/home_item"
             android:text="Thêm Khuyến mãi"></ImageButton>
@@ -90,7 +91,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="23dp"
 
-            android:src="@drawable/new_table"
+            android:src="@drawable/new_table2"
             android:scaleType="fitCenter"
 
             android:layout_marginRight="23dp"
@@ -137,10 +138,10 @@
 
         <ImageButton
             android:id="@+id/voucher"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:src="@drawable/discount"
-            android:scaleType="fitCenter"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/discount_2"
+            android:scaleType="centerInside"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
@@ -200,6 +201,7 @@
         android:background="#fff"
         android:layout_width="match_parent"
         android:id="@+id/manager_recycle_view_hot_items"
+        tools:listitem="@layout/hot_item"
 
         android:layout_below="@id/manager_text_hot_items"
         android:layout_height="100dp"

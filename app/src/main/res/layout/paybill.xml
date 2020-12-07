@@ -4,31 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="15dp">
+    >
 
     <TextView
         android:id="@+id/text_paybill_table"
-        android:layout_width="396dp"
+        android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="2dp"
+
         android:background="@color/colorAccent"
         android:gravity="center"
         android:text="Bàn số 1"
         android:textColor="#fff"
-        android:textSize="35sp"></TextView>
+        android:fontFamily="@font/sriracha"
+        android:textSize="40sp"></TextView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@+id/customer_panel"
         android:layout_below="@id/text_paybill_table"
+        android:id="@+id/pay_bill_content"
+        android:padding="15dp"
         android:layout_height="wrap_content">
-</RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/employee_panel"
 
-        android:layout_below="@id/customer_panel"
+        android:layout_alignParentTop="true"
         android:layout_height="wrap_content">
         <TextView
 
@@ -106,7 +107,7 @@
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:weightSum="11"
+        android:weightSum="12"
         android:layout_below="@id/bill_date_panel"
         android:id="@+id/head_table_bill"
         android:layout_height="wrap_content">
@@ -127,7 +128,8 @@
             android:textAlignment="center"
             android:background="@drawable/table_cell"
             android:textSize="16sp"
-            android:layout_height="wrap_content"></TextView>
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"></TextView>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -141,13 +143,15 @@
             android:layout_weight="2"
             android:background="@drawable/table_cell"
             android:text="Giá"
+            android:paddingLeft="5dp"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_height="wrap_content"></TextView>
         <TextView
             android:layout_width="0dp"
             android:background="@drawable/table_cell"
-            android:layout_weight="2"
+            android:layout_weight="3"
+            android:gravity="center"
             android:text="Tổng"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -266,8 +270,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/total_panel"
         android:layout_marginTop="9dp"
-        android:background="@color/colorAccent"
-        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/them_mon_btn"
+       android:paddingHorizontal="10dp"
         android:text="Thanh toán"
         android:textColor="#fff"
         android:textSize="15dp"></Button>
@@ -282,10 +287,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="330dp"
+
         android:scaleType="fitXY"
         app:srcCompat="@drawable/voucher"
-         />
+        android:layout_marginRight="330dp" />
 
     <TextView
         android:id="@+id/use_voucher"
@@ -293,11 +298,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/listview_pay_bill"
         android:layout_marginStart="100dp"
+
         android:layout_marginLeft="0dp"
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_marginTop="15dp"
         android:text="" />
 
-
+    </RelativeLayout>
 </RelativeLayout>

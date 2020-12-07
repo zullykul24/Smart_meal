@@ -6,30 +6,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
-    <ListView
-        android:id="@+id/new_food"
-        android:layout_width="414dp"
-        android:layout_height="615dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="118dp"
-        android:layout_marginBottom="-2dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="110dp"
-        tools:listitem="@layout/menu_food_item"></ListView>
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/top_panel_new_food"
+        >
     <TextView
         android:id="@+id/textView"
-        android:layout_width="419dp"
-        android:layout_height="110dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:fontFamily="@font/sriracha"
         android:background="@color/colorAccent"
         android:gravity="center"
         android:text="Món mới"
         android:textAlignment="center"
         android:textColor="#fff"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/new_food"
-        tools:ignore="MissingConstraints"></TextView>
+        android:textSize="40sp"
+
+        ></TextView>
+        <ImageButton
+            android:layout_width="50dp"
+            android:id="@+id/back_to_main_from_newest_foods"
+            android:layout_marginLeft="5dp"
+            android:background="@color/colorAccent"
+            android:layout_centerVertical="true"
+            android:src="@drawable/white_arr2"
+            android:layout_height="30dp"></ImageButton>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/new_food"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/top_panel_new_food"
+
+        tools:listitem="@layout/menu_food_item"></ListView>
+
+
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class PayBillItemAdapter extends BaseAdapter {
@@ -62,8 +63,12 @@ public class PayBillItemAdapter extends BaseAdapter {
         holder.STT.setText(String.valueOf(payBillItem.getSTT()));
         holder.dishName.setText(payBillItem.getDishName());
         holder.SL.setText(String.valueOf(payBillItem.getSL()));
-        holder.priceEach.setText(""+ payBillItem.getPriceEach());
-        holder.priceTotal.setText(""+payBillItem.getPriceTota());
+        DecimalFormat df= new DecimalFormat("###,###,###");
+      //  int i = Integer.valueOf(payBillItem.getPriceEach());
+        String priceEachString = df.format((int)payBillItem.getPriceEach());
+        holder.priceEach.setText(priceEachString);
+        String priceTotalString = df.format((int)payBillItem.getPriceTotal());
+        holder.priceTotal.setText(priceTotalString);
         return convertView;
     }
 }

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import static com.example.myapplication.FragmentSignIn.database;
 
 public class ActivityNewFood extends AppCompatActivity {
         ListView listview ;
+        ImageButton backToMain;
         ArrayList<MenuFoodItem> arrayNewFood;
         MenuFoodItemAdapter menuFoodItemAdapter;
         long millis = System.currentTimeMillis();
@@ -24,6 +27,13 @@ public class ActivityNewFood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_food2);
         listview = (ListView) findViewById(R.id.new_food);
+        backToMain = (ImageButton) findViewById(R.id.back_to_main_from_newest_foods);
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         arrayNewFood = new ArrayList();
         //Cursor cursor = database.getData("select * from dish ");
         Cursor cursor = database.getData("select * from dish where strftime('%d', 'now') - strftime('%d', date) < 30;");

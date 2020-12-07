@@ -33,6 +33,7 @@ public class AddVoucherActivity extends AppCompatActivity {
     EditText discount;
     Button onCreate;
     Button onCancel;
+    ImageButton backToMain;
     LinearLayout linearLayout;
     int hint =0;
     int voucherID;
@@ -46,9 +47,16 @@ public class AddVoucherActivity extends AppCompatActivity {
         btnAddConditions = (ImageButton) findViewById(R.id.btn_add_conditions);
         title = (EditText) findViewById(R.id.title_voucher);
         discount = (EditText) findViewById(R.id.discount);
+        backToMain = (ImageButton)findViewById(R.id.back_to_main_from_voucher);
         onCancel = (Button) findViewById(R.id.btn_cancel_create_voucher);
         onCreate = (Button) findViewById(R.id.btn_ok_create_voucher);
         onCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -149,7 +157,7 @@ public class AddVoucherActivity extends AppCompatActivity {
         params.setMargins(200,5,0,5);
         EditText edittTxt = new EditText(this);
         hint++;
-        edittTxt.setHint("condition number "+hint);
+        edittTxt.setHint("Điều kiện "+hint);
         edittTxt.setLayoutParams(params);
         edittTxt.setId(hint);
         linearLayout.addView(edittTxt);

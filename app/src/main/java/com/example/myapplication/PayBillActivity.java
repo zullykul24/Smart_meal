@@ -95,7 +95,7 @@ public class PayBillActivity extends AppCompatActivity {
 
         for(int i=0; i< payBillItemArrayList.size();i++){
         payBillItemArrayList.get(i).setSTT(i+1);
-        so_tien = so_tien + payBillItemArrayList.get(i).getPriceTota();
+        so_tien = so_tien + payBillItemArrayList.get(i).getPriceTotal();
         }
 
 

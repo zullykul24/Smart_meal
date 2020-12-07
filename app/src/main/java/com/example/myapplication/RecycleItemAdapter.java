@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -46,7 +47,9 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
     @Override
     public void onBindViewHolder(@NonNull RecycleItemAdapter.MyViewHolder holder, int position) {
         holder.name.setText(hotItemsArray.get(position).getDish_name());
-        holder.price.setText(hotItemsArray.get(position).getPrice().toString());
+        DecimalFormat df= new DecimalFormat("###,###,###");
+        String priceString = String.valueOf(df.format(hotItemsArray.get(position).getPrice()));
+        holder.price.setText(priceString+"đ");
         byte [] hinhanh = hotItemsArray.get(position).getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
         holder.image.setImageBitmap(bitmap);

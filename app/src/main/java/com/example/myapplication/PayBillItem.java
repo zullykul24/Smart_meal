@@ -5,7 +5,7 @@ public class PayBillItem {
     private String dishName;
     private int SL;
     private double priceEach;
-    private double priceTota;
+    private double priceTotal;
 
     public int getSTT() {
         return STT;
@@ -39,19 +39,19 @@ public class PayBillItem {
         this.priceEach = priceEach;
     }
 
-    public double getPriceTota() {
-        return priceTota;
+    public double getPriceTotal() {
+        return priceTotal;
     }
 
-    public void setPriceTota(double priceTota) {
-        this.priceTota = priceTota;
+    public void setPriceTotal(double priceTota) {
+        this.priceTotal = priceTota;
     }
 
     public PayBillItem(String dishName, int SL, double priceEach) {
         this.dishName = dishName;
         this.SL = SL;
         this.priceEach = priceEach;
-        this.priceTota = this.SL * priceEach;
+        this.priceTotal = this.SL * priceEach;
     }
 
 

@@ -63,7 +63,7 @@ public class FragmentSignUp extends Fragment {
             View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
         acc_type = (Spinner) view.findViewById(R.id.account_type);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1 , getResources().getStringArray(R.array.account_type));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item , getResources().getStringArray(R.array.account_type));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userName  =(EditText) view.findViewById(R.id.usernameEditTextSignUp);
         password =  (EditText) view.findViewById(R.id.passwordEditTextSignUp);

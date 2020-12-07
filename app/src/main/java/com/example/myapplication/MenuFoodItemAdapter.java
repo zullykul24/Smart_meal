@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.view.menu.MenuView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,7 +127,9 @@ public class MenuFoodItemAdapter extends BaseAdapter implements Filterable {
         }
         MenuFoodItem menu = displayedList.get(position); // lay tung cai mot ra
         holder.name.setText(menu.getDish_name());
-        holder.price.setText(menu.getPrice().toString());
+        DecimalFormat df= new DecimalFormat("###,###,###");
+        String priceString = String.valueOf(df.format(menu.getPrice()));
+        holder.price.setText(priceString+"đ");
        byte[] hinhanh = menu.getImage();
         // muon lay hinh anh ra thi phai chuyen tu byte[] sang bitmap
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
