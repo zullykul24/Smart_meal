@@ -12,6 +12,7 @@
         android:padding="13dp"
         android:id="@+id/table_img"
         android:layout_width="50dp"
+
         android:layout_height="50dp"
 
         android:src="@drawable/table_icon"

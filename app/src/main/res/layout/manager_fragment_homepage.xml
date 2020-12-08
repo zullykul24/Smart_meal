@@ -23,26 +23,38 @@
             ></TextView>
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/manager_items"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_height="360dp"
         android:layout_below="@id/manager_brand_text"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="20dp"
         android:background="#fff">
+        <LinearLayout
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
         <ImageButton
             android:id="@+id/manager_add_food_btn"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="309dp"
+            android:layout_centerHorizontal="true"
+
 
             android:src="@drawable/add_food"
             android:scaleType="fitCenter"
-            android:padding="5dp"
 
-            android:layout_marginRight="309dp"
+
+
             android:background="@drawable/home_item"
            ></ImageButton>
         <TextView
@@ -55,21 +67,26 @@
             android:gravity="center"
             android:textSize="13sp"
             android:layout_height="wrap_content"></TextView>
-
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
         <ImageButton
             android:id="@+id/add_voucher"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:layout_alignParentEnd="true"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+
             android:textColor="#fff"
-            android:textSize="12sp"
-            android:paddingHorizontal="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="166dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="13sp"
+
+
+
             android:src="@drawable/new_offer"
 
             android:scaleType="centerCrop"
-            android:layout_marginRight="166dp"
+
             android:background="@drawable/home_item"
             android:text="Thêm Khuyến mãi"></ImageButton>
         <TextView
@@ -82,19 +99,23 @@
             android:gravity="center"
             android:textSize="13sp"
             android:layout_height="wrap_content"></TextView>
-
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
         <ImageButton
             android:id="@+id/manager_add_table_btn"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="23dp"
+            android:layout_centerHorizontal="true"
+
+
 
             android:src="@drawable/new_table2"
             android:scaleType="fitCenter"
 
-            android:layout_marginRight="23dp"
+
             android:background="@drawable/home_item"
            ></ImageButton>
         <TextView
@@ -107,21 +128,33 @@
             android:gravity="center"
             android:textSize="13sp"
             android:layout_height="wrap_content"></TextView>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="3"
+            android:paddingVertical="10dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
         <ImageButton
             android:id="@+id/manage_new_food"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@id/manager_add_food_btn"
-            android:layout_alignRight="@id/manager_add_food_btn"
+            android:layout_centerHorizontal="true"
+
             android:background="@drawable/home_item"
             android:src="@drawable/new_food"
 
             android:scaleType="fitCenter"
-            android:textSize="12sp"
+            android:textSize="13sp"
 
-            android:layout_marginTop="105dp"
+
 
 
 
@@ -135,20 +168,21 @@
             android:gravity="center"
             android:textSize="13sp"
             android:layout_height="wrap_content"></TextView>
-
+                </RelativeLayout>
+<RelativeLayout
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_height="match_parent">
         <ImageButton
             android:id="@+id/voucher"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/discount_2"
             android:scaleType="centerInside"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="105dp"
-            android:layout_marginEnd="166dp"
+            android:layout_centerHorizontal="true"
 
-            android:layout_marginRight="166dp"
+
+
             android:background="@drawable/home_item"
             android:text="Khuyến mãi"></ImageButton>
         <TextView
@@ -160,18 +194,20 @@
             android:gravity="center"
             android:textSize="13sp"
             android:layout_height="wrap_content"></TextView>
+</RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
         <ImageButton
             android:id="@+id/manager_payment"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentTop="true"
 
-            android:layout_marginTop="106dp"
             android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
 
-            android:layout_alignRight="@id/manager_add_table_btn"
-            android:layout_alignLeft="@id/manager_add_table_btn"
             android:src="@drawable/payment"
             android:background="@drawable/home_item"
            ></ImageButton>
@@ -184,10 +220,74 @@
             android:gravity="center"
             android:textSize="13sp"
             android:layout_height="wrap_content"></TextView>
-    </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingVertical="10dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:id="@+id/history_btn"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+                    android:scaleType="fitCenter"
+                    android:layout_centerHorizontal="true"
+
+                    android:src="@drawable/logosmred"
+                    android:background="@drawable/home_item"
+                    ></ImageButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Lịch sử"
+                    android:layout_below="@id/history_btn"
+                    android:layout_alignLeft="@id/history_btn"
+                    android:layout_alignRight="@id/history_btn"
+                    android:gravity="center"
+                    android:textSize="13sp"
+                    android:layout_height="wrap_content"></TextView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:id="@+id/menu"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+                    android:scaleType="fitCenter"
+                    android:layout_centerHorizontal="true"
+
+                    android:src="@drawable/logosmred"
+                    android:background="@drawable/home_item"
+                    ></ImageButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Thực đơn"
+                    android:layout_below="@id/menu"
+                    android:layout_alignLeft="@id/menu"
+                    android:layout_alignRight="@id/menu"
+                    android:gravity="center"
+                    android:textSize="13sp"
+                    android:layout_height="wrap_content"></TextView>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_below="@id/manager_items"
         android:background="@color/colorAccent"

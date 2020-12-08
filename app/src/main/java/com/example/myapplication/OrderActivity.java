@@ -79,9 +79,9 @@ public class OrderActivity extends AppCompatActivity {
                      if(!arrayListChosenFood.isEmpty()){
                          if(note.getText().toString().trim().length()>0)
                          {
-                             database.QueryData("insert into orders values(null,"+banId+",'"+note.getText().toString()+"' )");
+                             database.QueryData("insert into orders values(null,"+banId+",'"+note.getText().toString()+"' , 0)");
                          }else {
-                             database.QueryData("insert into orders values(null,"+banId+",null )");
+                             database.QueryData("insert into orders values(null,"+banId+",null , 0)");
                          }
                          database.QueryData("update group_table set status = 'Not Empty'  where tableId = " + banId + ";");
                      }

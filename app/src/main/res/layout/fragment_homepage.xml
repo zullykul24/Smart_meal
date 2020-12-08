@@ -24,75 +24,132 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
+        android:id="@+id/home_employee_content"
 
         android:layout_below="@id/brand_text"
         android:layout_alignParentBottom="true"
 
         >
-        <RelativeLayout
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:id="@+id/line1"
-            android:layout_height="100dp">
 
-
-            <Button
+            android:layout_height="150dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="horizontal"
+    android:paddingVertical="20dp"
+    android:weightSum="3"
+    android:layout_weight="1">
+<RelativeLayout
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+            <ImageButton
                 android:id="@+id/new_food"
-                android:layout_width="120sp"
-                android:layout_height="70sp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+
+              android:layout_centerHorizontal="true"
                 android:background="@drawable/home_item"
+                android:src="@drawable/new_food"
+
+                android:scaleType="fitCenter"
+                android:textSize="12sp"
+
+
+
+
+
+                ></ImageButton>
+            <TextView
+                android:layout_width="wrap_content"
                 android:text="Món mới"
-                android:textColor="#fff"></Button>
+                android:layout_below="@id/new_food"
+                android:layout_alignLeft="@id/new_food"
+                android:layout_alignRight="@id/new_food"
 
-            <Button
+
+                android:gravity="center"
+                android:textSize="13sp"
+                android:layout_height="wrap_content"></TextView>
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+            <ImageButton
                 android:id="@+id/khuyen_mai"
-                android:layout_width="120sp"
-                android:layout_height="70sp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="20sp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="55dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/discount_2"
+                android:scaleType="centerInside"
+
+                android:layout_centerHorizontal="true"
+
+
+
                 android:background="@drawable/home_item"
+                android:text="Khuyến mãi"></ImageButton>
+            <TextView
+                android:layout_width="wrap_content"
                 android:text="Khuyến mãi"
-                android:textColor="#fff"></Button>
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/line2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/line1"
-            android:layout_marginTop="11dp">
-
-            <Button
+                android:layout_below="@id/khuyen_mai"
+                android:layout_alignLeft="@id/khuyen_mai"
+                android:layout_alignRight="@id/khuyen_mai"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:layout_height="wrap_content"></TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+            <ImageButton
                 android:id="@+id/thanh_toan"
-                android:layout_width="120sp"
-                android:layout_height="70sp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginStart="146dp"
-                android:layout_marginLeft="146dp"
-                android:layout_marginEnd="145dp"
-                android:layout_marginRight="145dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+
+
+                android:layout_centerHorizontal="true"
+
+                android:scaleType="fitCenter"
+
+
+                android:src="@drawable/payment"
                 android:background="@drawable/home_item"
-                android:text="Thanh toán: "
-                android:textColor="#fff"></Button>
+                ></ImageButton>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Thanh toán"
+                android:layout_below="@id/thanh_toan"
+                android:layout_alignLeft="@id/thanh_toan"
+                android:layout_alignRight="@id/thanh_toan"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:layout_height="wrap_content"></TextView>
+    </RelativeLayout>
+</LinearLayout>
+        </LinearLayout>
 
 
-        </RelativeLayout>
+
+
+
+
+
 
         <TextView
 
             android:layout_width="match_parent"
-            android:layout_below="@id/line2"
+
             android:background="@color/colorAccent"
             android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/line1"
             android:id="@+id/text_hot_items"
             android:fontFamily="@font/sriracha"
             android:text="Món hot trong tuần"

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
+    android:padding="15dp"
     android:layout_height="match_parent">
 
     <TextView
@@ -12,49 +13,49 @@
         android:layout_height="wrap_content"
         android:text="Không có điều kiện?"
         android:textSize="20sp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
 
-    <Button
-        android:id="@+id/btn_cancel_not_conditions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:textAllCaps="false"
-        android:text="Huỷ"
-        android:background="@drawable/them_mon_btn"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0" />
+         />
+<LinearLayout
+    android:layout_below="@id/textView4"
+    android:layout_width="match_parent"
+    android:weightSum="2"
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal"
+    android:layout_height="60dp">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btn_ok_not_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
 
-    <Button
-        android:id="@+id/btn_ok_not_condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:textAllCaps="false"
-        android:text="Xác nhận"
-        android:background="@drawable/them_mon_btn"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cancel_not_conditions"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0" />
+            android:textAllCaps="false"
+            android:text="Xác nhận"
+            android:background="@drawable/them_mon_btn"
+            android:textColor="#fff"
+            />
 
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btn_cancel_not_conditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:textAllCaps="false"
+            android:text="Huỷ"
+            android:background="@drawable/them_mon_btn"
+            android:textColor="#fff"
+            />
+    </RelativeLayout>
+</LinearLayout>
+
+</RelativeLayout>

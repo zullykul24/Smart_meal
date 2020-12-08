@@ -129,6 +129,7 @@ public class PayBillActivity extends AppCompatActivity {
                 }
                 // update lai cai ban la con trong la oke
                 database.QueryData("update group_table set status = 'Empty'  where tableId = "+tableId+";");
+                database.QueryData("update orders set paid = 1 where orderId = " + orderId);
                 // thoat ra khoi man hinh chinh
                 setResult(RESULT_OK, null);
                 finish();

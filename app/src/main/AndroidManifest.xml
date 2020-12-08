@@ -13,8 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ViewVoucherActivity"></activity>
         <activity android:name=".DatePickerActivity" />
-        <activity android:name=".DatePickerActivvity" />
-        <activity android:name=".DatePicker" />
+
         <activity android:name=".AddVoucherActivity" />
         <activity android:name=".ActivityNewFood" />
         <activity

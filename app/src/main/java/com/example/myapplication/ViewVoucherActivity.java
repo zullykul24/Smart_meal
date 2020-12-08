@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import static com.example.myapplication.FragmentSignIn.database;
 public class ViewVoucherActivity extends AppCompatActivity {
     int REQUEST_CODE = 1;
     ListView listVoucher;
+    ImageButton backToMain;
     VoucherItemAdapter  voucherItemAdapter;
     ArrayList<VoucherItem> itemArrayList;
     int voucherId;
@@ -33,6 +35,13 @@ public class ViewVoucherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_voucher);
         listVoucher  = (ListView) findViewById(R.id.listViewVoucher);
+        backToMain = (ImageButton)findViewById(R.id.back_to_main_from_view_voucher);
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // hien nhung voucher dang trong thoi gian su dung
         Cursor cursor = database.getData("select * from vouchers where startdate <= "+millis+" and enddate >= "+millis+" order by enddate asc");// where startdate <= "+millis+" and enddate >= "+millis+" ORDER by startdate DESC
 

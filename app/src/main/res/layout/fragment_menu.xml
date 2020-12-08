@@ -1,60 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fff"
 
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/choose_food_top_panel"
 
-    <ImageButton
-        android:id="@+id/buttonAdd"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginLeft="292dp"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
-    <ListView
-        android:id="@+id/list_menu_food"
+        android:paddingHorizontal="20dp"
+        android:background="@color/colorAccent"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="80dp">
+
+        <EditText
+
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingVertical="10dp"
 
 
-        android:layout_marginTop="17dp"
+            android:background="@drawable/search_edit_text"
 
 
-        android:divider="#ffff"
-        android:dividerHeight="10.0sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
-        app:layout_constraintVertical_bias="0.0" />
+            android:id="@+id/searchText"
+            android:hint="Tên món ăn"
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="280dp"
+
+            android:gravity="center"
+            android:layout_width="match_parent" />
+    </RelativeLayout>
+    _
+    <ListView
+        android:padding="5dp"
+        android:layout_below="@id/choose_food_top_panel"
+        android:id="@+id/listViewFoodMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="27dp"
-        android:gravity="center"
-        android:text="Danh sách món ăn"
+        tools:listitem="@layout/menu_food_item"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"/>
 
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/list_menu_food"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.343"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

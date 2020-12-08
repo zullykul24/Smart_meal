@@ -87,49 +87,49 @@ public class ManagerFragmentHomePage extends Fragment {
                                       }
                                   });
 
-                payment.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentToPayment = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
-                        intentToPayment.putExtra("accountId", getAccountId());
-                        Log.d("check", getAccountId()+" ");
-                        startActivityForResult(intentToPayment, 65);
-                    }
-                });
-                addFood.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentFood = new Intent(getActivity(), AddFood.class);
-                        startActivity(intentFood);
-                    }
-                });
-                addTable.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        DialogInsertTable();
-                    }
-                });
-
-                RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.manager_recycle_view_hot_items);
-                recyclerView.setHasFixedSize(true);
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-                recyclerView.setLayoutManager(linearLayoutManager);
-                DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
-                recyclerView.addItemDecoration(decoration);
-                ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
-                Cursor cursor = database.getData("SELECT * from dish where dishId in (Select dishId from orderdetails group by dishId order by sum(orderdetails.quantityOrder) desc) limit  5 ");
-                while (cursor.moveToNext()) {
-                    hotArrayList.add(new MenuFoodItem(
-                            cursor.getInt(0),
-                            cursor.getString(1),
-                            cursor.getInt(2),
-                            cursor.getDouble(3),
-                            cursor.getBlob(4)));
-                }
-                RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
-                recyclerView.setAdapter(adapter);
-                return rootView;
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToPayment = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
+                intentToPayment.putExtra("accountId", getAccountId());
+                Log.d("check", getAccountId()+" ");
+                startActivityForResult(intentToPayment, 65);
             }
+        });
+        addFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentFood = new Intent(getActivity(), AddFood.class);
+                startActivity(intentFood);
+            }
+        });
+        addTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogInsertTable();
+            }
+        });
+
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.manager_recycle_view_hot_items);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
+        recyclerView.addItemDecoration(decoration);
+        ArrayList<MenuFoodItem> hotArrayList = new ArrayList<>();
+        Cursor cursor = database.getData("SELECT * from dish where dishId in (Select dishId from orderdetails group by dishId order by sum(orderdetails.quantityOrder) desc) limit  5 ");
+        while (cursor.moveToNext()) {
+            hotArrayList.add(new MenuFoodItem(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getDouble(3),
+                    cursor.getBlob(4)));
+        }
+        RecycleItemAdapter adapter = new RecycleItemAdapter(hotArrayList, getActivity().getApplicationContext());
+        recyclerView.setAdapter(adapter);
+        return rootView;
+    }
 
             private void DialogInsertTable() {
                 final Dialog dialog = new Dialog(getContext());

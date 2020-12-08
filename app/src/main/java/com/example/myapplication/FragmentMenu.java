@@ -24,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import static com.example.myapplication.FragmentSignIn.database;
 
@@ -38,7 +39,7 @@ public class FragmentMenu extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.choose_foods, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_menu, container, false);
         //khai bao
         searchText = (EditText)rootView.findViewById(R.id.searchText);
 
@@ -47,7 +48,7 @@ public class FragmentMenu extends Fragment {
         menuFoodItemAdapter =  new MenuFoodItemAdapter(getContext(),R.layout.menu_food_item, menuItemArrayList);
         // đổ dữ liệu trong database ra ne
         listViewFood.setAdapter(menuFoodItemAdapter);
-        Cursor cursor = database.getData("SELECT * from dish order by dishId DESC");
+        Cursor cursor = database.getData("SELECT * from dish order by dishName asc");
         while (cursor.moveToNext()) {
             menuItemArrayList.add(new MenuFoodItem(
                     cursor.getInt(0),
@@ -57,6 +58,7 @@ public class FragmentMenu extends Fragment {
                     cursor.getBlob(4)
             ));
         }
+
 
         listViewFood.setTextFilterEnabled(true);
 

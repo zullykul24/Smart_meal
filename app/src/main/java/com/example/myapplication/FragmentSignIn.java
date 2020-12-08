@@ -36,7 +36,7 @@ public class FragmentSignIn extends Fragment {
         // create table group_table : Thông tin về Group_table
         database.QueryData("create table if not exists group_table(tableId integer primary key autoincrement , chair_number integer not null, status varchar(255) not null )");
         // create table order : Detail about order
-        database.QueryData("create table if not exists orders(orderId integer primary key autoincrement, tableId integer not null, note text , foreign key (tableId) references group_table(tableId))");
+        database.QueryData("create table if not exists orders(orderId integer primary key autoincrement, tableId integer not null, note text , paid bool not null, foreign key (tableId) references group_table(tableId))");
 //        // create table orderdetail :
        database.QueryData("create table if not exists orderdetails(orderId integer not null, dishId integer not null, accountId integer not null,  quantityOrder integer not null,date datetime not null,  primary key (orderId, dishId))");
 //        // create table discount : Detail  about discount

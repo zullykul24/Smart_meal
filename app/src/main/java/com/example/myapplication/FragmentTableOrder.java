@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -83,6 +84,8 @@ public class FragmentTableOrder extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tableorder, container,false);
         tableTitle = rootView.findViewById(R.id.textViewTableTitle);
+        //tableTitle.setText("#"+Integer.toHexString(ContextCompat.getColor(getActivity(), R.color.colorBookedTable)));
+
 
 
         gridViewTable = (GridView) rootView.findViewById(R.id.gridViewTable);
@@ -101,14 +104,14 @@ public class FragmentTableOrder extends Fragment {
 
         for(TableItem i:tableItemArrayList){
             if(i.getStatus().equals("Not Empty")){
-                i.setColor("#c92c1e");
+                i.setColor("#"+Integer.toHexString(ContextCompat.getColor(getActivity(), R.color.colorFilledTable)));
             }
             else if(i.getStatus().equals("Booked")){
-                i.setColor("#e6e61c");
+                i.setColor("#"+Integer.toHexString(ContextCompat.getColor(getActivity(), R.color.colorBookedTable)));
             }
             else
             {
-                i.setColor("#4EC33A");
+                i.setColor("#"+Integer.toHexString(ContextCompat.getColor(getActivity(), R.color.colorEmptyTable)));
             }
         }
         tableItemAdapter = new TableItemAdapter(getContext(), R.layout.table_item,tableItemArrayList );
@@ -139,7 +142,7 @@ public class FragmentTableOrder extends Fragment {
         if(requestCode==114&& resultCode == 291){
             for(TableItem i:tableItemArrayList){
                 if(i.getId() == data.getIntExtra("banId", 1)){
-                    i.setColor(R.color.colorFilledTable + "");
+                    i.setColor("#"+Integer.toHexString(ContextCompat.getColor(getActivity(), R.color.colorFilledTable)));
                 }
             }
             ///reload fragment
