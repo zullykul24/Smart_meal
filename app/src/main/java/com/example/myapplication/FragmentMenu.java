@@ -47,7 +47,7 @@ public class FragmentMenu extends Fragment {
         menuFoodItemAdapter =  new MenuFoodItemAdapter(getContext(),R.layout.menu_food_item, menuItemArrayList);
         // đổ dữ liệu trong database ra ne
         listViewFood.setAdapter(menuFoodItemAdapter);
-        Cursor cursor = database.getData("SELECT * from dish");
+        Cursor cursor = database.getData("SELECT * from dish order by dishId DESC");
         while (cursor.moveToNext()) {
             menuItemArrayList.add(new MenuFoodItem(
                     cursor.getInt(0),

@@ -36,7 +36,7 @@ public class ActivityNewFood extends AppCompatActivity {
         });
         arrayNewFood = new ArrayList();
         //Cursor cursor = database.getData("select * from dish ");
-        Cursor cursor = database.getData("select * from dish where strftime('%d', 'now') - strftime('%d', date) < 30;");
+        Cursor cursor = database.getData("select * from dish where strftime('%d', 'now') - strftime('%d', date) < 30 order by dishId DESC;");
         while (cursor.moveToNext()){
             arrayNewFood.add(new MenuFoodItem(
                     cursor.getInt(0),

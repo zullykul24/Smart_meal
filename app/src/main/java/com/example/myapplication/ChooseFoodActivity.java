@@ -36,7 +36,7 @@ public class ChooseFoodActivity extends AppCompatActivity {
 
         listViewFood = (ListView)findViewById(R.id.listViewFoodMenu);
         menuItemArrayList = new ArrayList<>();
-        Cursor cursor = database.getData("SELECT * from dish");
+        Cursor cursor = database.getData("SELECT * from dish order by dishId DESC");
         while (cursor.moveToNext()){
             menuItemArrayList.add(new MenuFoodItem(
                     cursor.getInt(0),

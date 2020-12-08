@@ -34,7 +34,7 @@ public class ViewVoucherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_voucher);
         listVoucher  = (ListView) findViewById(R.id.listViewVoucher);
         // hien nhung voucher dang trong thoi gian su dung
-        Cursor cursor = database.getData("select * from vouchers where startdate <= "+millis+" and enddate >= "+millis+" ");// where startdate <= "+millis+" and enddate >= "+millis+" ORDER by startdate DESC
+        Cursor cursor = database.getData("select * from vouchers where startdate <= "+millis+" and enddate >= "+millis+" order by enddate asc");// where startdate <= "+millis+" and enddate >= "+millis+" ORDER by startdate DESC
 
         itemArrayList = new ArrayList<>();
         while(cursor.moveToNext()){
