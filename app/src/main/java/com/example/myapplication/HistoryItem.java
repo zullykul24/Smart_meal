@@ -9,6 +9,7 @@ public class HistoryItem {
     private double amount;
     private long date;
     private String status;
+    private String paymentTime;
 
 
     public HistoryItem(int paymentId, int accountId, int tableId,  int orderId, int discountId, double amount, long date, String status) {
@@ -85,5 +86,13 @@ public class HistoryItem {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPaymentTime() {
+        return paymentTime;
+    }
+
+    public void setPaymentTime(String paymentTime) {
+        this.paymentTime = paymentTime;
     }
 }

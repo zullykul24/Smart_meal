@@ -120,7 +120,7 @@ public class FragmentTableOrder extends Fragment {
         gridViewTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity().getApplicationContext(), tableItemArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity().getApplicationContext(), tableItemArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
                 String status = tableItemArrayList.get(position).getStatus();
                 // chỉnh sửa chỗ này để trạng thái nào cũng có thể vào chỉnh sửa món ăn
                 //if(status.equals("Empty")) {

@@ -243,7 +243,7 @@
                     android:scaleType="fitCenter"
                     android:layout_centerHorizontal="true"
 
-                    android:src="@drawable/logosmred"
+                    android:src="@drawable/history"
                     android:background="@drawable/home_item"
                     ></ImageButton>
                 <TextView
@@ -269,7 +269,7 @@
                     android:scaleType="fitCenter"
                     android:layout_centerHorizontal="true"
 
-                    android:src="@drawable/logosmred"
+                    android:src="@drawable/food_menu"
                     android:background="@drawable/home_item"
                     ></ImageButton>
                 <TextView
@@ -287,7 +287,7 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_below="@id/manager_items"
         android:background="@color/colorAccent"
@@ -304,7 +304,7 @@
         tools:listitem="@layout/hot_item"
 
         android:layout_below="@id/manager_text_hot_items"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         >
 
     </androidx.recyclerview.widget.RecyclerView>

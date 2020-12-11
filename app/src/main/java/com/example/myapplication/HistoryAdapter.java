@@ -39,6 +39,7 @@ public class HistoryAdapter extends BaseAdapter {
     private class ViewHolder{
         TextView nameTable;
         TextView paymentDate;
+        TextView paymentTime;
     }
 
     @Override
@@ -48,8 +49,9 @@ public class HistoryAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
             holder = new ViewHolder();
-            holder.nameTable = (TextView) convertView.findViewById(R.id.tenban);
-            holder.paymentDate = (TextView) convertView.findViewById(R.id.datePaymented);
+            holder.nameTable = (TextView) convertView.findViewById(R.id.ten_ban);
+            holder.paymentDate = (TextView) convertView.findViewById(R.id.ngay_thanh_toan);
+            holder.paymentTime = (TextView)convertView.findViewById(R.id.gio_thanh_toan);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -58,6 +60,9 @@ public class HistoryAdapter extends BaseAdapter {
         holder.nameTable.setText("Bàn "+ historyItem.getTableId());
         java.sql.Date date=new java.sql.Date(historyItem.getDate());
         holder.paymentDate.setText(""+ date);
+       // holder.paymentTime.setText(historyItem.getPaymentTime());
+        holder.paymentTime.setText("20:11");
+
         return convertView;
     }
 }

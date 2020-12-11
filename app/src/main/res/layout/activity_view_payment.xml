@@ -4,27 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewPaymentActivity">
-    <TextView
-        android:id="@+id/view7"
+  >
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_alignParentTop="true"
-
+        android:layout_height="80dp"
         android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="Hóa đơn"
-        android:textColor="#fff"
-        android:fontFamily="@font/sriracha"
-        android:textSize="40sp"></TextView>
+        android:id="@+id/view_payment_top_panel">
+        <TextView
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Hóa đơn"
+            android:textColor="#fff"
+            android:fontFamily="@font/sriracha"
+            android:textSize="40sp"></TextView>
+        <ImageButton
+            android:layout_width="50dp"
+            android:id="@+id/btn_back"
+            android:layout_height="30dp"
+            android:src="@drawable/white_arr2"
+            android:background="@color/colorAccent"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true">
+
+        </ImageButton>
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/view_paid"
         android:layout_width="match_parent"
-        android:layout_height="549dp"
-        android:layout_below="@+id/view7"
-        android:layout_marginTop="0dp"
-        android:padding="15dp">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingHorizontal="10dp"
+        android:layout_below="@id/view_payment_top_panel"
+
+       >
 
         <RelativeLayout
             android:id="@+id/employee"
@@ -175,7 +194,7 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:text="Discount : "
+                android:text="Giảm giá:"
                 android:textSize="20sp" />
 
             <TextView
@@ -215,18 +234,7 @@
                 android:text="1"
                 android:textSize="20sp"></TextView>
         </RelativeLayout>
-        <Button
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/so_tien"
-            android:layout_marginTop="9dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/them_mon_btn"
-            android:paddingHorizontal="10dp"
-            android:text="Back"
-            android:textColor="#fff"
-            android:textSize="15dp"></Button>
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import static com.example.myapplication.FragmentSignIn.database;
@@ -41,6 +42,7 @@ public class ManagerFragmentHomePage extends Fragment {
     ImageButton voucher;
     ImageButton addVoucher;
     ImageButton history, menu;
+    BottomNavigationView navbar;
     int accountId;
     public void getInfor(int accountId) {
         this.accountId = accountId;
@@ -66,10 +68,15 @@ public class ManagerFragmentHomePage extends Fragment {
         voucher = (ImageButton) rootView.findViewById(R.id.voucher);
         history = (ImageButton) rootView.findViewById(R.id.history_btn);
         menu = (ImageButton) rootView.findViewById(R.id.menu);
+        navbar = (BottomNavigationView) getActivity().findViewById(R.id.navbar);
+
+
         //center crop image btns
         Glide.with(this).load(R.drawable.new_food).circleCrop().into(monmoi);
         Glide.with(this).load(R.drawable.new_table2).circleCrop().into(addTable);
         Glide.with(this).load(R.drawable.new_offer).circleCrop().into(addVoucher);
+        Glide.with(this).load(R.drawable.history).circleCrop().into(history);
+        Glide.with(this).load(R.drawable.food_menu).circleCrop().into(menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +87,8 @@ public class ManagerFragmentHomePage extends Fragment {
                         .addToBackStack(null)
 
                         .commit();
+
+                navbar.getMenu().findItem(R.id.nav_3).setChecked(true);
             }
         });
         history.setOnClickListener(new View.OnClickListener() {

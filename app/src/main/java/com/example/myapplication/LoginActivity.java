@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
         final FragmentSignIn fragmentSignIn = new FragmentSignIn();
         final FragmentSignUp fragmentSignUp= new FragmentSignUp();
 
-        //fragmentManager.beginTransaction().add(R.id.frameSign,fragmentSignUp, "signup");
 
         fragmentManager.beginTransaction().add(R.id.frameSign, fragmentSignIn, "signin").commit();
 
@@ -57,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                             .replace(R.id.frameSign, new FragmentSignUp()).addToBackStack(null).commit();
-                    signUpTextBtn.setTextColor(Color.parseColor("#000000"));
+                    signUpTextBtn.setTextColor(Color.parseColor("#FFFFFF"));
                     signInTextBtn.setTextColor(Color.parseColor("#786464"));
                 }
         });
@@ -67,8 +66,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .replace(R.id.frameSign,new FragmentSignIn()).addToBackStack(null).commit();
-                //fragmentManager.beginTransaction().hide(fragmentSignUp).show(fragmentSignIn).commit();
-                signInTextBtn.setTextColor(Color.parseColor("#000000"));
+
+                signInTextBtn.setTextColor(Color.parseColor("#FFFFFF"));
                 signUpTextBtn.setTextColor(Color.parseColor("#786464"));
             }
         });
