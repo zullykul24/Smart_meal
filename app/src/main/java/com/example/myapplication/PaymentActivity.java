@@ -50,9 +50,7 @@ public class PaymentActivity extends AppCompatActivity {
                 Intent intentToPayBill = new Intent(PaymentActivity.this, PayBillActivity.class);
                 intentToPayBill.putExtra("BanTen", paymentTableItemArrayList.get(position).getTableName());
                 intentToPayBill.putExtra("accountId", getIntent().getIntExtra("accountId", 1));
-               // Log.d("check",""+ getIntent().getIntExtra("accountId", 1) );
                 startActivityForResult(intentToPayBill, REQUEST_EXIT);
-               // startActivity(intentToPayBill);
             }
         });
     }

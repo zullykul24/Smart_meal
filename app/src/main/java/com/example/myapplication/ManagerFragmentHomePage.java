@@ -40,6 +40,7 @@ public class ManagerFragmentHomePage extends Fragment {
     ImageButton payment;
     ImageButton voucher;
     ImageButton addVoucher;
+    ImageButton history, menu;
     int accountId;
     public void getInfor(int accountId) {
         this.accountId = accountId;
@@ -63,10 +64,30 @@ public class ManagerFragmentHomePage extends Fragment {
         payment = (ImageButton) rootView.findViewById(R.id.manager_payment);
         addVoucher = (ImageButton) rootView.findViewById(R.id.add_voucher);
         voucher = (ImageButton) rootView.findViewById(R.id.voucher);
+        history = (ImageButton) rootView.findViewById(R.id.history_btn);
+        menu = (ImageButton) rootView.findViewById(R.id.menu);
         //center crop image btns
         Glide.with(this).load(R.drawable.new_food).circleCrop().into(monmoi);
         Glide.with(this).load(R.drawable.new_table2).circleCrop().into(addTable);
         Glide.with(this).load(R.drawable.new_offer).circleCrop().into(addVoucher);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager.beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+
+                        .replace(R.id.fragment_container,new FragmentMenu(), "3")
+                        .addToBackStack(null)
+
+                        .commit();
+            }
+        });
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), HistoryActivity.class));
+            }
+        });
         voucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

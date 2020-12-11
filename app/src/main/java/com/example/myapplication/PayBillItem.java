@@ -7,6 +7,13 @@ public class PayBillItem {
     private double priceEach;
     private double priceTotal;
 
+    public PayBillItem(int STT, String dishName, int SL, double priceEach) {
+        this.STT = STT;
+        this.dishName = dishName;
+        this.SL = SL;
+        this.priceEach = priceEach;
+    }
+
     public int getSTT() {
         return STT;
     }

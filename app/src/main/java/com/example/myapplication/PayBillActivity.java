@@ -43,8 +43,17 @@ public class PayBillActivity extends AppCompatActivity {
     double money_discount=0;
     int voucherId = 0;
     double so_tien =0;
-    long millis=System.currentTimeMillis();
-    java.sql.Date date=new java.sql.Date(millis);
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTotal() {
+        return this.total;
+    }
+
+    long millis = System.currentTimeMillis();
+    java.sql.Date date =new java.sql.Date(millis);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +106,7 @@ public class PayBillActivity extends AppCompatActivity {
         payBillItemArrayList.get(i).setSTT(i+1);
         so_tien = so_tien + payBillItemArrayList.get(i).getPriceTotal();
         }
-
+        total = so_tien;
 
         payBillItemAdapter = new PayBillItemAdapter(PayBillActivity.this, R.layout.bill_item, payBillItemArrayList);
         listViewPayBill.setAdapter(payBillItemAdapter);
@@ -112,21 +121,11 @@ public class PayBillActivity extends AppCompatActivity {
         String priceString = String.valueOf(df.format(Double.valueOf(so_tien)));
         totalPriceText.setText(priceString);
         money_paid.setText(String.valueOf(df.format(Double.valueOf(so_tien))));
-
-
         btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // insert db vao trong co so du lieu
-                if(voucherId != 0)
-                {
-                    database.QueryData("insert into payments values (null, "+getIntent().getIntExtra("accountId", 1)+","+orderId+" ,"+voucherId+", "+total+", "+date+", 'Paid')");
-                }
-                else
-                {
-                    database.QueryData("insert into payments values (null, "+getIntent().getIntExtra("accountId", 1)+","+orderId+" ,null, "+total+", "+date+", 'Paid')");
-
-                }
+                    database.QueryData("insert into payments values (null, "+getIntent().getIntExtra("accountId", 1)+" , "+tableId+","+orderId+" ,null, "+total+", "+millis+", 'Paid')");
                 // update lai cai ban la con trong la oke
                 database.QueryData("update group_table set status = 'Empty'  where tableId = "+tableId+";");
                 database.QueryData("update orders set paid = 1 where orderId = " + orderId);
@@ -135,6 +134,8 @@ public class PayBillActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Log.d("checkdate", ""+ date);
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -144,6 +145,7 @@ public class PayBillActivity extends AppCompatActivity {
                 use_voucher.setText(item.getTitle());
                 money_discount = so_tien * item.getDiscount() / 100;
                 total = (so_tien -  money_discount) ;
+                this.setTotal(total);
                /// định dạng tiền 1500000 -> 1,500,000
                DecimalFormat df= new DecimalFormat("###,###,###");
                String priceString = String.valueOf(df.format(Double.valueOf(total)));
@@ -151,6 +153,20 @@ public class PayBillActivity extends AppCompatActivity {
                discount_money.setText(String.valueOf(df.format(Double.valueOf(money_discount))));
                money_paid.setText(String.valueOf(df.format(Double.valueOf(so_tien))));
                voucherId = item.getVoucherId();
+
+               btn_pay.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       // insert db vao trong co so du lieu
+                           database.QueryData("insert into payments values (null, "+getIntent().getIntExtra("accountId", 1)+" , "+tableId+","+orderId+" ,"+voucherId+", "+total+", "+millis+", 'Paid')");
+                       // update lai cai ban la con trong la oke
+                       database.QueryData("update group_table set status = 'Empty'  where tableId = "+tableId+";");
+                       database.QueryData("update orders set paid = 1 where orderId = " + orderId);
+                       // thoat ra khoi man hinh chinh
+                       setResult(RESULT_OK, null);
+                       finish();
+                   }
+               });
             }
     }
 }

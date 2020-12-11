@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:id="@+id/header_history"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:paddingHorizontal="20dp"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <Spinner
+            android:id="@+id/select_table_paymented"
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginBottom="15dp" />
+
+        <EditText
+            android:id="@+id/choose_date_paymented"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginRight="42dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toStartOf="@+id/select_table_paymented"
+            android:layout_toLeftOf="@+id/select_table_paymented"
+            android:hint="Ngày thanh toán"
+            android:focusable="false"
+            android:inputType="date"
+            android:textColor="#fff" />
+    </RelativeLayout>
+    <ListView
+        android:padding="5dp"
+        android:layout_below="@id/header_history"
+        android:id="@+id/list_history_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/paymented_item"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"/>
+</RelativeLayout>
