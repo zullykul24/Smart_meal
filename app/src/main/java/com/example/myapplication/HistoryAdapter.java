@@ -1,19 +1,23 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<HistoryItem> historyItemList;
+    private List<HistoryItem> displayedList;
 
     public HistoryAdapter(Context context, int layout, List<HistoryItem> historyItemList) {
         this.context = context;
@@ -40,7 +44,6 @@ public class HistoryAdapter extends BaseAdapter {
         TextView nameTable;
         TextView paymentDate;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final  ViewHolder holder;
@@ -56,7 +59,7 @@ public class HistoryAdapter extends BaseAdapter {
         }
         final  HistoryItem historyItem  = historyItemList.get(position);
         holder.nameTable.setText("Bàn "+ historyItem.getTableId());
-        java.sql.Date date=new java.sql.Date(historyItem.getDate());
+        java.sql.Timestamp date=new java.sql.Timestamp(historyItem.getDate());
         holder.paymentDate.setText(""+ date);
         return convertView;
     }

@@ -10,33 +10,37 @@
         android:background="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="80dp">
-        <Spinner
-            android:id="@+id/select_table_paymented"
-            android:layout_width="100sp"
-            android:layout_height="50sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginRight="48dp"
-            android:layout_marginBottom="15dp" />
+<!--        <Spinner-->
+<!--            android:id="@+id/select_table_paymented"-->
+<!--            android:layout_width="100sp"-->
+<!--            android:layout_height="50sp"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginEnd="48dp"-->
+<!--            android:layout_marginRight="48dp"-->
+<!--            android:layout_marginBottom="15dp" />-->
 
         <EditText
             android:id="@+id/choose_date_paymented"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginRight="42dp"
-            android:layout_marginBottom="15dp"
-            android:layout_toStartOf="@+id/select_table_paymented"
-            android:layout_toLeftOf="@+id/select_table_paymented"
-            android:hint="Ngày thanh toán"
+            android:layout_marginStart="115dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginRight="115dp"
+            android:layout_marginBottom="18dp"
             android:focusable="false"
+            android:hint="Ngày thanh toán"
             android:inputType="date"
             android:textColor="#fff" />
     </RelativeLayout>

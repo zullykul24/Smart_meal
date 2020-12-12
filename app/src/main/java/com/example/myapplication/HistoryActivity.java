@@ -27,11 +27,8 @@ import static com.example.myapplication.FragmentSignIn.database;
 public class HistoryActivity extends AppCompatActivity {
     ListView paymentedList;
     ArrayList<HistoryItem> historyItemArrayList;
-    ArrayList<HistoryItem> historyItems;
     HistoryAdapter historyAdapter;
-    Spinner spinner ;
     EditText choosedDate;
-    ArrayList<String> banID;
     int lastSelectedYear;
     int lastSelectedMonth;
     int lastSelectedDayOfMonth;
@@ -48,7 +45,6 @@ public class HistoryActivity extends AppCompatActivity {
         lastSelectedMonth = cal.get(Calendar.MONTH);
         historyItemArrayList = new ArrayList<>();
         paymentedList = (ListView) findViewById(R.id.list_history_item);
-        spinner = (Spinner) findViewById(R.id.select_table_paymented);
         choosedDate = (EditText) findViewById(R.id.choose_date_paymented);
 
         Cursor cursor = database.getData("select * from payments order by paymentId desc");
@@ -64,22 +60,6 @@ public class HistoryActivity extends AppCompatActivity {
                     cursor.getString(7)
             ));
             historyAdapter = new HistoryAdapter(HistoryActivity.this, R.layout.paymented_item, historyItemArrayList);
-            Cursor cursor1 = database.getData("SELECT DISTINCT (tableId) from payments  order by tableId asc");
-            banID = new ArrayList<>();
-            banID.add("All");
-            while (cursor1.moveToNext()){
-               banID.add(""+ cursor1.getInt(0));
-            }
-            // gan source cho spinner
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_spinner_item,
-                    banID
-            );
-            //phai goi lenh nay de hien thi danh sach cho spinner
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            // thiet lap adapter
-            spinner.setAdapter(adapter);
            choosedDate.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
