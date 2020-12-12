@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,7 @@ import static com.example.myapplication.FragmentSignIn.database;
 public class ViewPaymentActivity extends AppCompatActivity {
     TextView name_employee, date_time_paid, paid_id, discount_name, discount_number, total_pay;
     ListView listViewPaid;
-    Button btn_back;
+    ImageButton btn_back;
     int paymentId ;
     long date;
     int orderId;
@@ -35,7 +36,7 @@ public class ViewPaymentActivity extends AppCompatActivity {
         discount_name = (TextView)  findViewById(R.id.discount_ma_code);
         discount_number = (TextView)  findViewById(R.id.so_giam);
         total_pay = (TextView)  findViewById(R.id.so_tien_paid);
-        btn_back = (Button) findViewById(R.id.btn_back);
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
         listViewPaid = (ListView) findViewById(R.id.list_view_paid) ;
         count = 1;
         paid_id.setText(""+ paymentId);
@@ -71,7 +72,7 @@ public class ViewPaymentActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(RESULT_OK, null);
+
                 finish();
             }
         });

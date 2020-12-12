@@ -31,12 +31,12 @@
 
         >
         <LinearLayout
-            android:weightSum="1"
+            android:weightSum="2"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:id="@+id/line1"
 
-            android:layout_height="150dp">
+            android:layout_height="250dp">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -133,6 +133,68 @@
                 android:layout_height="wrap_content"></TextView>
     </RelativeLayout>
 </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingVertical="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/history_btn_emp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+
+                        android:scaleType="fitCenter"
+                        android:layout_centerHorizontal="true"
+
+                        android:src="@drawable/history"
+                        android:background="@drawable/home_item"
+                        ></ImageButton>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Lịch sử"
+                        android:layout_below="@id/history_btn_emp"
+                        android:layout_alignLeft="@id/history_btn_emp"
+                        android:layout_alignRight="@id/history_btn_emp"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:layout_height="wrap_content"></TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/menu_emp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+
+                        android:scaleType="fitCenter"
+                        android:layout_centerHorizontal="true"
+
+                        android:src="@drawable/food_menu"
+                        android:background="@drawable/home_item"
+                        ></ImageButton>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Thực đơn"
+                        android:layout_below="@id/menu_emp"
+                        android:layout_alignLeft="@id/menu_emp"
+                        android:layout_alignRight="@id/menu_emp"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:layout_height="wrap_content"></TextView>
+                </RelativeLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
 
