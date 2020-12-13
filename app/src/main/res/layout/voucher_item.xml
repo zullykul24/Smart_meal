@@ -42,7 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
 
-        android:text="TextView"
+        android:text="Khuyến mãi 12/12"
         android:textStyle="bold"
         android:textSize="25dp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -56,7 +56,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
-        android:text="StartDate"
+        android:text="2020-12-12"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/conditions_view" />
 
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:text="EndDate"
+        android:text="2020-12-12"
         app:layout_constraintStart_toEndOf="@+id/startDate_view"
         app:layout_constraintTop_toTopOf="@+id/startDate_view" />
 
@@ -76,7 +76,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="Áp dụng cho mọi đối tượng"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/title_view" />
 

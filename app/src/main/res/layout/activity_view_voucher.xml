@@ -17,8 +17,8 @@
         android:layout_height="match_parent"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:text="Voucher"
-        android:textAlignment="center"
+        android:text="Khuyến mãi"
+
         android:textColor="#fff"
         android:textSize="40sp"
         ></TextView>
