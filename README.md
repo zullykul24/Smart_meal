@@ -7,4 +7,4 @@ Bài tập lớn môn Thiết kế giao diện người dùng INT3115_1(Học k�
 
 Báo cáo chi tiết: https://drive.google.com/file/d/14g3hUYkccwJoEk6_MRHFYEMWeNVKalle/view?usp=sharing
 
-App release: https://drive.google.com/file/d/14g3hUYkccwJoEk6_MRHFYEMWeNVKalle/view?usp=sharing
+App release: https://drive.google.com/file/d/1WrspLzjPGFpEZTxWro3ByMlV6I6wEt5x/view?usp=sharing
